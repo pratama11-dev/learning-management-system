@@ -1,0 +1,6 @@
+db.createUser({
+  user: "mongodb",
+  pwd: "mongodb",
+  roles: [{ role: "readWrite", db: "lms-v3-dev" }],
+  passwordDigestor: "server"
+})

@@ -1,0 +1,84 @@
+section.elementor-element.elementor-element-2d57062.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section.p-0 data-id="2d57062" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}" style="overflow: visible;"
+  .splide.js-dataId-desktop-screen-taxsam-talks-small[
+    data-controller="landing-pages--desktop-screen--splide-small"
+    data-id="desktop-screen-taxsam-talks"
+  ]
+    .splide__track
+      ul.splide__list
+        - @talks.each_with_index do |talk,i|
+          li.splide__slide
+            .elementor-hover
+              .elementor-element.elementor-element-bf17446.elementor-column.elementor-col-12.elementor-top-column.[
+                data-id="bf17446"
+                data-element_type="column"
+                data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
+                style="width: auto; height: 160px !important;"
+              ]
+                - banner_image = ""
+                - banner_image = url_for(talk.banner_image) if talk.banner_image.present?
+
+                .elementor-column-wrap.elementor-element-populated[
+                  style="background-image: url(#{banner_image}) !important;"
+                ]
+                  .elementor-background-overlay
+                  .elementor-widget-wrap
+                    .elementor-element.elementor-element-0ee5bb3.text-left.elementor-widget.elementor-widget-heading[data-id="0ee5bb3" data-element_type="widget" data-widget_type="heading.default"]
+                      a href="#{video_path(talk.video)}"
+                      .elementor-widget-container.pb-2.pt-28.remove-margin
+                        .d-flex.flex-column.hide-hover
+                          a.elementor-heading-title.font-size-h6.ml-2.mb-2
+                            | Episode #{i+1}
+                          a.elementor-heading-title.font-size-h6.ml-2[
+                            href="#{video_path(talk.video)}"
+                            role="button"
+                          ]
+                            = talk.name.truncate(45)
+                        .video-hover style="cursor: pointer;" onclick="window.location.href='#{video_path(talk.video)}'"
+                          = render "homes/desktop_partials/partials/play_video", video: talk.video
+                        .text.text-left
+                          .info.p-4.font-size-xs
+                            a.elementor-heading-title.font-size-h6.ml-2[
+                              href="#{video_path(talk.video)}"
+                              role="button"
+                            ]
+                              = talk.name.truncate(45)
+                          - if current_user.present?
+                            = render "shared/buttons/play_bookmark_like_landing_page_talks", source: talk.video.source, options: {talk: talk}
+                          .info.p-4.font-size-xs
+                            .d-flex.flex-wrap.align-items-start
+                              .col-lg-12.px-0
+                                .d-flex.flex-column.flex-wrap
+                                  span.text-break.mb-3 [style="line-height: normal !important;"] = talk.description.truncate(80)
+                                  / span.text-white.m-0 [style="line-height: normal !important;"] category
+                              / .col-lg-6.px-0
+                                span.mb-5.seasons
+                                  p.text-white.m-0 [style="line-height: normal !important;"] 0% Complete
+                                  .progress[style="height: 5px;"]
+                                    .progress-bar[
+                                      role="progressbar"
+                                      style="width: 0%;"
+                                      aria-valuenow="25"
+                                      aria-valuemin="0"
+                                      aria-valuemax="100"
+                                    ]
+
+        - if @talks.count == 1
+          li.splide__slide
+            .elementor-element.elementor-element-6bc743e.elementor-column.elementor-col-12.elementor-top-column.h-100[
+              data-id="6bc743e"
+              data-element_type="column"
+              data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
+              style="width: auto; height: 160px !important;"
+            ]
+              .elementor-column-wrap.elementor-element-populated style="background-image: url(https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/a9.png) !important;"
+                .elementor-background-overlay
+                .elementor-widget-wrap.py-8
+                  .elementor-element.elementor-element-3accdcb.elementor-view-default.elementor-widget.elementor-widget-icon[data-id="3accdcb" data-element_type="widget" data-widget_type="icon.default"]
+                    .elementor-widget-container
+                      .elementor-icon-wrapper
+                        .elementor-icon
+                          i.fas.fa-lock[aria-hidden="true" style="color: #EE6123 !important;"]
+                  .elementor-element.elementor-element-ec86b57.elementor-widget.elementor-widget-heading[data-id="ec86b57" data-element_type="widget" data-widget_type="heading.default"]
+                    .elementor-widget-container
+                      h2.elementor-heading-title.elementor-size-default
+                        | Comming Soon

@@ -1,0 +1,348 @@
+body {
+  width: 32.7cm;
+  height: 25.5cm;
+  margin:auto;
+}
+
+.cert {
+  &__main-bg {
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__secondary-bg-container {
+    position: absolute;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    z-index: -2;
+
+    & > img {
+      display: block;
+      width: 523px;
+      margin-top: 88px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  &__content {
+    padding: 0.5rem 4rem 0rem 4rem;
+    & * {
+      text-align: center;
+      font-family: sans-serif;
+    }
+  }
+
+  &__footer {
+    width: 100%;
+    position: absolute;
+    bottom: 40px;
+    text-align:center;
+  }
+}
+
+.cert-content {
+  &__logo {
+    width: 160px;
+    display: block;
+    margin:auto;
+  }
+
+  &__title {
+    margin: 10px 0;
+    font-size: 64px;
+    letter-spacing: 4px;
+  }
+
+  &__number {
+    margin: 10px 0;
+    font-size: 31px;
+  }
+
+  &__name {
+    margin: 10px 0;
+    font-size: 40px;
+    text-decoration: underline;
+    font-style: italic;
+    font-weight: normal;
+    font-family: lobster;
+  }
+
+  &__subtitle {
+    margin: 10px 0;
+    font-size: 25px;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+
+  &__subdesc {
+    font-size: 25px;
+    margin-top: 10px;
+  }
+}
+
+.cert-footer {
+  &__barcode {
+    text-align:center;
+
+    & > svg {
+      width: 198px;
+      height: 198px;
+      margin-top: -36px;
+
+      & > g > rect {
+        fill: transparent;
+      }
+    }
+  }
+
+  &__sign {
+    font-size: 17px;
+  }
+}
+
+td {
+  border-top: none !important;
+}
+
+@font-face {
+  font-family: "ocr";
+  src: url("<%= asset_data_uri("OCRAEXT_0.TTF") %>") format('truetype');
+}
+
+@font-face {
+  font-family: "aspire";
+  src: url("<%= asset_data_uri("aspire.ttf") %>") format('truetype');
+}
+
+@font-face {
+  font-family: "framd";
+  src: url("<%= asset_data_uri('framd.ttf') %>") format('truetype');
+}
+
+@font-face {
+  font-family: 'BELL_1';
+  src: url("<%= asset_data_uri('BELLB_1.TTF') %>") format('truetype');
+}
+
+.no-certificate {
+  font-family: 'ocr';
+  font-size: 13px ;
+  position: absolute;
+  top: 75px;
+  left: 1010px;
+}
+
+.name-certificate {
+  font-family: 'Great Vibes', cursive;
+  font-size: 90px ;
+  top: 46.5%;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding-left: 30px;
+}
+
+.number-participant {
+  font-family: 'ocr';
+  font-size: 16px ;
+  position: absolute;
+  top: 59%;
+  left: 36%;
+  color: #c09c64;
+}
+
+.text-detail {
+  font-family: 'framd';
+  font-size: 20px ;
+  position: absolute;
+  top: 68%;
+  left: 20%;
+  right: 0;
+  color: #808080;
+  max-width: 790px;
+  text-align: center;
+}
+
+.text-complete {
+  font-family: 'framd';
+  font-size: 24px ;
+  position: absolute;
+  top: 62%;
+  left: 20%;
+  right: 0;
+  color: #808080;
+  max-width: 790px;
+  text-align: center;
+}
+
+.text-score {
+  font-family: 'framd';
+  font-size: 20px ;
+  position: absolute;
+  top: 63%;
+  left: 20%;
+  right: 0;
+  color: #808080;
+  max-width: 790px;
+  text-align: center;
+}
+
+.score-name{
+  font-family: 'framd';
+  font-size: 20px ;
+  top: 32%;
+  left: 12%;
+  position: absolute;
+  color: #c09c64 !important;
+  max-width: 790px;
+}
+
+.barcode-image {
+  position: absolute;
+  bottom: 13.5%;
+  left: 3%;
+  & > svg {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+.date {
+  font-family: 'BELL_1';
+  color: #757575;
+  font-size: 17px ;
+  position: absolute;
+  top: 70%;
+  left: 78%;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+
+.name-brvete {
+  font-size: 68px ;
+  position: absolute;
+  top: 25%;
+  left: 525px;
+  font-weight: 60;
+}
+
+.name-brvete-session {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px ;
+  font-weight: bold;
+  position: absolute;
+  top: 22.5%;
+  left: 0;
+  right: 0;
+  text-align: text;
+  color: #ffffff;
+}
+
+.text-status {
+  font-size: 26px ;
+  position: absolute;
+  top: 62.5%;
+  left: 525px;
+  color: #c09c64;
+  font-weight: bold;
+}
+
+.text-scoring {
+  font-size: 26px ;
+  position: absolute;
+  top: 68.5%;
+  left: 550px;
+  color: #c09c64;
+  font-weight: bold;
+}
+
+.text-desc {
+  font-size: 20px ;
+  position: absolute;
+  text-align: center;
+  top: 78%;
+  width: 65%;
+  left: 18%;
+  color: #c09c64;
+  font-weight: bold;
+}
+
+
+.name-brvete-exam {
+  font-size: 68px ;
+  position: absolute;
+  top: 25%;
+  left: 525px;;
+  font-weight: 60;
+}
+
+.ttd {
+  position: absolute;
+  bottom: 11.0%;
+  left: 75.0%;
+  & > svg {
+    width: 183px;
+    height: 183px;
+  }
+}
+
+.next-page {
+  position: absolute;
+  top: 100%;
+  height: 100%;
+  width: 100%;
+  left: 0px;
+}
+
+table, thead, td, th {
+  border: 1px solid;
+  border-color: #c09c64 !important;
+  padding: 10px;
+}
+
+table {
+  position: absolute;
+  top: 40%;
+  left: 15%;
+  width: 78%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.table-center {
+  position: absolute;
+  top: 100vh;
+  left: 0px;
+}
+
+.back-no-certificate{
+  font-family: 'ocr';
+  font-size: 15px ;
+  position: absolute;
+  top: 157px;
+  left: 950px;
+}
+
+.back-name-certificate{
+  font-family: 'framd';
+  font-size: 20px ;
+  position: absolute;
+  top: 135px;
+  left: 205px;
+}
+
+.back-number-participant{
+  font-family: 'framd';
+  font-size: 20px ;
+  position: absolute;
+  top: 175px;
+  left: 175px;
+}

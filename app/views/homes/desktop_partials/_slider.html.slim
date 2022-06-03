@@ -1,0 +1,197 @@
+.dropdown.dropdown__video__categories.elementor-hidden-phone
+  button.btn.btn-dark.dropdown-toggle.font-weight-bolder.text-capitalize.border-0.px-15[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+    |  Kategori Video
+  .dropdown-menu.dropdown-menu-xl.flex-wrap.w-550px[aria-labelledby="dropdownMenuButton" style="background-color:#242424 !important;"]
+    a.dropdown-item.text-white.font-weight-bolder.m-0 [href=search_index_path(Talk)]
+      | Taxsamtalks
+    .dropdown-divider
+    a.dropdown-item.text-white.font-weight-bolder.m-0 [href=search_index_path(Webinar)]
+      | Live Online Classes
+    .dropdown-divider
+    a.dropdown-item.text-white.font-weight-bolder.m-0 [href=courses_path()]
+      | Video Pembelajaran Pajak
+    .col-lg-12.px-0
+      .d-flex.flex-wrap
+        - @learning_taxes.each do |learning_name, lesson|
+          .col-lg-6.px-0.d-flex.align-items-stretch
+            a.dropdown-item.text-wrap.text-white[href=search_index_path(lessons: learning_name)]
+              = learning_name
+
+/ a.btn.btn-warning.font-weight-bolder [data-toggle="modal" data-target="#modalPrelogin"]
+  i.la.la-plus
+  | Tambah System
+#modalPrelogin.modal.fade[
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalPrelogin"
+  aria-hidden="true"
+  data-controller="landing-pages--modal-prelogin"
+  data-is-login="#{current_user.present?}"
+]
+  = render partial: "homes/desktop_partials/partials/modal_prelogin", cached: true
+
+.splide.js-dataId-desktop-screen-jumbotron [data-controller="landing-pages--desktop-screen--splide-jumbotron" data-id="desktop-screen" ]
+  .splide__track
+    ul.splide__list
+      - @banners.each_with_index do |banner|
+        - if banner.source.blank?
+            - banner.destroy
+            - next
+             
+        - if banner.resource_type == "Talk" && banner.source.present?
+          li.splide__slide.p-0
+            - talk = banner.source
+            - style_banner = "height: 750px !important;"
+            - style_banner = "height: 800px !important; background-image: url(#{url_for(talk.banner_image)}) !important;" if banner.source.banner_image.present?
+            section.elementor-element.elementor-element-8490d18.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section[
+              data-id="8490d18"
+              data-element_type="section"
+              data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"
+              style="#{style_banner}"
+            ]
+              .elementor-background-overlay
+              .container-fluid.elementor-column-gap-default
+                .elementor-row
+                  .elementor-element.elementor-element-3860f11.elementor-column.elementor-col-100.elementor-top-column[data-id="3860f11" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"]
+                    .elementor-column-wrap.elementor-element-populated
+                      .elementor-background-overlay
+                      .elementor-widget-wrap
+                        .elementor-element.elementor-element-0987816.elementor-widget.elementor-widget-heading.mt-15[data-id="0987816" data-element_type="widget" data-widget_type="heading.default"]
+                          .elementor-widget-container.pt-20.pl-20
+                            h2.elementor-heading-title.elementor-size-default
+                              = talk.name
+                        .elementor-element.elementor-element-73866d9.elementor-widget.elementor-widget-text-editor[data-id="73866d9" data-element_type="widget" data-widget_type="text-editor.default"]
+                          .elementor-widget-container
+                            .elementor-text-editor.elementor-clearfix.d-flex.pl-6.col-lg-6[
+                              style="height:190px !important;"
+                            ]
+                              = talk.description
+                        section.elementor-element.elementor-element-fd26d10.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-inner-section[data-id="fd26d10" data-element_type="section" data-settings="{&quot;animation&quot;:&quot;fadeIn&quot;,&quot;animation_delay&quot;:400,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"]
+                          .container-fluid.elementor-column-gap-narrow
+                            .elementor-row
+                              .elementor-element.elementor-element-1347bf3.elementor-column.elementor-col-50.elementor-inner-column[data-id="1347bf3" data-element_type="column"]
+                                .elementor-column-wrap.elementor-element-populated
+                                  .elementor-widget-wrap
+                                    .elementor-button-wrapper.d-flex.flex-row.align-items-center style="margin-left: 40px;"
+                                      a.elementor-button-link.btn.elementor-size-lg.px-15.mr-3[style="background-color: #EE6123 !important;" href="#{video_path(talk.video)}" role="button"]
+                                        span.elementor-button-content-wrapper
+                                          span.elementor-button-icon.elementor-align-icon-left
+                                            i.fas.fa-play[aria-hidden="true"]
+                                          span.elementor-button-text.text-white
+                                            | Play
+                            .elementor-widget-wrap
+                              .elementor-element
+                                .elementor-widget-wrap
+                                  .elementor-element.elementor-element-4b394fb.elementor-align-right.elementor-absolute.elementor-widget.elementor-widget-button [style="float: right !important;right: 0 !important;"]
+                                    .elementor-widget-container [style="right: 0 !important;"]
+                                      .elementor-button-wrapper
+                                        a.elementor-button-link.elementor-button.elementor-size-md.p-5[href="#" role="button"]
+                                          span.elementor-button-content-wrapper
+                                            span.elementor-button-text
+                                              | Taxsam Talks
+
+        - if banner.resource_type == "Course" && banner.source.present?
+          li.splide__slide.p-0
+            - course = banner.source
+            - style_banner = "height: 750px !important;"
+            - style_banner = "height: 800px !important; background-image: url(#{url_for(course.banner_image)}) !important;" if course.banner_image.present?
+            section.elementor-element.elementor-element-8490d18.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section[
+              data-id="8490d18"
+              data-element_type="section"
+              data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"
+              style="#{style_banner}"
+            ]
+              .elementor-background-overlay
+              .container-fluid.elementor-column-gap-default
+                .elementor-row
+                  .elementor-element.elementor-element-3860f11.elementor-column.elementor-col-100.elementor-top-column[data-id="3860f11" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"]
+                    .elementor-column-wrap.elementor-element-populated
+                      .elementor-background-overlay
+                      .elementor-widget-wrap
+                        .elementor-element.elementor-element-0987816.elementor-widget.elementor-widget-heading.mt-15[data-id="0987816" data-element_type="widget" data-widget_type="heading.default"]
+                          .elementor-widget-container.pt-20.pl-20
+                            h2.elementor-heading-title.elementor-size-default
+                              = course.name
+                        .elementor-element.elementor-element-73866d9.elementor-widget.elementor-widget-text-editor[data-id="73866d9" data-element_type="widget" data-widget_type="text-editor.default"]
+                          .elementor-widget-container
+                            .elementor-text-editor.elementor-clearfix.d-flex.pl-6.col-lg-6[
+                              style="height:190px !important;"
+                            ]
+                              = course.description
+                        section.elementor-element.elementor-element-fd26d10.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-inner-section[data-id="fd26d10" data-element_type="section" data-settings="{&quot;animation&quot;:&quot;fadeIn&quot;,&quot;animation_delay&quot;:400,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"]
+                          .container-fluid.elementor-column-gap-narrow
+                            .elementor-row
+                              .elementor-element.elementor-element-1347bf3.elementor-column.elementor-col-50.elementor-inner-column[data-id="1347bf3" data-element_type="column"]
+                                .elementor-column-wrap.elementor-element-populated
+                                  .elementor-widget-wrap
+                                    .elementor-button-wrapper.d-flex.flex-row.align-items-center style="margin-left: 40px;"
+                                      - if course.curriculums&.first&.video.present?
+                                        a.elementor-button-link.btn.elementor-size-lg.px-15.mr-3[style="background-color: #EE6123 !important;" href="#{video_path(course.curriculums&.first&.video)}" role="button"]
+                                          span.elementor-button-content-wrapper
+                                            span.elementor-button-icon.elementor-align-icon-left
+                                              i.fas.fa-play[aria-hidden="true"]
+                                            span.elementor-button-text.text-white
+                                              | Play`
+                            .elementor-widget-wrap
+                              .elementor-element
+                                .elementor-widget-wrap
+                                  .elementor-element.elementor-element-4b394fb.elementor-align-right.elementor-absolute.elementor-widget.elementor-widget-button [style="float: right !important;right: 0 !important;"]
+                                    .elementor-widget-container [style="right: 0 !important;"]
+                                      .elementor-button-wrapper
+                                        a.elementor-button-link.elementor-button.elementor-size-md.p-5[href="#" role="button"]
+                                          span.elementor-button-content-wrapper
+                                            span.elementor-button-text
+                                              | Video Belajar Pajak
+
+        - if banner.resource_type == "Lesson" && banner.source.present?
+          li.splide__slide.p-0
+            - lesson = banner.source
+            - style_banner = "height: 750px !important;"
+            - style_banner = "height: 800px !important; background-image: url(#{url_for(lesson.banner_image)}) !important;" if lesson.banner_image.present?
+            section.elementor-element.elementor-element-8490d18.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section[
+              data-id="8490d18"
+              data-element_type="section"
+              data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"
+              style="#{style_banner}"
+            ]
+              .elementor-background-overlay
+              .container-fluid.elementor-column-gap-default
+                .elementor-row
+                  .elementor-element.elementor-element-3860f11.elementor-column.elementor-col-100.elementor-top-column[data-id="3860f11" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"]
+                    .elementor-column-wrap.elementor-element-populated
+                      .elementor-background-overlay
+                      .elementor-widget-wrap
+                        .elementor-element.elementor-element-0987816.elementor-widget.elementor-widget-heading.mt-15[data-id="0987816" data-element_type="widget" data-widget_type="heading.default"]
+                          .elementor-widget-container.pt-20.pl-20
+                            h2.elementor-heading-title.elementor-size-default
+                              = lesson.name
+                        .elementor-element.elementor-element-73866d9.elementor-widget.elementor-widget-text-editor[data-id="73866d9" data-element_type="widget" data-widget_type="text-editor.default"]
+                          .elementor-widget-container
+                            .elementor-text-editor.elementor-clearfix.d-flex.pl-6.col-lg-6[
+                              style="height:190px !important;"
+                            ]
+                              = lesson.description
+                        section.elementor-element.elementor-element-fd26d10.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-inner-section[data-id="fd26d10" data-element_type="section" data-settings="{&quot;animation&quot;:&quot;fadeIn&quot;,&quot;animation_delay&quot;:400,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"]
+                          .container-fluid.elementor-column-gap-narrow
+                            .elementor-row
+                              .elementor-element.elementor-element-1347bf3.elementor-column.elementor-col-50.elementor-inner-column[data-id="1347bf3" data-element_type="column"]
+                                .elementor-column-wrap.elementor-element-populated
+                                  .elementor-widget-wrap
+                                    .elementor-button-wrapper.d-flex.flex-row.align-items-center style="margin-left: 40px;"
+                                      - if lesson.video.present?
+                                        a.elementor-button-link.btn.elementor-size-lg.px-15.mr-3[style="background-color: #EE6123 !important;" href="#{video_path(lesson.video)}" role="button"]
+                                          span.elementor-button-content-wrapper
+                                            span.elementor-button-icon.elementor-align-icon-left
+                                              i.fas.fa-play[aria-hidden="true"]
+                                            span.elementor-button-text.text-white
+                                              | Play`
+                            .elementor-widget-wrap
+                              .elementor-element
+                                .elementor-widget-wrap
+                                  .elementor-element.elementor-element-4b394fb.elementor-align-right.elementor-absolute.elementor-widget.elementor-widget-button [style="float: right !important;right: 0 !important;"]
+                                    .elementor-widget-container [style="right: 0 !important;"]
+                                      .elementor-button-wrapper
+                                        a.elementor-button-link.elementor-button.elementor-size-md.p-5[href="#" role="button"]
+                                          span.elementor-button-content-wrapper
+                                            span.elementor-button-text
+                                              | Video Belajar Pajak

@@ -1,0 +1,24 @@
+.modal.fade[
+    aria-hidden="true"
+    aria-labelledby="staticBackdrop"
+    role="dialog"
+    data-backdrop="static"
+    data-keyboard="false"
+    tabindex="-1"
+    id="#{dynamic_modal_id}"
+    style="background-color: #000000a1;"
+  ]
+  .modal-dialog.modal-dialog-centered.modal-xl[
+    role="document"
+    data-controller="modal--dynamic" 
+    data-url="#{dynamic_url}" 
+    data-show="#{modal_show}"
+    data-modal-id="#{dynamic_modal_id}"
+  ]
+    .modal-content style="background-color:#242424 !important;"
+      .modal-header.d-none
+        button.close.ml-auto aria-label="Close" data-dismiss="modal" type="button"
+          i.ki.ki-close.text-warning aria-hidden="true"
+      .modal-body.p-0.js-dynamic-replacer
+        div
+          = render "shared/preloader"

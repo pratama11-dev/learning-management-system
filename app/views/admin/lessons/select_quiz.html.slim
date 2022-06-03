@@ -1,0 +1,70 @@
+.d-flex.flex-column-fluid.mb-5
+  .container
+    .card.card-custom
+      .card-body
+        = form_for admin_select_quiz_path, method: :get do |f|
+          .row.mb-2
+            .col-10
+              input.d-none name="lesson_id" value="#{@lesson.id}"
+              = select_tag :category_question, options_for_select(@question_categories, params[:category_question]),\
+                prompt: "Pilih Kategori Soal",\
+                class: "form-control", \
+                data: { controller: 'admin--select2' },\
+                required: true
+            .col-2
+              = f.submit "Filter", class: "btn btn-primary w-100"
+    
+    .card.card-custom.mt-5
+      .card-body
+        - if params[:category_question].present? && @selected_questions.present?
+          = form_for @lesson, url: admin_add_quiz_path(lesson_id: @lesson.id), method: :post do |form|        
+            - @selected_questions.each.with_index(1) do |question, index|            
+              .card.card-custom.bgi-no-repeat.card-border.gutter-b.card-stretch id="kt_card_#{index}" data-card="true"
+                .card-title
+                  - if question.updated_by.present?
+                    .text-left.p-5.position-absolute style="background-color: #eef0f8;"
+                      label.text-gray
+                        | Edited at : 
+                        = question.updated_at.strftime("%d %B %Y")
+                      .text-gray
+                        | By : #{question.updated_by}
+
+                  .text-right.mr-5.mt-5
+                    .row
+                      .col-12
+                        label.checkbox.checkbox-outline.checkbox-success.float-right
+                          - if @lesson.package.exam_questions.include?(question)
+                            input name="question_ids[]" type="checkbox" value="#{question.id}" checked=true
+                            span style="height: 25px;width: 25px;"
+                          - else
+                            input name="question_ids[]" type="checkbox" value="#{question.id}"
+                            span style="height: 25px;width: 25px;"
+                          
+                .card-body
+                  p.text-dark-75.font-weight-bolder.font-size-h5.m-0 = "No. #{index}"
+                  .text-dark-75.font-weight-bolder.font-size-h5.m-0.style-question
+                    = question.quest.to_s.gsub(/\n/, '<br/>').html_safe
+
+                  hr
+                  - alfabet_answer = ("A".."Z").to_a
+                  table
+                    tbody.font-size-h5.m-0.style-question
+                      - question.exam_answers.each_with_index do |answer, index|
+                        tr
+                          td.align-top
+                            - if answer.is_correct
+                              span.fa.fa-check.text-success.mr-4
+                            - else
+                              span.fa.fa-times.text-danger.mr-4
+                          td.align-top
+                            = "#{alfabet_answer[index]}. "
+                          td width="0%"
+                            = answer.answer.to_s.gsub(/\n/, '<br/>').html_safe
+                  hr
+                  | Note: 
+                  .card
+                    .card-body
+                      = question&.note&.html_safe     
+
+            .col-2.mx-auto
+              = form.submit "Simpan Quiz", class: "btn btn-primary"

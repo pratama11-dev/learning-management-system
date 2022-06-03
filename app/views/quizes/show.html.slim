@@ -1,0 +1,35 @@
+.elementor.elementor-19787[data-elementor-type="wp-post" data-elementor-id="19787" data-elementor-settings="[]"]
+  .elementor-inner
+    .elementor-section-wrap
+      = render 'homes/components/header'
+      = render 'homes/components/header_desktop'
+      .d-flex.flex-column.flex-root
+        .d-flex.flex-row.flex-column-fluid.page
+          = render 'homes/nav_header'
+          
+      #kt_content.content.d-flex.flex-column.flex-column-fluid
+        #kt_subheader.subheader.py-2.py-lg-3.subheader-solid.d-lg-none.bg-transparent
+          .container-fluid.d-flex.align-items-center.justify-content-between.flex-wrap.flex-sm-nowrap
+            .d-flex.align-items-center.flex-wrap.mr-1
+              button#kt_subheader_mobile_toggle.burger-icon.burger-icon-left.mr-4.d-inline-block.d-lg-none data-controller="mobile-mode"
+                span
+              .d-flex.align-items-baseline.flex-wrap.mr-5
+                h6.font-weight-normal.text-white.text-capitalize.my-3.mr-5 Navigation
+          
+        .container-fluid
+          .card.card-custom.bg-transparent.shadow-none
+            .card-header.flex-wrap.border-bottom.pb-0.d-flex.justify-content-betweend
+              .card-toolbar
+              h3.card-title
+                span.card-label.font-weight-bolder.text-white.text-capitalize.font-size-h3
+                  = @lesson.name
+              .card-toolbar
+                span.card-label.font-weight-bolder.text-white.text-capitalize
+                
+            .card-body[
+              data-controller="exam--quiz" 
+              data-exam--quiz-url="#{ajax_show_quiz_path(id: @video.id, no: (params[:no] || 0))}"
+            ]
+
+      = render 'homes/components/footer_desktop'
+      = render 'homes/components/footer_phone'

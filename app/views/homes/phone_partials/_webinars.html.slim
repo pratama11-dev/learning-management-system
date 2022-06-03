@@ -1,0 +1,73 @@
+section.elementor-element.elementor-element-c53d7d7.elementor-hidden-desktop.elementor-hidden-tablet.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section[data-id="c53d7d7" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"]
+  .elementor-container.elementor-column-gap-default
+    .elementor-row
+      .elementor-element.elementor-element-e22b033.elementor-column.elementor-col-100.elementor-top-column[data-id="e22b033" data-element_type="column"]
+        .elementor-column-wrap.elementor-element-populated
+          .elementor-widget-wrap
+            .elementor-element.elementor-element-aa48a2d.elementor-view-stacked.elementor-position-left.elementor-vertical-align-middle.elementor-shape-circle.elementor-widget.elementor-widget-icon-box[data-id="aa48a2d" data-element_type="widget" data-widget_type="icon-box.default"]
+              .elementor-widget-container
+                .elementor-icon-box-wrapper
+                  .elementor-icon-box-icon
+                    span.elementor-icon.elementor-animation-
+                      i.fas.fa-broadcast-tower[aria-hidden="true"]
+                  .elementor-icon-box-content
+                    h3.elementor-icon-box-title
+                      span
+                        | Live Online Classes
+section.elementor-element.elementor-element-0ff1293.elementor-hidden-desktop.elementor-hidden-tablet.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section.p-0[data-id="0ff1293" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"]
+  .splide.js-dataId-phone-screen-online-classes-phone [data-controller="landing-pages--phone-screen--splide-phone-screen" data-id="phone-screen-online-classes"]
+    .splide__track.px-0
+      ul.splide__list
+        - @webinars.each do |webinar|
+          li.splide__slide
+            .card-group.h-100
+              .card.border-3 style="background-color:#242424 !important;"
+                .elementor-element.elementor-element-58fc3a9.elementor-align-left.elementor-widget.elementor-widget-button[data-id="58fc3a9" data-element_type="widget" data-widget_type="button.default"]
+                  .elementor-widget-container
+                    .elementor-button-wrapper.d-flex.justify-content-between.flex-wrap[
+                      class="js-homes-webinar-join-button-#{webinar.id}"
+                    ]
+                      = render partial: "homes/partials/register_webinar_button",
+                        locals: {webinar: webinar}, cached: true 
+                .card-body
+                  .elementor-element.elementor-element-04d4686.elementor-view-default.elementor-vertical-align-top.elementor-widget.elementor-widget-icon-box[data-id="04d4686" data-element_type="widget" data-widget_type="icon-box.default"]
+                    .elementor-widget-container.pt-0
+                      .elementor-icon-box-wrapper
+                        .elementor-icon-box-content
+                          h3.elementor-icon-box-title
+                            a href="#{webinar_path(slug: webinar.slug)}"
+                              = webinar.title
+                      .d-flex
+                        .elementor-icon-box-icon.mr-5
+                          span.elementor-icon.elementor-animation-
+                            i.far.fa-calendar-alt
+                        .elementor-icon-box-content.ml-5
+                          a.font-size-h6.elementor-icon-box-title href="#{webinar_path(slug: webinar.slug)}"
+                            span
+                              = readable_date_2(webinar.date)
+                      .d-flex
+                        .elementor-icon-box-icon.mr-5
+                          span.elementor-icon.elementor-animation-
+                            i.far.fa-clock
+                        .elementor-icon-box-content.ml-5
+                          a.font-size-h6.elementor-icon-box-title href="#{webinar_path(slug: webinar.slug)}"
+                            span
+                              | #{readable_hour(webinar.date)}
+                      .d-flex
+                        .elementor-icon-box-icon.mr-5
+                          span.elementor-icon.elementor-animation-
+                            i.fas.fa-border-all
+                        .elementor-icon-box-content.ml-5
+                          a.font-size-h6.elementor-icon-box-title href="#{webinar_path(slug: webinar.slug)}"
+                            span
+                              | Webinar
+                .separator.separator-solid.mx-8
+                .card-footer.border-0.py-7 style="background-color:#242424 !important;"
+                  .elementor-element.elementor-element-7a5c3da.mt-4.elementor-position-left.elementor-vertical-align-top.elementor-widget.elementor-widget-image-box[data-id="7a5c3da" data-element_type="widget" data-widget_type="image-box.default"]
+                    .elementor-widget-container
+                      .elementor-image-box-wrapper.align-items-center
+                        figure.elementor-image-box-img
+                          img.attachment-full.size-full[width="150" height="150" src="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/Desain-tanpa-judul-35.png" alt="" loading="lazy" srcset="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/Desain-tanpa-judul-35.png 150w, https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/Desain-tanpa-judul-35-100x100.png 100w" sizes="(max-width: 150px) 100vw, 150px"]
+                        .elementor-image-box-content
+                          h3.elementor-image-box-title.text-capitalize.mb-0
+                            = webinar.speaker

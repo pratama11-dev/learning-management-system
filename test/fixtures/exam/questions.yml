@@ -1,0 +1,25 @@
+# == Schema Information
+#
+# Table name: exam_questions
+#
+#  id         :uuid             not null, primary key
+#  archive    :boolean
+#  category   :string
+#  note       :text
+#  quest      :text
+#  updated_by :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  quest: MyString
+  note: MyString
+  category: MyString
+  archive: false
+
+two:
+  quest: MyString
+  note: MyString
+  category: MyString
+  archive: false

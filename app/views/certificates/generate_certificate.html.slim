@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    = csrf_meta_tags
+    = csp_meta_tag
+    meta[charset="utf-8"]
+    title
+      | Taxsam LMS Certificate
+    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+    meta[content="Sertifikat Brevet Taxsam" name="description"]
+    meta[content="Wellcode.IO" name="author"]
+    meta[http-equiv="X-UA-Compatible" content="IE=edge"]
+    link rel="shortcut icon" href=""
+
+    link rel="preconnect" href="https://fonts.googleapis.com"
+    link rel="preconnect" href="https://fonts.gstatic.com"
+    link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet"
+    link rel="preconnect" href="https://fonts.googleapis.com"
+    link rel="preconnect" href="https://fonts.gstatic.com"
+    link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet"
+
+    = wicked_pdf_stylesheet_link_tag "certificate_pdf"
+
+  - if params[:type] == "webinar"
+    = render "certificates/webinar"
+  - if params[:type] == "curriculum"
+    = render "certificates/curriculum"
+  - if params[:type] == "course"
+    = render "certificates/course"
+  - if params[:type] == "lesson"
+    = render "certificates/lesson"

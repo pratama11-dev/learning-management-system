@@ -1,0 +1,31 @@
+.elementor.elementor-19787[data-elementor-type="wp-post" data-elementor-id="19787" data-elementor-settings="[]"]
+  .elementor-inner
+    .elementor-section-wrap
+      = render 'homes/components/header'
+      = render 'homes/components/header_desktop'
+      .d-flex.flex-column.flex-root
+        .d-flex.flex-row.flex-column-fluid.page
+          = render 'homes/nav_header'
+
+        .container-fluid.mt-15.mt-lg-0
+          .card.card-custom.bg-transparent.shadow-none
+            .card-header.flex-wrap.border-bottom.pb-0.d-flex.justify-content-betweend
+              .card-toolbar
+              h3.card-title
+                span.card-label.font-weight-bolder.text-white.text-capitalize.font-size-h3
+                  | TAXSAM.CO - Tax Learning Center | 3 Bulan (Rabu, 1 September 2021 s/d Jumat, 1 Desember 2021)
+              .card-toolbar
+                span.card-label.font-weight-bolder.text-white.text-capitalize
+
+            .card-body
+              .d-flex.justify-content-center
+                h6.text-capitalize.font-size-xl.font-weight-bold Bayar sebelum 1 September 2021, 23:59 WIB
+              .d-flex.justify-content-center
+                h6.font-size-xl.font-weight-bold Rp. xx.xxx
+              .card.bg-white.h-400px.mb-10
+              .d-flex.justify-content-center
+                button.btn.text-white.text-capitalize.font-weight-bolder.px-15.py-3[type="button" style="background-color: #EE6123 !important;"]
+                  a [href="#"] Bayar
+
+      = render 'homes/components/footer_desktop'
+      = render 'homes/components/footer_phone'

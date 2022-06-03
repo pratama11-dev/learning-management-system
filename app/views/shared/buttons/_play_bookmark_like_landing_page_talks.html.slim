@@ -1,0 +1,57 @@
+- bookmarked = false
+- if current_user.present?
+  - bookmarked = source.bookmarked_by(current_user)
+  - liked = source.liked_by(current_user)
+  - disliked = source.disliked_by(current_user)
+.description-video
+  .px-5.d-flex
+    a.btn.btn-icon.btn-secondary.btn-circle.btn-xs.mr-2[
+      href="#{video_path(source.video)}"
+      role="button"
+    ]
+      i.la.la-play.text-muted class="#{'text-dark' if bookmarked}"
+
+    - if current_user.present?
+      a.btn.btn-icon.btn-outline-secondary.btn-circle.btn-xs.mr-2 [
+        style="#{bookmarked ? "background-color:#E4E6EF;" : ""}"
+        data-container="body"
+        data-toggle="popover"
+        data-placement="top"
+        data-content="Bookmark video ini!"
+        data-controller="landing-pages--talks--bookmark"
+        data-action="click->landing-pages--talks--bookmark#handleClick"
+        data-landing-pages--talks--bookmark-path="#{user_bookmarks_path(landing_page: true)}"
+        data-landing-pages--talks--bookmark-resource-type="#{source.class}"
+        data-landing-pages--talks--bookmark-resource-id="#{source.id}"
+      ]
+        i.la.la-bookmark-o.text-muted class="#{'text-dark' if bookmarked}"
+
+      a.btn.btn-icon.btn-outline-secondary.btn-circle.btn-xs.mr-2[
+        style="#{liked ? "background-color:#E4E6EF;" : ""}"
+        data-container="body"
+        data-toggle="popover"
+        data-placement="top"
+        data-content="Like video ini!"
+        data-controller="landing-pages--talks--feedback"
+        data-action="click->landing-pages--talks--feedback#handleClick"
+        data-landing-pages--talks--feedback-path="#{user_likes_path(landing_page: true)}"
+        data-landing-pages--talks--feedback-likes="true"
+        data-landing-pages--talks--feedback-resource-type="#{source.class}"
+        data-landing-pages--talks--feedback-resource-id="#{source.id}"
+      ]
+        i.la.la-thumbs-up.text-muted class="#{'text-dark' if liked}"
+
+      a.btn.btn-icon.btn-outline-secondary.btn-circle.btn-xs[
+        style="#{disliked ? "background-color:#E4E6EF;" : ""}"
+        data-container="body"
+        data-toggle="popover"
+        data-placement="top"
+        data-content="Dislike video ini!"
+        data-controller="landing-pages--talks--feedback"
+        data-action="click->landing-pages--talks--feedback#handleClick"
+        data-landing-pages--talks--feedback-path="#{user_likes_path(landing_page: true)}"
+        data-landing-pages--talks--feedback-likes="false"
+        data-landing-pages--talks--feedback-resource-type="#{source.class}"
+        data-landing-pages--talks--feedback-resource-id="#{source.id}"
+      ]
+        i.la.la-thumbs-down.text-muted class="#{'text-dark' if disliked}"

@@ -1,0 +1,69 @@
+.splide.js-dataId-phone-screen-jumbotron [data-controller="landing-pages--desktop-screen--splide-jumbotron" data-id="phone-screen"]
+  .splide__track
+    ul.splide__list
+      - @banners.each_with_index do |banner|
+        - if banner.resource_type == "Talk" && banner.source.present?
+          li.splide__slide.p-0
+            - talk = banner.source
+            - style_banner = "height: 750px !important;"
+            - style_banner = "height: 800px !important; background-image: url(#{url_for(talk.banner_image)}) !important;" if banner.source.banner_image.present?
+              section.elementor-element.elementor-element-45e6bd1d.elementor-hidden-desktop.elementor-hidden-tablet.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section[
+                data-id="45e6bd1d"
+                data-element_type="section"
+                data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"
+                style="#{style_banner}"
+              ]
+                .elementor-container.elementor-column-gap-default
+                  .elementor-row
+                    .elementor-element.elementor-element-78c7a13.elementor-column.elementor-col-100.elementor-top-column[data-id="78c7a13" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"]
+                      .elementor-column-wrap.elementor-element-populated [style="height: 500px !important; background-image: url(#{url_for(talk.banner_image)}) !important;"]
+                        .elementor-background-overlay
+                        .elementor-widget-wrap
+                          .elementor-element.elementor-element-17bd5155.elementor-widget.elementor-widget-heading.mt-10[data-id="17bd5155" data-element_type="widget" data-widget_type="heading.default"]
+                            .elementor-widget-container
+                              h6.elementor-heading-title.font-size-h6
+                                = talk.name
+                          .elementor-element.elementor-element-71034dc9.elementor-widget.elementor-widget-text-editor[data-id="71034dc9" data-element_type="widget" data-widget_type="text-editor.default"]
+                            .elementor-widget-container
+                              .elementor-text-editor.elementor-clearfix
+                                p.font-size-sm [style="line-height: initial !important; height:170px !important;"]
+                                  = talk.description
+                          section.elementor-element.elementor-element-181a34e7.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-inner-section[data-id="181a34e7" data-element_type="section" data-settings="{&quot;animation&quot;:&quot;fadeIn&quot;,&quot;animation_delay&quot;:400,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"]
+                            .elementor-container.elementor-column-gap-narrow
+                              .elementor-row
+                                .elementor-element.elementor-element-527bde25.elementor-column.elementor-col-50.elementor-inner-column[data-id="527bde25" data-element_type="column"]
+                                  .elementor-column-wrap.elementor-element-populated
+                                    .elementor-widget-wrap
+                                      .elementor-element.elementor-element-4af11d29.elementor-widget.elementor-widget-button[data-id="4af11d29" data-element_type="widget" data-widget_type="button.default"]
+                                        .elementor-widget-container
+                                          .elementor-button-wrapper
+                                            .d-flex.flex-column
+                                              .d-flex.mb-5
+                                                a.elementor-button-link.btn.elementor-size-sm.px-10 [style="background-color: #EE6123 !important;" href="#{video_path(talk.video)}" role="button"]
+                                                  span.elementor-button-content-wrapper
+                                                    span.elementor-button-icon.elementor-align-icon-left.mr-5
+                                                      i.fas.fa-play[aria-hidden="true"]
+                                                    span.elementor-button-text.text-white
+                                                      | Play
+                                              .d-flex.flex-row
+                                                a.btn.btn-icon.btn-secondary.btn-circle.btn-lg.mr-4[href="#"]
+                                                  i.la.la-plus
+                                                a.btn.btn-icon.btn-secondary.btn-circle.btn-lg.mr-4[href="#"]
+                                                  i.la.la-thumbs-up
+                                                a.btn.btn-icon.btn-secondary.btn-circle.btn-lg.mr-4[href="#"]
+                                                  i.la.la-thumbs-down
+
+                                .elementor-element.elementor-element-254d73df.elementor-column.elementor-col-50.elementor-inner-column[data-id="254d73df" data-element_type="column" style="top: -55px !important;"]
+                                  .elementor-column-wrap.elementor-element-populated
+                                    .elementor-widget-wrap
+                                      .elementor-element.elementor-element-4a208bd0.elementor-align-left.elementor-widget.elementor-widget-button[data-id="4a208bd0" data-element_type="widget" data-widget_type="button.default"]
+                                        .elementor-widget-container
+                                          .elementor-button-wrapper
+
+                                      .elementor-element.elementor-element-661d9290.elementor-align-right.elementor-absolute.elementor-mobile-align-right.elementor-widget.elementor-widget-button[data-id="661d9290" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="button.default"]
+                                        .elementor-widget-container
+                                          .elementor-button-wrapper
+                                            a.elementor-button-link.elementor-button.elementor-size-sm[href="#" role="button"]
+                                              span.elementor-button-content-wrapper
+                                                span.elementor-button-text.font-size-sm
+                                                  | Brevet AB

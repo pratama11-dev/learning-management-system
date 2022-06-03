@@ -1,0 +1,7 @@
+- webinar_participants.each do |user_participant|
+  - if user_participant.user.avatar.attached?
+    .symbol.symbol-30.symbol-circle data-original-title=("#{user_participant.user.name}") data-toggle="tooltip" title=""
+      = image_tag user_participant.user.avatar
+  - else 
+    .symbol.symbol-30.symbol-circle.symbol-light-success data-original-title=("#{user_participant.user.name}") data-toggle="tooltip" title=""
+      span.symbol-label.font-size-h5.font-weight-bold= user_participant.user.name&.chars&.first

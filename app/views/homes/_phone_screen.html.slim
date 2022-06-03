@@ -1,0 +1,27 @@
+= render "homes/phone_partials/slider"
+
+div[
+  data-controller="home-partial-render"
+  data-url="#{index_phone_partial_path(partial_path: "company")}"
+]
+/ = render "homes/phone_partials/company"
+div[
+  data-controller="home-partial-render"
+  data-url="#{index_phone_partial_path(partial_path: "taxsam_talks")}"
+]
+/ = render "homes/phone_partials/taxsam_talks"
+div[
+  data-controller="home-partial-render"
+  data-url="#{index_phone_partial_path(partial_path: "webinars")}"
+]
+/ = render "homes/phone_partials/webinars"
+div[
+  data-controller="home-partial-render"
+  data-url="#{index_phone_partial_path(partial_path: "curriculums")}"
+]
+/ = render "homes/phone_partials/curriculums"
+div[
+  data-controller="home-partial-render"
+  data-url="#{index_phone_partial_path(partial_path: "brevet")}"
+]
+/ = render "homes/phone_partials/brevet"

@@ -1,0 +1,18 @@
+section
+  .auto-container
+    .card.card-custom.bg-transparent.border-0
+      .card-header.p-0
+        .card-title
+          span.text-white Lupa Password
+      .card-body.px-0
+        = form_for :password, url: authentications_passwords_path do |form|
+          .form-group
+            = form.text_field :email, type: 'email', placeholder: "Email", required: true, class: "form-control"
+          .form-group.text-center
+            = form.submit "Kirim Lupa Password", class: "btn btn-secondary p-3 text-capitalize", style: "background-color: #e2e2e4;"
+
+    .py-5.pb-lg-15.d-flex.justify-content-center
+      .text-muted.font-weight-bold.font-size-h4
+        | Sudah Punya Akun?
+        a.text-primary.font-weight-bolder style="background-color: #EE6123 !important;"
+        = link_to t(".sign_in"), root_path(login: true)

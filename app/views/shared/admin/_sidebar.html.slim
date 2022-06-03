@@ -1,0 +1,167 @@
+#kt_aside.aside.aside-left.aside-fixed.d-flex.flex-column.flex-row-auto
+  #kt_brand.brand.flex-column-auto
+    a.brand-logo.d-block.mx-auto.text-center href="/"
+      = image_tag 'transparant_logo.png', class: "mx-auto", style: "width: 150px", alt: "logo"
+    button#kt_aside_toggle.brand-toggle.btn.btn-sm.px-0
+      span.svg-icon.svg-icon.svg-icon-xl
+        svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          g fill="none" fill-rule="evenodd" id="Stockholm-icons-/-Navigation-/-Angle-double-left" stroke="none" stroke-width="1"
+            polygon#Shape points=("0 0 24 0 24 24 0 24")
+            path#Path-94 d="M5.29288961,6.70710318 C4.90236532,6.31657888 4.90236532,5.68341391 5.29288961,5.29288961 C5.68341391,4.90236532 6.31657888,4.90236532 6.70710318,5.29288961 L12.7071032,11.2928896 C13.0856821,11.6714686 13.0989277,12.281055 12.7371505,12.675721 L7.23715054,18.675721 C6.86395813,19.08284 6.23139076,19.1103429 5.82427177,18.7371505 C5.41715278,18.3639581 5.38964985,17.7313908 5.76284226,17.3242718 L10.6158586,12.0300721 L5.29288961,6.70710318 Z" fill="#000000" fill-rule="nonzero" transform="translate(8.999997, 11.999999) scale(-1, 1) translate(-8.999997, -11.999999) "
+            path#Path-94 d="M10.7071009,15.7071068 C10.3165766,16.0976311 9.68341162,16.0976311 9.29288733,15.7071068 C8.90236304,15.3165825 8.90236304,14.6834175 9.29288733,14.2928932 L15.2928873,8.29289322 C15.6714663,7.91431428 16.2810527,7.90106866 16.6757187,8.26284586 L22.6757187,13.7628459 C23.0828377,14.1360383 23.1103407,14.7686056 22.7371482,15.1757246 C22.3639558,15.5828436 21.7313885,15.6103465 21.3242695,15.2371541 L16.0300699,10.3841378 L10.7071009,15.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(15.999997, 11.999999) scale(-1, 1) rotate(-270.000000) translate(-15.999997, -11.999999) "
+
+  #kt_aside_menu_wrapper.aside-menu-wrapper.flex-column-fluid
+    #kt_aside_menu.aside-menu.my-4 data-menu-dropdown-timeout="500" data-menu-scroll="1" data-menu-vertical="1"
+      ul.menu-nav
+        li aria-haspopup="true" class=("menu-item #{'menu-item-active' if current_page?(root_path())}")
+          a.menu-link href="#{root_path}"
+            span.svg-icon.menu-icon
+              svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"
+                  rect height="24" width="24" x="0" y="0" /
+                  path d="M3.95709826,8.41510662 L11.47855,3.81866389 C11.7986624,3.62303967 12.2013376,3.62303967 12.52145,3.81866389 L20.0429,8.41510557 C20.6374094,8.77841684 21,9.42493654 21,10.1216692 L21,19.0000642 C21,20.1046337 20.1045695,21.0000642 19,21.0000642 L4.99998155,21.0000673 C3.89541205,21.0000673 2.99998155,20.1046368 2.99998155,19.0000673 L2.99999828,10.1216672 C2.99999935,9.42493561 3.36258984,8.77841732 3.95709826,8.41510662 Z M10,13 C9.44771525,13 9,13.4477153 9,14 L9,17 C9,17.5522847 9.44771525,18 10,18 L14,18 C14.5522847,18 15,17.5522847 15,17 L15,14 C15,13.4477153 14.5522847,13 14,13 L10,13 Z" fill="#000000" /
+            span.menu-text Landing Page
+
+        li aria-haspopup="true" class=("menu-item #{'menu-item-active' if request.url.include?('dashboard')}")
+          a.menu-link href="#{admin_dashboard_path}"
+            span.svg-icon.menu-icon
+              svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"
+                  rect height="24" width="24" x="0" y="0" /
+                  rect fill="#000000" height="13" opacity="0.3" rx="1.5" width="3" x="12" y="4" /
+                  rect fill="#000000" height="8" opacity="0.3" rx="1.5" width="3" x="7" y="9" /
+                  path d="M5,19 L20,19 C20.5522847,19 21,19.4477153 21,20 C21,20.5522847 20.5522847,21 20,21 L4,21 C3.44771525,21 3,20.5522847 3,20 L3,4 C3,3.44771525 3.44771525,3 4,3 C4.55228475,3 5,3.44771525 5,4 L5,19 Z" fill="#000000" fill-rule="nonzero" /
+                  rect fill="#000000" height="6" opacity="0.3" rx="1.5" width="3" x="17" y="11" /
+            span.menu-text Dashboard
+
+        li.menu-section
+          h4.menu-text Main Menu
+          i.menu-icon.ki.ki-bold-more-hor.icon-md
+
+        li aria-haspopup="true" class=("menu-item #{'menu-item-active' if request.path.include?'admin/courses' } menu-item-submenu") data-menu-toggle="hover"
+          = link_to admin_courses_path, class: "menu-link" do
+            span.svg-icon.menu-icon
+              svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"
+                  polygon points=("0 0 24 0 24 24 0 24") /
+                  path d="M11.2600599,5.81393408 L2,16 L22,16 L12.7399401,5.81393408 C12.3684331,5.40527646 11.7359848,5.37515988 11.3273272,5.7466668 C11.3038503,5.7680094 11.2814025,5.79045722 11.2600599,5.81393408 Z" fill="#000000" opacity="0.3" /
+                  path d="M12.0056789,15.7116802 L20.2805786,6.85290308 C20.6575758,6.44930487 21.2903735,6.42774054 21.6939717,6.8047378 C21.8964274,6.9938498 22.0113578,7.25847607 22.0113578,7.535517 L22.0113578,20 L16.0113578,20 L2,20 L2,7.535517 C2,7.25847607 2.11493033,6.9938498 2.31738608,6.8047378 C2.72098429,6.42774054 3.35378194,6.44930487 3.7307792,6.85290308 L12.0056789,15.7116802 Z" fill="#000000" /
+            span.menu-text Brevet
+
+        li aria-haspopup="true" class=("menu-item #{'menu-item-active' if request.path.include?'admin/lessons' } menu-item-submenu") data-menu-toggle="hover"
+          = link_to admin_lessons_path, class: "menu-link" do
+            span.svg-icon.menu-icon
+              svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"
+                  rect height="24" width="24" x="0" y="0" /
+                  path d="M5,6 L19,6 C19.5522847,6 20,6.44771525 20,7 L20,17 L4,17 L4,7 C4,6.44771525 4.44771525,6 5,6 Z" fill="#000000" /
+                  rect fill="#000000" height="1" opacity="0.3" rx="0.5" width="22" x="1" y="18" /
+            span.menu-text Materi
+
+        li aria-haspopup="true" class=("menu-item #{'menu-item-active' if request.path.include?'admin/talks' } menu-item-submenu") data-menu-toggle="hover"
+          = link_to admin_talks_path, class: "menu-link" do
+            span.svg-icon.menu-icon
+              svg[xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewbox="0 0 24 24" version="1.1"]
+                g[stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"]
+                  rect[x="0" y="0" width="24" height="24"]
+                  path[d="M12.9975507,17.929461 C12.9991745,17.9527631 13,17.9762852 13,18 L13,21 C13,21.5522847 12.5522847,22 12,22 C11.4477153,22 11,21.5522847 11,21 L11,18 C11,17.9762852 11.0008255,17.9527631 11.0024493,17.929461 C7.60896116,17.4452857 5,14.5273206 5,11 L7,11 C7,13.7614237 9.23857625,16 12,16 C14.7614237,16 17,13.7614237 17,11 L19,11 C19,14.5273206 16.3910388,17.4452857 12.9975507,17.929461 Z" fill="#000000" fill-rule="nonzero"]
+                  rect[fill="#000000" opacity="0.3" transform="translate(12.000000, 8.000000) rotate(-360.000000) translate(-12.000000, -8.000000) " x="9" y="2" width="6" height="12" rx="3"]
+            span.menu-text Taxsamtalks
+
+
+        li aria-haspopup="true" class=("menu-item #{'menu-item-active' if request.path.include?'admin/webinars' } menu-item-submenu") data-menu-toggle="hover"
+          = link_to admin_webinars_path, class: "menu-link" do
+            span.svg-icon.menu-icon
+              svg[xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewbox="0 0 24 24" version="1.1"]
+                g[stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"]
+                  rect[x="0" y="0" width="24" height="24"]
+                  path[d="M5,6 L19,6 C19.5522847,6 20,6.44771525 20,7 L20,17 L4,17 L4,7 C4,6.44771525 4.44771525,6 5,6 Z" fill="#000000"]
+                  rect[fill="#000000" opacity="0.3" x="1" y="18" width="22" height="1" rx="0.5"]
+            span.menu-text Webinar
+
+        li aria-haspopup="true" class=("menu-item #{'menu-item-active' if request.path.include?'admin/auto_courses' } menu-item-submenu") data-menu-toggle="hover"
+          = link_to admin_auto_courses_path, class: "menu-link" do
+            span.svg-icon.menu-icon            
+              svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1" 
+                  rect height="24" width="24" x="0" y="0" /
+                  rect fill="#000000" height="2" opacity="0.3" rx="1" width="10" x="12" y="7" /
+                  path d="M2,9 C1.44771525,9 1,8.55228475 1,8 C1,7.44771525 1.44771525,7 2,7 L7.35012691,7 C8.14050434,7 8.85674733,7.46546704 9.17775001,8.18772307 L12.6498731,16 L22,16 C22.5522847,16 23,16.4477153 23,17 C23,17.5522847 22.5522847,18 22,18 L12.6498731,18 C11.8594957,18 11.1432527,17.534533 10.82225,16.8122769 L7.35012691,9 L2,9 Z" fill="#000000" fill-rule="nonzero" /
+            span.menu-text Auto Course
+
+        li aria-haspopup="true" class=("menu-item #{'menu-item-active' if request.path.include?'admin/videos' } menu-item-submenu") data-menu-toggle="hover"
+          = link_to admin_videos_path, class: "menu-link" do
+            span.svg-icon.menu-icon
+              svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"
+                  rect height="24" width="24" x="0" y="0" /
+                  path d="M12,21 C7.02943725,21 3,16.9705627 3,12 C3,7.02943725 7.02943725,3 12,3 C16.9705627,3 21,7.02943725 21,12 C21,16.9705627 16.9705627,21 12,21 Z M11.7752551,13.2928932 C12.3275399,13.2928932 12.7752551,12.845178 12.7752551,12.2928932 C12.7752551,11.7406085 12.3275399,11.2928932 11.7752551,11.2928932 C11.2229704,11.2928932 10.7752551,11.7406085 10.7752551,12.2928932 C10.7752551,12.845178 11.2229704,13.2928932 11.7752551,13.2928932 Z M11.2235429,9.10222252 C12.2904751,8.8163389 12.9236401,7.71966498 12.6377564,6.65273278 C12.3518728,5.58580057 11.2551989,4.95263559 10.1882667,5.23851922 C9.12133448,5.52440284 8.4881695,6.62107675 8.77405312,7.68800896 C9.05993675,8.75494117 10.1566107,9.38810614 11.2235429,9.10222252 Z M13.8117333,18.7614808 C14.8786655,18.4755972 15.5118305,17.3789232 15.2259469,16.311991 C14.9400633,15.2450588 13.8433893,14.6118939 12.7764571,14.8977775 C11.7095249,15.1836611 11.0763599,16.280335 11.3622436,17.3472672 C11.6481272,18.4141994 12.7448011,19.0473644 13.8117333,18.7614808 Z M7.68800896,15.2259469 C8.75494117,14.9400633 9.38810614,13.8433893 9.10222252,12.7764571 C8.8163389,11.7095249 7.71966498,11.0763599 6.65273278,11.3622436 C5.58580057,11.6481272 4.95263559,12.7448011 5.23851922,13.8117333 C5.52440284,14.8786655 6.62107675,15.5118305 7.68800896,15.2259469 Z M17.3472672,12.6377564 C18.4141994,12.3518728 19.0473644,11.2551989 18.7614808,10.1882667 C18.4755972,9.12133448 17.3789232,8.4881695 16.311991,8.77405312 C15.2450588,9.05993675 14.6118939,10.1566107 14.8977775,11.2235429 C15.1836611,12.2904751 16.280335,12.9236401 17.3472672,12.6377564 Z" fill="#000000" opacity="0.3" /
+                  path d="M17.6573343,19 L21,19 C21.5522847,19 22,19.4477153 22,20 C22,20.5522847 21.5522847,21 21,21 L12,21 C14.1432966,21 16.1116082,20.2507999 17.6573343,19 Z" fill="#000000" /
+            span.menu-text Video
+
+        li.menu-section
+          h4.menu-text Data Menu
+          i.menu-icon.ki.ki-bold-more-hor.icon-md
+
+        li aria-haspopup="true" class=("menu-item #{'menu-item-active' if request.path.include?'admin/users' } menu-item-submenu") data-menu-toggle="hover"
+          = link_to admin_users_path, class: "menu-link" do
+            span.svg-icon.menu-icon
+              svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"
+                  polygon points=("0 0 24 0 24 24 0 24") /
+                  path d="M18,14 C16.3431458,14 15,12.6568542 15,11 C15,9.34314575 16.3431458,8 18,8 C19.6568542,8 21,9.34314575 21,11 C21,12.6568542 19.6568542,14 18,14 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" /
+                  path d="M17.6011961,15.0006174 C21.0077043,15.0378534 23.7891749,16.7601418 23.9984937,20.4 C24.0069246,20.5466056 23.9984937,21 23.4559499,21 L19.6,21 C19.6,18.7490654 18.8562935,16.6718327 17.6011961,15.0006174 Z M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero" /
+            span.menu-text User
+
+        li aria-haspopup="true" class=("menu-item #{'menu-item-active' if request.path.include?'admin/payment_reports' } menu-item-submenu") data-menu-toggle="hover"
+          = link_to admin_payment_reports_path, class: "menu-link" do
+            span.svg-icon.menu-icon
+              svg[xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewbox="0 0 24 24" version="1.1"]
+                g[stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"]
+                  rect[x="0" y="0" width="24" height="24"]
+                  path[d="M10,4 L21,4 C21.5522847,4 22,4.44771525 22,5 L22,7 C22,7.55228475 21.5522847,8 21,8 L10,8 C9.44771525,8 9,7.55228475 9,7 L9,5 C9,4.44771525 9.44771525,4 10,4 Z M10,10 L21,10 C21.5522847,10 22,10.4477153 22,11 L22,13 C22,13.5522847 21.5522847,14 21,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L21,16 C21.5522847,16 22,16.4477153 22,17 L22,19 C22,19.5522847 21.5522847,20 21,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000"]
+                  rect[fill="#000000" opacity="0.3" x="2" y="4" width="5" height="16" rx="1"]
+            span.menu-text Payment Report
+
+        li aria-haspopup="true" class=("menu-item #{'menu-item-active' if request.path.include?'admin/exams' } menu-item-submenu") data-menu-toggle="hover"
+          = link_to admin_exams_path, class: "menu-link" do
+            span.svg-icon.menu-icon
+              span.svg-icon.svg-icon-2x
+                svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                  g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"
+                    polygon points=("0 0 24 0 24 24 0 24") /
+                    path d="M4.85714286,1 L11.7364114,1 C12.0910962,1 12.4343066,1.12568431 12.7051108,1.35473959 L17.4686994,5.3839416 C17.8056532,5.66894833 18,6.08787823 18,6.52920201 L18,19.0833333 C18,20.8738751 17.9795521,21 16.1428571,21 L4.85714286,21 C3.02044787,21 3,20.8738751 3,19.0833333 L3,2.91666667 C3,1.12612489 3.02044787,1 4.85714286,1 Z M8,12 C7.44771525,12 7,12.4477153 7,13 C7,13.5522847 7.44771525,14 8,14 L15,14 C15.5522847,14 16,13.5522847 16,13 C16,12.4477153 15.5522847,12 15,12 L8,12 Z M8,16 C7.44771525,16 7,16.4477153 7,17 C7,17.5522847 7.44771525,18 8,18 L11,18 C11.5522847,18 12,17.5522847 12,17 C12,16.4477153 11.5522847,16 11,16 L8,16 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" /
+                    path d="M6.85714286,3 L14.7364114,3 C15.0910962,3 15.4343066,3.12568431 15.7051108,3.35473959 L20.4686994,7.3839416 C20.8056532,7.66894833 21,8.08787823 21,8.52920201 L21,21.0833333 C21,22.8738751 20.9795521,23 19.1428571,23 L6.85714286,23 C5.02044787,23 5,22.8738751 5,21.0833333 L5,4.91666667 C5,3.12612489 5.02044787,3 6.85714286,3 Z M8,12 C7.44771525,12 7,12.4477153 7,13 C7,13.5522847 7.44771525,14 8,14 L15,14 C15.5522847,14 16,13.5522847 16,13 C16,12.4477153 15.5522847,12 15,12 L8,12 Z M8,16 C7.44771525,16 7,16.4477153 7,17 C7,17.5522847 7.44771525,18 8,18 L11,18 C11.5522847,18 12,17.5522847 12,17 C12,16.4477153 11.5522847,16 11,16 L8,16 Z" fill="#000000" fill-rule="nonzero" /
+            span.menu-text Bank Soal
+
+        / li aria-haspopup="true" class=("menu-item #{'menu-item-active' if request.path.include?'admin/ratings' } menu-item-submenu") data-menu-toggle="hover"
+          = link_to admin_ratings_path, class: "menu-link" do
+            span.svg-icon.menu-icon
+              svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"
+                  rect height="24" width="24" x="0" y="0" /
+                  path d="M3.5,21 L20.5,21 C21.3284271,21 22,20.3284271 22,19.5 L22,8.5 C22,7.67157288 21.3284271,7 20.5,7 L10,7 L7.43933983,4.43933983 C7.15803526,4.15803526 6.77650439,4 6.37867966,4 L3.5,4 C2.67157288,4 2,4.67157288 2,5.5 L2,19.5 C2,20.3284271 2.67157288,21 3.5,21 Z" fill="#000000" opacity="0.3" /
+                  path d="M11.9999651,17.2276651 L9.80187391,18.4352848 C9.53879239,18.5798204 9.21340017,18.4741205 9.07509004,18.1991974 C9.02001422,18.0897216 9.00100892,17.9643258 9.02101638,17.8424227 L9.44081443,15.2846431 L7.66252134,13.4732136 C7.44968392,13.2564102 7.44532889,12.9003514 7.65279409,12.677934 C7.73540782,12.5893662 7.84365664,12.5317281 7.96078237,12.5139426 L10.418323,12.1407676 L11.5173686,9.81362288 C11.6489093,9.53509542 11.97161,9.42073887 12.2381407,9.5582004 C12.3442746,9.6129383 12.4301813,9.70271178 12.4825615,9.81362288 L13.5816071,12.1407676 L16.0391477,12.5139426 C16.3332818,12.5586066 16.5370768,12.8439892 16.4943366,13.1513625 C16.4773173,13.2737601 16.4221618,13.3868813 16.3374088,13.4732136 L14.5591157,15.2846431 L14.9789137,17.8424227 C15.0291578,18.148554 14.8324094,18.4392867 14.5394638,18.4917923 C14.4228114,18.5127004 14.3028166,18.4928396 14.1980562,18.4352848 L11.9999651,17.2276651 Z" fill="#000000" opacity="0.3" /
+            span.menu-text Rating
+
+        li aria-haspopup="true" class=("menu-item #{'menu-item-active' if request.path.include?'admin/libraries' } menu-item-submenu") data-menu-toggle="hover"
+          = link_to admin_libraries_path, class: "menu-link" do
+            span.svg-icon.menu-icon
+              svg[xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewbox="0 0 24 24" version="1.1"]
+                g[stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"]
+                  rect[x="0" y="0" width="24" height="24"]
+                  path[d="M13.6855025,18.7082217 C15.9113859,17.8189707 18.682885,17.2495635 22,17 C22,16.9325178 22,13.1012863 22,5.50630526 L21.9999762,5.50630526 C21.9999762,5.23017604 21.7761292,5.00632908 21.5,5.00632908 C21.4957817,5.00632908 21.4915635,5.00638247 21.4873465,5.00648922 C18.658231,5.07811173 15.8291155,5.74261533 13,7 C13,7.04449645 13,10.79246 13,18.2438906 L12.9999854,18.2438906 C12.9999854,18.520041 13.2238496,18.7439052 13.5,18.7439052 C13.5635398,18.7439052 13.6264972,18.7317946 13.6855025,18.7082217 Z" fill="#000000"]
+                  path[d="M10.3144829,18.7082217 C8.08859955,17.8189707 5.31710038,17.2495635 1.99998542,17 C1.99998542,16.9325178 1.99998542,13.1012863 1.99998542,5.50630526 L2.00000925,5.50630526 C2.00000925,5.23017604 2.22385621,5.00632908 2.49998542,5.00632908 C2.50420375,5.00632908 2.5084219,5.00638247 2.51263888,5.00648922 C5.34175439,5.07811173 8.17086991,5.74261533 10.9999854,7 C10.9999854,7.04449645 10.9999854,10.79246 10.9999854,18.2438906 L11,18.2438906 C11,18.520041 10.7761358,18.7439052 10.4999854,18.7439052 C10.4364457,18.7439052 10.3734882,18.7317946 10.3144829,18.7082217 Z" fill="#000000" opacity="0.3"]
+            span.menu-text Perpustakaan
+
+        li aria-haspopup="true" class=("menu-item #{'menu-item-active' if request.path.include?'admin/banners' } menu-item-submenu") data-menu-toggle="hover"
+          = link_to admin_banners_path, class: "menu-link" do
+            span.svg-icon.menu-icon
+              svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"
+                  polygon points=("0 0 24 0 24 24 0 24") /
+                  rect fill="#000000" height="16" opacity="0.3" rx="2" width="20" x="2" y="4" /
+                  polygon fill="#000000" opacity="0.3" points=("4 20 10.5 11 17 20") /
+                  polygon fill="#000000" points=("11 20 15.5 14 20 20") /
+                  circle cx="18.5" cy="8.5" fill="#000000" opacity="0.3" r="1.5" /
+            span.menu-text Banner

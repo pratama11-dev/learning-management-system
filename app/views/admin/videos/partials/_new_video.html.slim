@@ -1,0 +1,36 @@
+#newVideo.modal.fade aria-hidden="true" aria-labelledby="staticBackdrop" role="dialog" tabindex="-1" 
+  .modal-dialog.modal-dialog-scrollable role="document" 
+    = form_with model: @new_video, url: admin_videos_path, html: { class: "form-group w-100" } do |f|
+      .modal-content      
+        .modal-header
+          h5#exampleModalLabel.modal-title Upload Video
+          button.close aria-label="Close" data-dismiss="modal" type="button" 
+            i.ki.ki-close aria-hidden="true" 
+        .modal-body
+          div data-height="auto" data-scroll="true"                      
+            = f.hidden_field :id, id: "new_video_id"
+            .form-group
+              label Nama
+              = f.text_field :name, class: "form-control"
+            .form-group
+              label Deskripsi
+              = f.text_field :description, class: "form-control"
+            .form-group.mb-1
+              label Upload Video
+            .col-12.mt-3.p-0
+              .text-left
+                .uppy[
+                  id="id-#{@new_video.id}"
+                  data-controller="uppy--uploader"
+                  data-url="#{admin_upload_videos_path}"
+                ]
+                  .uppy-wrapper
+                  .uppy-list
+                  .uppy-status
+                  .uppy-informer.uppy-informer-min
+                span.form-text.text-muted Max file size is 5gb.
+              input#sourceVIdeoId.d-none name="videos[source_video_id]"
+        
+        .modal-footer
+          button.btn.btn-light-primary.font-weight-bold data-dismiss="modal" type="button"  Close
+          = f.submit "Simpan", class: "btn btn-primary font-weight-bold"

@@ -1,0 +1,47 @@
+.modal.fade aria-hidden="true" aria-labelledby="staticBackdrop" role="dialog" tabindex="-1" id="editVideo-#{talk.id}"
+  = form_with model: talk, url: admin_talk_path(id: talk.id), method: :put, html: { class: "w-100" } do |f|
+    .modal-dialog.modal-dialog-scrollable.modal-lg role="document"
+      .modal-content
+        .modal-header
+          h5#exampleModalLabel.modal-title Edit Taxsamtalks
+          button.close aria-label="Close" data-dismiss="modal" type="button"
+            i.ki.ki-close aria-hidden="true"
+        .modal-body.d-flex
+          .col-lg-6
+            div data-height="auto" data-scroll="true"
+              = f.hidden_field :id
+              .form-group
+                label Nama
+                = f.text_field :name, class: "form-control"
+              .form-group
+                label Pilih Video
+                select.js-input-field-company-type[
+                  name="talk[video_id]"
+                  data-controller="admin--select2"
+                ]
+                  - @videos.each do |video|
+                    option[
+                      value="#{video.id}"
+                      title="#{video.name}"
+                      selected=(video.name == talk.video.name)
+                    ] = video.name
+            .form-group
+              label
+                | Banner Image
+              - if talk.banner_image.present?
+                  = link_to " Tampilkan Gambar", talk.banner_image, target: "_blank"
+              div
+              .custom-file
+                = f.file_field :banner_image, class: "custom-file-input",
+                  accept:"image/x-png, image/gif, image/jpeg"
+                label.custom-file-label[
+                  for="customFile"
+                  ] Pilih Gambar
+          .col-lg-6
+            .form-group
+              label Deskripsi
+              = f.text_area :description, class: "form-control", rows: 7
+
+        .modal-footer
+          button.btn.btn-light-primary.font-weight-bold data-dismiss="modal" type="button"  Close
+          = f.submit "Simpan", class: "btn btn-primary font-weight-bold"

@@ -1,0 +1,30 @@
+
+body style="background-image:url('#{wicked_pdf_asset_base64('certificate/certificate.png')}');background-size: cover;background-repeat: no-repeat;"
+  / .no-certificate
+    = @user_certificate.id.first(18)
+
+  .name-brvete-session [style="text-align: center;"]
+    | #{@user_certificate.base_source.name&.titleize.first(24)}
+
+  .name-certificate [style="text-transform: capitalize;"]
+    = @user_certificate.user.name
+
+  .number-participant
+    | NIP: #{@user_certificate.code_generator}
+
+  .text-complete
+    | Telah Menyelesaikan #{@user_certificate.base_source.name&.titleize}
+    br
+    | pada #{readable_date_4(@user_certificate.base_source.created_at)}
+
+  - @user_certificate.base_resource.course.curriculums.each do |curriculum|
+    - exam_user_package_variant_result = curriculum.exam_user_package_variant_result(current_user)
+    - next if exam_user_package_variant_result.blank?
+    .text-scoring
+      | Dengan Nilai: #{exam_user_package_variant_result.score}
+
+  .barcode-image style="position: absolute; bottom: 140px; left: 56px;"
+    / = barcode_svg
+    = image_tag barcode_png, height: 100, width: 100
+  / .ttd
+    = image_tag wicked_pdf_asset_base64('certificate/ttd.png'), height: 100

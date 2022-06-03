@@ -1,0 +1,71 @@
+.d-flex.flex-column-fluid
+  /! begin::Container
+  .container
+    .card.card-custom
+      .card-header.flex-wrap.border-0.pt-6.pb-0
+        .card-title
+          h3.card-label
+            | List Category Questions
+            span.text-muted.pt-2.font-size-sm.d-block All Categories Question from input and upload Excel.
+            
+        .card-toolbar.text-right
+          .row
+            .col-6.p-0
+              = form_for @new_question, url: admin_upload_exam_path,\
+                method: :post,\
+                remote: true,\
+                data: { controller: "admin--direct-upload" },\
+                authenticity_token: true,\
+                html: { class: "form-group custom-file" } do |f|
+                = f.file_field :file, class: "custom-file-input js-input-file", accept: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                label.custom-file-label for="customFile" Upload Exam Excel
+
+            .col-6
+              = link_to admin_download_exam_template_path(bank: true), class: "btn btn-secondary" do
+                span.fa.fa-download.mr-4
+                | Download Template
+
+      .card-body.overflow-auto
+        .row
+          .col-12.text-right
+            = link_to new_admin_exam_path(category: params[:id]), class: "btn btn-primary" do
+              span.fa.fa-plus.mr-3
+              | Add Question New Category
+
+          / .col-12.text-right.mt-5
+            = link_to admin_exam_archive_path, class: "btn btn-secondary" do
+              span.fa.fa-archive.mr-3
+              | Lists Archive
+
+        table.mt-5.table.table-bordered data-controller="datatable-static"
+          thead
+            tr
+              td
+                h6.text-center No
+              td
+                h6.text-center Category Name 
+              td 
+                h6.text-center Total Question
+              td 
+                h6.text-center Total Answer
+              td 
+                h6.text-center Last Edit
+              td
+                h6.text-center Action 
+          tbody
+            - @list_category_questions.each do|question|
+              tr
+                th.text-center = question[:index]
+                th.text-center = question[:category]
+                th.text-center = question[:total_question]
+                th.text-center = question[:total_answer]
+                th.text-center = question[:last_edit].to_date.strftime("%d %B %Y")
+                th.text-center style="white-space: nowrap;"
+                  a.btn.btn-default.mr-3 href="#{admin_exam_path(id: question[:category])}" title="Tampilkan" 
+                    .fa.fa-eye.text-primary
+                                        
+                  = link_to admin_destroy_exam_category_path(category_name: question[:category]),\
+                    method: :delete, data: {confirm: "are your sure want to delete all questions in this category ?"},\
+                    class: "btn btn-danger", title: "Delete" do
+                    span.fa.fa-trash.mr-3
+                    | Delete

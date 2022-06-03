@@ -1,0 +1,214 @@
+.elementor.elementor-19787[data-elementor-type="wp-post" data-elementor-id="19787" data-elementor-settings="[]"]
+  .elementor-inner
+    .elementor-section-wrap
+      = render 'homes/components/header'
+      = render 'homes/components/header_desktop'
+      .d-flex.flex-column.flex-root
+        .d-flex.flex-row.flex-column-fluid.page
+          = render 'homes/nav_header'
+
+      .container-fluid
+        .d-flex.flex-column-fluid
+          h3.text-capitalize.font-white.font-weight-bolder
+            | Selamat Datang Kembali,
+            = current_user.name
+        .row.mt-5.d-flex
+          .col-lg-12
+            h6.text-capitalize.font-white
+              | Pengaturan Akun
+            ul#myTab1.nav.nav-pills[role="tablist"]
+              li.nav-item
+                a#home-tab-1.nav-link.active[data-toggle="tab" href="#home-1"]
+                  span.nav-icon
+                    i.flaticon2-chat-1
+                  span.nav-text
+                    | Informasi Dasar
+              li.nav-item
+                a#profile-tab-1.nav-link[data-toggle="tab" href="#profile-1" aria-controls="profile"]
+                  span.nav-icon
+                    i.flaticon2-layers-1
+                  span.nav-text
+                    | Riwayat Pembayaran
+
+            #myTabContent1.tab-content.mt-5
+              #home-1.tab-pane.fade.active.show[role="tabpanel" aria-labelledby="home-tab-1"]
+                .card.card-custom.bg-transparent
+                  .card-body.p-0
+                    = form_for current_user, url: profile_path(id: current_user.id), method: :put do |f|
+                      form.form
+                        .card-body
+                          h5.text-capitalize.font-white
+                            | Profile Pribadi
+                          .form-group.row
+                            .col-lg-4
+                              label.text-white.text-capitalize
+                                | Full Name:
+                              = f.text_field :full_name, class: "form-control bg-transparent text-white", placeholder: "Masukkan Nama Anda"
+
+                            .col-lg-4
+                              label.text-white.text-capitalize
+                                | Email:
+                              = f.text_field :email, class: "form-control bg-transparent text-white", placeholder: "Masukkan Email Anda", type: "email", disabled: true
+
+                            .col-lg-4
+                              label.text-white.text-capitalize
+                                | Nomer Handphone:
+                              .input-group
+                                .input-group-prepend
+                                  span.input-group-text.bg-transparent
+                                    i.la.la-phone
+                                = f.number_field :phone_number, class: "form-control bg-transparent text-white", placeholder: "Masukkan Nomer Hanphone Anda"
+
+                          .form-group.row
+                            .col-lg-4
+                              label.text-white.text-capitalize
+                                | Pendidikan Terakhir:
+                              = f.text_field :last_education, class: "form-control bg-transparent text-white", placeholder: "Masukkan Pendidikan Terakhir Anda"
+
+                            .col-lg-4
+                              label.text-white.text-capitalize
+                                | NIK:
+                              = f.text_field :nik, class: "form-control bg-transparent text-white", placeholder: "Masukkan NIK Anda"
+
+                            .col-lg-4
+                              label.text-white.text-capitalize
+                                | Nomer Kartu Keluarga:
+                              = f.text_field :kk_number, class: "form-control bg-transparent text-white", placeholder: "Masukkan Nomer Kartu Keluarga Anda"
+
+                          .form-group.row
+                            .col-lg-4
+                              label.text-white.text-capitalize
+                                | Tanggal Lahir:
+                              .input-group
+                                = f.date_field :birthday, class: "form-control bg-transparent text-white", placeholder: "Masukkan Tanggal Lahir Anda"
+
+                            .col-lg-3
+                              label.text-white.text-capitalize
+                                | Jenis Kelamin:
+                              select#gender.form-control.bg-transparent.text-white.rounded.border.border-white.py-1 name="user[gender]"
+                                option
+                                  | Laki - laki
+                                option
+                                  | Perempuan
+
+                            .col-lg-5
+                              label.text-white.text-capitalize
+                                | Alamat Domisili:
+                              = f.text_field :address, class: "form-control bg-transparent text-white", placeholder: "Masukkan Alamat Domisili Anda"
+
+                          .form-group.row
+                            .col-lg-1
+                              label.text-white.text-capitalize
+                                | RT:
+                              = f.text_field :rt, class: "form-control bg-transparent text-white", placeholder: "RT"
+
+                            .col-lg-1
+                              label.text-white.text-capitalize
+                                | RW:
+                              = f.text_field :rw, class: "form-control bg-transparent text-white", placeholder: "RW"
+
+                            .col-lg-5
+                              label.text-white.text-capitalize
+                                | Provinsi:
+                              = f.text_field :province, class: "form-control bg-transparent text-white", placeholder: "RW"
+
+                            .col-lg-5
+                              label.text-white.text-capitalize
+                                | Kab/Kota:
+                              = f.text_field :city, class: "form-control bg-transparent text-white", placeholder: "Kab/Kota"
+                          h5.text-capitalize.font-white
+                            | Profile Pekerjaan
+                          .form-group.row
+                            .col-lg-4
+                              label.text-white.text-capitalize
+                                | Nama Perusahaan:
+                              = f.text_field :company, class: "form-control bg-transparent text-white", placeholder: "Masukkan Nama Perusahaan Anda"
+
+                            .col-lg-4
+                              label.text-white.text-capitalize
+                                | Alamat Perusahaan:
+                              = f.text_field :company_address, class: "form-control bg-transparent text-white", placeholder: "Masukkan Alamat Perusahaan Anda"
+
+                            .col-lg-4
+                              label.text-white.text-capitalize
+                                | Bidang Usaha Perusahaan:
+                              = f.text_field :business_field, class: "form-control bg-transparent text-white", placeholder: "Masukkan Bidang Usaha Perusahaan Anda"
+
+                          .form-group.row
+                            .col-lg-4
+                              label.text-white.text-capitalize
+                                | Posisi Pekerjaan:
+                              = f.text_field :position, class: "form-control bg-transparent text-white", placeholder: "Masukkan Posisi Pekerjaan Anda"
+
+                            .col-lg-4
+                              label.text-white.text-capitalize
+                                | Kecamatan Perusahaan:
+                              = f.text_field :districts_company, class: "form-control bg-transparent text-white", placeholder: "Masukkan Kecamatan Perusahaan Anda"
+
+                            .col-lg-4
+                              label.text-white.text-capitalize
+                                | Kab/Kota Perusahaan:
+                              = f.text_field :city_company, class: "form-control bg-transparent text-white", placeholder: "Masukkan Kab/Kota Perusahaan Anda"
+
+                          .form-group.row
+                            .col-lg-1
+                              label.text-white.text-capitalize
+                                | Avatar
+                            .col-lg-4
+                              - avatar_url = "https://preview.keenthemes.com/metronic/theme/html/demo3/dist/assets/media/users/blank.png"
+                              - avatar_url = url_for(current_user.avatar) if current_user.avatar.attached?
+                              #kt_image_5.image-input.image-input-empty.image-input-outline.border-1[style="background-image: url(#{avatar_url})"]
+                                .image-input-wrapper
+                                label.btn.btn-xs.btn-icon.btn-circle.btn-white.btn-hover-text-primary.btn-shadow.flex-wrap[data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar"]
+                                  i.fa.fa-pen.icon-sm.text-muted.mt-2
+                                  = f.file_field :avatar, class: "form-control"
+                                  input[type="hidden" name="profile_avatar_remove"]
+                                span.btn.btn-xs.btn-icon.btn-circle.btn-white.btn-hover-text-primary.btn-shadow[data-action="cancel" data-toggle="tooltip" title="" data-original-title="Cancel avatar"]
+                                  i.ki.ki-bold-close.icon-xs.text-muted
+                                span.btn.btn-xs.btn-icon.btn-circle.btn-white.btn-hover-text-primary.btn-shadow[data-action="remove" data-toggle="tooltip" title="" data-original-title="Remove avatar"]
+                                  i.ki.ki-bold-close.icon-xs.text-muted
+
+
+                        .card-footer.bg-transparent
+                          .d-flex.jusify-content-center
+                            = f.submit "Simpan Perubahan", class: "btn btn-warning border-0 font-weight-bolder mx-auto text-capitalize p-1 px-5", style: "background-color: #EE6123 !important;"
+
+              #profile-1.tab-pane.fade[role="tabpanel" aria-labelledby="profile-tab-1"]
+                .card.card-custom.bg-transparent
+                  .card-body.p-0
+                    .table-responsive
+                      table.table.border-0 style="background-color:#242424 !important;"
+                        thead.text-white
+                          tr
+                            th.font-size-h6.font-weight-bolder
+                              | Paket
+                            th.font-size-h6.font-weight-bolder
+                              | Mulai Berlangganan
+                            th.font-size-h6.font-weight-bolder
+                              | Langganan Berakhir
+                            th.font-size-h6.font-weight-bolder
+                              | Total Pembayaran
+                            th.font-size-h6.font-weight-bolder
+                              | Status
+                        tbody.text-white
+                          -3.times do |a|
+                            tr
+                              td
+                                | Paket #{a + 1}
+                              td
+                                | 1#{a + 1} Oktober 2021
+                              td
+                                | 1#{a + 1} November 2021
+                              td
+                                | Rp. 30.000
+                              td
+                                button.btn.btn-outline-secondary.text-capitalize.mr-3.my-2.text-white
+                                  | Pending
+
+                    .d-flex.justify-content-end.align-items-center
+                      p.text-white.text-capitalize.mr-5.mb-0 Status berlangganan anda sampai 25 Oktober 2021
+                      button.btn.btn-warning.border-0.font-weight-bolder.text-capitalize[type="reset" style="background-color: #EE6123 !important;"]
+                        | Lanjutkan Berlangganan
+
+      = render 'homes/components/footer_desktop'
+      = render 'homes/components/footer_phone'

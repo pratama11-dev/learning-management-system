@@ -1,0 +1,58 @@
+.d-flex.flex-column-fluid
+  /! begin::Container
+  .container
+    .card.card-custom
+      .card-header.flex-wrap.border-0.pt-6.pb-0
+        .card-title
+          h3.card-label
+            | List Auto Course
+            span.text-muted.pt-2.font-size-sm.d-block All List Brevet you have created.
+        .card-toolbar.row
+          .col-4.p-0
+            = form_for :auto_course, url: admin_upload_auto_courses_path,\
+              method: :post,\
+              remote: true,\
+              data: { controller: "admin--direct-upload" },\
+              authenticity_token: true,\
+              html: { class: "form-group custom-file" } do |f|
+              = f.file_field :file, class: "custom-file-input js-input-file", accept: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+              label.custom-file-label for="customFile" Upload Excel File
+
+          .col-4
+            = link_to admin_download_auto_courses_path(format: "xlsx"), class: "btn btn-secondary" do
+              span.fa.fa-download.mr-4
+              | Download Template
+              
+          .col-4
+            a.btn.btn-primary.font-weight-bolder data-toggle="modal" data-target="#newAutoCourse"
+              span.svg-icon.svg-icon-md
+                svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                  g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1" 
+                    rect height="24" width="24" x="0" y="0" /
+                    circle cx="9" cy="15" fill="#000000" r="6" /
+                    path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3" /
+              | Tambah Auto Course
+
+      .card-body
+        .tab-content
+          .tab-pane.p-5.active role="tabpanel"
+            table.table 
+              thead
+                tr
+                  th No
+                  th Nama User 
+                  th Email User 
+                  th Nama Materi
+                  th action
+              tbody 
+                - @auto_courses.each_with_index do |auto_course, index|
+                  tr
+                    td = index + 1
+                    td = auto_course.user&.name
+                    td = auto_course.user&.email
+                    td = auto_course.lesson&.name
+                    td 
+                      a href="#{admin_auto_course_path(auto_course)}" data-method="delete" data-confirm="Apakah anda yakin ingin menghapus akun ini?" class="btn btn-sm btn-clean btn-icon" title="Delete"
+                        i.la.la-trash.text-danger
+
+= render "admin/auto_courses/partials/new_auto_course"

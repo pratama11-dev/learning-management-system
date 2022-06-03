@@ -1,0 +1,280 @@
+.modal-dialog.modal-xl.my-0
+  .modal-content style="background-color:#242424 !important;"
+    .modal-header.p-0.border-0.bg-transparent.d-none
+      button.btn.btn-icon.btn-sm.ml-auto[type="button" data-dismiss="modal" aria-label="Close"]
+        i.ki.ki-close.icon-sm.text-warning[aria-hidden="true"]
+    .modal-body.p-0
+      - if @curriculum.banner_image.present?
+        section.elementor-element.elementor-element-8490d18.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section [
+          style="background-size: cover !important; height: 480px; background-image: url(#{url_for(@curriculum.banner_image)}) !important;"
+          data-id="8490d18"
+          data-element_type="section"
+          data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"
+        ]
+          button.btn.btn-icon.btn-sm.float-right.btn-circle.btn-secondary[
+            type="button"
+            data-dismiss="modal"
+            aria-label="Close"
+            style="position: absolute;top: 10px;right: 10px;z-index: 999999;"
+          ]
+            i.ki.ki-close.icon-sm[aria-hidden="true"]
+          .elementor-background-overlay
+          .elementor-container.elementor-column-gap-default
+            .elementor-row
+              .elementor-element.elementor-element-3860f11.elementor-column.elementor-col-100.elementor-top-column[data-id="3860f11" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"]
+                .elementor-column-wrap.elementor-element-populated
+                  .elementor-background-overlay
+                  .elementor-widget-wrap
+                    .elementor-element.elementor-element-0987816.elementor-widget.elementor-widget-heading[data-id="0987816" data-element_type="widget" data-widget_type="heading.default"]
+                      .elementor-widget-container
+                        h2.elementor-heading-title.elementor-size-default
+                          = @curriculum.name
+                    .elementor-element.elementor-element-73866d9.elementor-widget.elementor-widget-text-editor[data-id="73866d9" data-element_type="widget" data-widget_type="text-editor.default"]
+                      .col-lg-8.elementor-widget-container
+                        .elementor-text-editor.elementor-clearfix.text-break
+                          = @curriculum.description
+
+                    section.elementor-element.elementor-element-fd26d10.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-inner-section[data-id="fd26d10" data-element_type="section" data-settings="{&quot;animation&quot;:&quot;fadeIn&quot;,&quot;animation_delay&quot;:400,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"]
+                      .elementor-container.elementor-column-gap-narrow
+                        .elementor-row
+                          .elementor-element.elementor-element-1347bf3.elementor-column.elementor-col-50.elementor-inner-column[data-id="1347bf3" data-element_type="column"]
+                            .elementor-column-wrap.elementor-element-populated
+                              .elementor-widget-wrap
+                                .elementor-button-wrapper.d-flex.flex-row.align-items-center style="margin-left: 40px;"
+                                  .d-flex.flex-row.align-items-center.js-bookmark-and-feedback
+                                    = render "shared/buttons/play_bookmark_and_feedback", source: @curriculum
+
+                        .elementor-widget-wrap
+                          .elementor-element.elementor-element-efd06e9.elementor-column.elementor-col-50.elementor-inner-column[data-id="efd06e9" data-element_type="column"]
+                            .elementor-column-wrap.elementor-element-populated
+                              .elementor-widget-wrap
+                                .elementor-element.elementor-element-4b394fb.elementor-align-right.elementor-absolute.elementor-widget.elementor-widget-button[data-id="4b394fb" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="button.default"]
+                                  .elementor-widget-container
+                                    .elementor-button-wrapper
+                                      a.elementor-button-link.elementor-button.elementor-size-md.p-5[href="#" role="button"]
+                                        span.elementor-button-content-wrapper
+                                          span.elementor-button-text
+                                            | Video Belajar Pajak
+      - else
+        section.elementor-element.elementor-element-8490d18.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section[data-id="8490d18" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"]
+          button.btn.btn-icon.btn-sm.float-right.btn-circle.btn-secondary[
+            type="button"
+            data-dismiss="modal"
+            aria-label="Close"
+            style="position: absolute;top: 10px;right: 10px;z-index: 999999;"
+          ]
+            i.ki.ki-close.icon-sm[aria-hidden="true"]
+          .elementor-background-overlay
+          .elementor-container.elementor-column-gap-default
+            .elementor-row
+              .elementor-element.elementor-element-3860f11.elementor-column.elementor-col-100.elementor-top-column[data-id="3860f11" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"]
+                .elementor-column-wrap.elementor-element-populated
+                  .elementor-background-overlay
+                  .elementor-widget-wrap
+                    .elementor-element.elementor-element-0987816.elementor-widget.elementor-widget-heading[data-id="0987816" data-element_type="widget" data-widget_type="heading.default"]
+                      .elementor-widget-container
+                        h2.elementor-heading-title.elementor-size-default
+                          = @curriculum.name
+                    .elementor-element.elementor-element-73866d9.elementor-widget.elementor-widget-text-editor[data-id="73866d9" data-element_type="widget" data-widget_type="text-editor.default"]
+                      .elementor-widget-container
+                        .elementor-text-editor.elementor-clearfix
+                          = truncate(@curriculum.description, :length => 50, :separator => " ")
+
+                    section.elementor-element.elementor-element-fd26d10.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-inner-section[data-id="fd26d10" data-element_type="section" data-settings="{&quot;animation&quot;:&quot;fadeIn&quot;,&quot;animation_delay&quot;:400,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"]
+                      .elementor-container.elementor-column-gap-narrow
+                        .elementor-row
+                          .elementor-element.elementor-element-1347bf3.elementor-column.elementor-col-50.elementor-inner-column[data-id="1347bf3" data-element_type="column"]
+                            .elementor-column-wrap.elementor-element-populated
+                              .elementor-widget-wrap
+                                .elementor-button-wrapper.d-flex.flex-row.align-items-center style="margin-left: 40px;"
+                                  .d-flex.flex-row.align-items-center.js-bookmark-and-feedback
+                                    = render "shared/buttons/play_bookmark_and_feedback", source: @curriculum
+
+                        .elementor-widget-wrap
+                          .elementor-element.elementor-element-efd06e9.elementor-column.elementor-col-50.elementor-inner-column[data-id="efd06e9" data-element_type="column"]
+                            .elementor-column-wrap.elementor-element-populated
+                              .elementor-widget-wrap
+                                .elementor-element.elementor-element-4b394fb.elementor-align-right.elementor-absolute.elementor-widget.elementor-widget-button[data-id="4b394fb" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="button.default"]
+                                  .elementor-widget-container
+                                    .elementor-button-wrapper
+                                      a.elementor-button-link.elementor-button.elementor-size-md.p-5[href="#" role="button"]
+                                        span.elementor-button-content-wrapper
+                                          span.elementor-button-text
+                                            | Program Sertifikasi
+      .p-13
+        p.font-size-h3.text-white.font-weight-bold Deskripsi
+        .row
+          .col-lg-8
+            p.text-white.text-break
+              = @curriculum.description
+          .col-lg-4
+            .d-flex.justify-content-end
+              .flex-column.text-center
+                p.font-size-h3.text-white.font-weight-bold.text-right Kategori
+                .btn.btn-light
+                  |  Video Belajar Pajak
+
+        .row.d-flex.mt-5
+          .col-lg-8.flex-column
+            .d-flex.align-items-center
+              - if @curriculum.progress(current_user).to_i > 99
+                - if @exam_complete && @exam_user_package_variant_result.remedial_exam_at.present?
+                  - if DateTime.now.utc > @exam_user_package_variant_result.remedial_exam_at
+                    a.btn.btn-warning.border-0.mr-5.font-weight-bolder.text-capitalize[
+                      type="button"
+                      style="background-color: #EE6123 !important;"
+                      href="#{exams_path(id: @curriculum.id)}"
+                      data-controller="exam--rule-score-exam"
+                    ] Mulai Remedial
+                  - else
+                    a.btn.btn-warning.border-0.mr-5.font-weight-bolder.text-capitalize[
+                      type="button"
+                      style="cursor: not-allowed !important;"
+                    ] Jadwal Remedial : #{@exam_user_package_variant_result.remedial_exam_at.localtime.strftime('%d-%m-%Y %H:%M')}
+                - elsif @exam_complete && !@exam_user_package_variant_result&.complete?
+                  a.btn.btn-secondary.border-0.mr-5.font-weight-bolder.text-capitalize[
+                    type="button"
+                    href="#{remedial_exam_path(id: @curriculum.id)}"
+                  ] Jadwalkan Remedial
+                - elsif @exam_user_package_variant_result&.complete?
+                  a.btn.btn-warning.border-0.mr-5.font-weight-bolder.text-capitalize.text-white[
+                    type="button"
+                    style="background-color: #EE6123 !important;"
+                    data-controller="exam--rule-score-exam"
+                    href="#{exams_path(id: @curriculum.id)}"
+                  ] Retake Ujian
+                - else
+                  a.btn.btn-warning.border-0.mr-5.font-weight-bolder.text-capitalize[
+                    type="button"
+                    style="background-color: #EE6123 !important;"
+                    data-controller="exam--rule-score-exam"
+                    href="#{exams_path(id: @curriculum.id)}"
+                  ] Mulai Ujian Sertifikasi
+              - else
+                a.btn.btn-warning.border-0.mr-5.font-weight-bolder.text-capitalize[
+                  type="button"
+                  style="background-color: #EE6123 !important;cursor: not-allowed !important;"
+                  disabled=true
+                ] Mulai Ujian Sertifikasi
+
+              - if @exam_user_package_variant_result&.complete?
+                a.btn.btn-secondary.border-0.mr-5.font-weight-bolder.text-capitalize[
+                  type="button"
+                  href="#{generate_certificate_path(\
+                    base_resource_type: @curriculum.class.to_s,\
+                    base_resource_id: @curriculum.id,\
+                    resource_id: @curriculum.ticket_for(current_user.id),\
+                    resource_type: 'Exam::UserPackageVariantResult', type: 'curriculum', format: 'pdf')}"
+                ] Unduh Sertifikasi
+              - else
+                a.btn.btn-secondary.border-0.mr-5.font-weight-bolder.text-capitalize[
+                  type="button"
+                  disabled=true
+                  style="cursor: not-allowed !important;"
+                ] Unduh Sertifikasi
+
+            .col-lg-4.px-0.py-3
+              .progress.my-5
+                .progress-bar[
+                  role="progressbar"
+                  style="width: #{@curriculum.progress(current_user)}%; background-color: #EE6123 !important;"
+                  aria-valuenow="25"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ]
+              p.font-size-h6.text-white.text-center.text-capitalize
+                | #{@curriculum.progress(current_user)}% Complete
+          .col-lg-4
+            .d-flex.justify-content-end.text-center
+              .flex-column
+                p.font-size-h3.text-white.font-weight-bold.text-right Skor Anda
+                .symbol.symbol-circle.mx-auto
+                  - if @exam_user_package_variant_result&.score.present?
+                    span.symbol-label.font-size-h5 class="#{@curriculum.complete?(current_user) ? 'bg-light-success' : 'bg-light-danger'}"
+                      = @exam_user_package_variant_result&.score
+                  - else
+                    span.symbol-label.font-size-h5
+                      | N/A
+
+        div
+          div.my-5
+            .d-flex.align-items-center
+              h5.text-capitalize.font-white.font-weight-bolder.mb-0.flex-grow-1
+                | Daftar video yang harus diselesaikan
+
+          .row
+            - @curriculum.lessons.each do |lesson|
+              .col-xl-12
+                .card.card-custom.card-stretch.bg-transparent
+                  .list.min-w-500px
+                    .d-flex.flex-wrap.align-items-center.list-item.py-4.mb-5
+                      .d-flex.align-items-center.mr-5
+                        .d-flex.align-items-center.mr-3[data-inbox="actions"]
+                          .elementor-element.elementor-element-aff9519.elementor-column.elementor-col-12.elementor-top-column[
+                            data-id="aff9519"
+                            data-element_type="column"
+                            data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
+                            style="width: auto;"
+                          ]
+                            - if lesson.banner_image.present?
+                              .elementor-column-wrap.elementor-element-populated [
+                                style="height: 130px; background-image: url(#{url_for(lesson.banner_image)}) !important;"
+                              ]
+                                - if lesson.progress(current_user) == 100
+                                  .elementor-background-overlay [style="background: rgba(31, 136, 41, 0.7);"]
+                                .elementor-widget-wrap
+                                  .elementor-element.elementor-element-c472ece.elementor-align-center.elementor-widget.elementor-widget-button[
+                                    data-id="c472ece"
+                                    data-element_type="widget"
+                                    data-widget_type="button.default"
+                                  ]
+                                    .elementor-widget-container style="padding: 30px 70px 30px 70px !important;"
+                                      .elementor-button-wrapper.mx-10
+                                        a.btn.btn-icon.btn-secondary.btn-circle.btn-sm.mr-2[
+                                          href="#{video_path(lesson.video)}"
+                                          role="button"
+                                        ]
+                                          i.la.la-play
+                            -else
+                              .elementor-column-wrap.elementor-element-populated [
+                                style="height: 130px;"
+                              ]
+                                - if lesson.progress(current_user) == 100
+                                  .elementor-background-overlay [style="background: rgba(31, 136, 41, 0.7);"]
+                                .elementor-widget-wrap
+                                  .elementor-element.elementor-element-c472ece.elementor-align-center.elementor-widget.elementor-widget-button[
+                                    data-id="c472ece"
+                                    data-element_type="widget"
+                                    data-widget_type="button.default"
+                                  ]
+                                    .elementor-widget-container style="padding: 30px 70px 30px 70px !important;"
+                                      .elementor-button-wrapper.mx-10
+                                        a.btn.btn-icon.btn-secondary.btn-circle.btn-sm.mr-2[
+                                          href="#{video_path(lesson.video)}"
+                                          role="button"
+                                        ]
+                                          i.la.la-play
+                                          
+                      .w-600px.mt-1.mr-2[data-toggle="view"]
+                        p.font-weight-bolder.text-white.font-size-h4.mr-2[
+                          type="button"
+                          data-toggle="modal"
+                          data-target="#lessons"
+                          data-dynamic-data-id="#{lesson.id}"
+                        ]
+                          = lesson.name
+                        .d-flex.mr-9.my-1.w-
+                          p.text-white.text-break
+                            = lesson.description
+                      .d-flex.align-items-center.justify-content-end.flex-wrap[data-toggle="view"]
+                        .font-weight-bolder.text-mute.font-size-h6.mr-5[data-toggle="view"]
+                          span.mb-5.seasons
+                            | #{lesson.progress(current_user)}% Complete
+                            .progress[style="height: 5px;"]
+                              .progress-bar[
+                                role="progressbar"
+                                style="width: #{lesson.progress(current_user)}%;"
+                                aria-valuenow="#{lesson.progress(current_user)}"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                              ]

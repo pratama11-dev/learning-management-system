@@ -1,0 +1,64 @@
+- scores = []
+- @user_certificate.base_resource.curriculums.each do |curriculum|
+  - exam_user_package_variant_result = curriculum.exam_user_package_variant_result(current_user)
+  - next if exam_user_package_variant_result.blank?
+  - scores << exam_user_package_variant_result.score
+- is_complete = (scores.sum.to_f / scores.size.to_f) >= 60
+
+body.text-center style="background-image:url('#{wicked_pdf_asset_base64('certificate/certificate.png')}');background-size: cover;background-repeat: no-repeat;"
+  .name-brvete-session [style="text-align: center;"]
+    | #{@user_certificate.base_source.name&.titleize.first(24)}
+
+  .name-certificate [style="text-transform: capitalize;"]
+    = @user_certificate.user.name
+
+  .number-participant
+    | NIP: #{@user_certificate.code_generator}
+
+  .text-status
+    - if is_complete
+      | DINYATAKAN LULUS
+    - else
+      | TIDAK LULUS
+
+  .text-detail
+    br
+    | #{@user_certificate.base_source.name&.titleize} pada tanggal #{readable_date_2(@user_certificate.base_source.created_at || Date.today)}
+
+  .barcode-image style="position: absolute; bottom: 140px; left: 56px;"
+    = image_tag barcode_png, height: 100, width: 100
+
+  .next-page style="background-image:url('#{wicked_pdf_asset_base64('certificate/Sertifikat_Nilai_Program_Kosong.png')}');background-size: cover;background-repeat: no-repeat"
+    .name-brvete-session [style="text-align: center;"]
+      | #{@user_certificate.base_source.name&.titleize.first(24)}
+    .score-name [style="text-transform: capitalize;"]
+      = @user_certificate.user.name
+      br
+      | #{@user_certificate.code_generator}
+    table.table-bordered
+      thead
+        tr
+          th
+            | No
+          th
+            | Course
+          th
+            | Score
+      tbody
+        - @user_certificate.base_resource.curriculums.each_with_index do |curriculum, index|
+          - exam_user_package_variant_result = curriculum.exam_user_package_variant_result(current_user)
+          - next if exam_user_package_variant_result.blank?
+          tr
+            td
+              | #{index + 1}
+            td
+              | #{curriculum.name&.titleize}
+            td
+              | #{exam_user_package_variant_result.score}
+    .text-desc
+      | Dengan nilai-nilai berikut peserta dinyatakan #{is_complete ? 'LULUS' : 'TIDAK LULUS'} Dalam Program #{@user_certificate.base_source.name&.titleize}
+      br
+      | pada #{readable_date_4(@user_certificate.base_source.created_at || Date.today)}
+
+    .barcode-image style="position: absolute; bottom: 140px; left: 56px;"
+      = image_tag barcode_png, height: 100, width: 100

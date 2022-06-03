@@ -1,0 +1,22 @@
+doctype html
+html lang="en"
+  head
+    = render "layouts/partials/head_meta_data"
+    = render "layouts/partials/head_metronic"
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body#kt_body.header-fixed.header-mobile-fixed.subheader-enabled.subheader-fixed.aside-enabled.aside-fixed.aside-minimize-hoverable.page-loading
+    = render 'shared/flash'
+    = render 'shared/admin/header'
+    .d-flex.flex-column.flex-root
+      .d-flex.flex-row.flex-column-fluid.page
+        - if current_user.is_instructor?
+            = render 'shared/sidebar'
+        - else
+            = render 'shared/admin/sidebar'
+        #kt_wrapper.d-flex.flex-column.flex-row-fluid.wrapper
+          = render 'shared/admin/header_desktop'
+          = yield
+          = render 'shared/admin/footer'          
+    = render 'shared/admin/user_panel'
+    = render 'shared/admin/scrolltop'

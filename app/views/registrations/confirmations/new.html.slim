@@ -1,0 +1,33 @@
+section
+  .auto-container
+    .card.card-custom
+      .card-header
+        h2
+          = t("login.A Warm Welcome To")
+          span.theme_color Taxsam Learning
+      .card-body
+        .styled-form
+          .row.clearfix.w-75.mx-auto.text-center
+            .col-md-12
+              b  Hallo, 
+              u = @user.email
+              
+            br
+            .col-md-12.mt-5
+              p Silakan Pilih Konfirmasi Akun anda dengan mengirinm notifikasi ke platform di bawah ini : 
+
+            br
+            .col-md-12.mt-5
+              .form-group.col-lg-12.col-md-12.col-sm-12.text-center
+                = button_to registrations_send_confirmations_path(id: @user.id, type: "email"), class: "btn btn-primary"
+                  | Kirim Lewat Email
+
+            .col-md-12
+              .form-group.col-lg-12.col-md-12.col-sm-12.text-center
+                = button_to registrations_send_confirmations_path(id: @user.id, type: "whatsApp"), class: "btn btn-light-primary"
+                  | Kirim Lewat WhatsApp
+
+            .form-group.col-lg-12.col-md-12.col-sm-12
+              .users
+                = t("login.Already have an account")
+                a href="#{root_path(login: true)}" = t("login.Sign in Now")

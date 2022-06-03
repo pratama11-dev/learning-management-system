@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    title
+      | Taxsam LMS
+    = csrf_meta_tags
+    = csp_meta_tag
+    meta charset="UTF-8" 
+    meta content="" name="description" 
+    meta content="width=device-width, initial-scale=1" name="viewport" 
+    meta content="IE=edge" http-equiv="X-UA-Compatible" 
+    meta name="turbolinks-visit-control" content="reload"
+    link href="" rel=("shortcut icon") type="image/x-icon"
+    link href="" rel="apple-touch-icon" 
+    link href="#{image_url('favicon_logo.png')}" rel="apple-touch-icon" sizes="180x180"
+    link href="#{image_url('favicon_logo.png')}" rel=("shortcut icon") sizes="32x32" type="image/png"
+    link href="#{image_url('favicon_logo.png')}" rel=("shortcut icon") sizes="16x16" type="image/png"
+    link color="#1D57BC" href="#{image_url('favicon_logo.png')}" rel="mask-icon"
+    link rel="dns-prefetch" href="https://metronic-assets.s3-ap-southeast-1.amazonaws.com"
+    
+    = stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'library_viewer', media: 'all', 'data-turbolinks-track': 'reload'
+    script src="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/vendors/jquery-3.5.1.min.js" data-turbolinks-track='reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = analytics_init if GoogleAnalytics.valid_tracker?
+    
+    body.disable-copy-paste[
+      data-controller="libraries--library-viewer"
+      style="background-color: #9e9e9e;"
+    ]
+      .card
+        .card-body
+          = yield

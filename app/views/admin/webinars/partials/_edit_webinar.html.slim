@@ -1,0 +1,116 @@
+.modal.fade aria-hidden="true" aria-labelledby="staticBackdrop" role="dialog" tabindex="-1" id="editWebinar-#{webinar.id}"
+  = form_with model: webinar, url: admin_update_webinar_path(slug: webinar.slug), method: :put, html: { class: "w-100" } do |f|
+    .modal-dialog.modal-dialog-centered.modal-xl[
+      role="document"
+    ]
+      .modal-content
+        .modal-header
+          h5#exampleModalLabel.modal-title Edit Webinar
+          button.close aria-label="Close" data-dismiss="modal" type="button"
+            i.ki.ki-close aria-hidden="true"
+        .modal-body
+          .d-flex
+            .col-6
+              = f.hidden_field :id
+              .form-group
+                label Judul
+                = f.text_field :title, class: "form-control",
+                  placeholder: "Judul webinar"
+              .form-group
+                label Deskripsi
+                = f.text_area :description, class: "form-control",
+                  rows: 6, placeholder: "Deskripsi Webinar"
+
+              .form-group
+                label Tema
+                = f.text_field :theme, class: "form-control",
+                  placeholder: "Tema Webinar"
+              .form-group
+                label Link Webinar
+                = f.text_field :url, class: "form-control",
+                  placeholder: "Link Url Zoom/Youtube Webinar"
+
+              
+              #kt_repeater_1 [data-controller="form-repeater" data-id="1"]
+                div [data-repeater-list="avatars"]
+                  - webinar.speaker_avatars.each do |avatar|
+                    fieldset.my-4 [style="border:1px solid #d1d1d1;" data-repeater-item='avatars']
+                      legend.col-form-label.col-3.text-left.f.py-0ont-weight-bold[
+                        style="width:auto;padding:0 11px;margin-left:13px;"
+                      ]
+                        | Pembicara
+                      .form-group.px-5.pt-5
+                        label Nama Pembicara
+                        
+                        = f.text_field :speaker_name, class: "form-control",
+                          placeholder: "Pembicara Webinar", required: true, value: avatar.filename
+
+                        .mt-2
+                          label Foto Pembicara
+                          - if avatar.present?
+                            = link_to " Tampilkan Gambar", avatar, target: "_blank"
+                          .custom-file
+                            = f.file_field :speaker_avatar, class: "custom-file-input",
+                              accept:"image/x-png, image/gif, image/jpeg"
+                            label.custom-file-label[
+                              for="customFile"
+                            ] Pilih Gambar
+
+                      .form-group.float-right.mr-5
+                        a.btn.btn-sm.font-weight-bolder.btn-light-danger[
+                          href="javascript:;"
+                          data-repeater-delete=""
+                        ]
+                          i.la.la-trash-o
+                          | Delete
+
+                .d-flex.justify-content-center
+                  a.btn.btn-sm.font-weight-bolder.btn-light-primary[
+                    href="javascript:;"
+                    data-repeater-create=""
+                  ]
+                    i.la.la-plus
+                    | Add
+
+            .col-6
+              .form-group
+                label Kapasitas
+                = f.text_field :capacity, class: "form-control",
+                  placeholder: "Kapasitas Webinar", type: "number"
+              .form-group
+                label Durasi (menit)
+                = f.text_field :duration, class: "form-control",
+                  placeholder: "Durasi Webinar", type: "number"
+              .form-group
+                label Tanggal
+                = f.datetime_field :date, class: "form-control",
+                  placeholder: "Pilih Tanggal Webinar"
+              .form-group
+                label Durasi Klaim Sertifikat
+                = f.text_field :certificate_claim_duration, class: "form-control",
+                  placeholder: "Durasi waktu klaim sertifikat", type: "number"
+              .form-group[
+                data-controller="admin--tagify"
+              ]
+                label Tags
+                = f.text_field :tag, class: "form-control", id: "#{SecureRandom.uuid}",
+                  placeholder: "Tags, contoh: pph 21, ppn", value: webinar.tag.join(", ")
+                .text-muted * Tulis tag 'coming_soon' untuk webinar akan datang
+              .form-group
+                label
+                  | Banner Image
+                - if webinar.banner_image.present?
+                  = link_to " Tampilkan Gambar", webinar.banner_image, target: "_blank"
+                div
+                .custom-file
+                  = f.file_field :banner_image, class: "custom-file-input",
+                    accept:"image/x-png, image/gif, image/jpeg"
+                  label.custom-file-label[
+                    for="customFile"
+                  ] Pilih Gambar
+        .modal-footer
+          button.btn.btn-light-danger.font-weight-bold[
+            data-dismiss="modal"
+            type="button"
+          ] Tutup
+          = f.submit "Simpan", class: "btn btn-success font-weight-bold"

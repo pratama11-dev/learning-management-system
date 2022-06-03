@@ -1,0 +1,26 @@
+#kt_profile_aside.flex-row-auto.offcanvas-mobile.w-350px.w-xl-450px.col-12.border.rounded.p-5 style="background-color:#242424 !important;"
+  h4.card-title.d-flex 
+    .fas.fa-map-pin.mr-5.icon-lg
+    span.card-label.font-weight-bolder.text-white.text-capitalize.font-size-h4
+      | Quiz Navigation
+  h5.card-title.d-flex.align-items-center 
+    .fas.fa-user-circle.mr-5.icon-lg
+    span.card-label.font-weight-bolder.text-white.text-capitalize.font-size-h5
+      = current_user.full_name || current_user.name
+
+  .mx-auto
+    .d-flex.flex-wrap
+      - @quizes_service.exam_questions.each_with_index do |question, index|
+        .col-2.m-4.d-flex.justify-content-center[
+          data-action="click->exam--quiz#show_question"
+          data-url="#{ajax_show_quiz_path(id: @video.id, no: index)}"
+        ]
+          .d-flex.flex-column.align-items-center.mr-2
+            a.btn.btn-secondary.px-0.pb-0 style="#{params[:no].to_i == index ? 'background-color: #ee6123;' : ''}"
+              span.p-8 #{index+1}              
+              / - if @quizes_service.exam_answer_correct(question['question']['id']).present?
+              /   .fa.fa-check.text-white.text-success              
+              / - else
+              /   .fa.fa-times.text-white.text-danger
+                / class="#{params[:no].to_i == index ? 'text-warning' : 'text-danger'}"
+              .p-5

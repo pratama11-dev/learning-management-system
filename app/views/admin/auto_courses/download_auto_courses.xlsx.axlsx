@@ -1,0 +1,12 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Input Materi") do |sheet|
+  sheet.add_row ['no', 'Nama Materi', 'Email User']  
+end
+
+wb.add_worksheet(name: "List Materi") do |sheet|
+  sheet.add_row ['no', 'Nama', 'Deskripsi']
+  @lessons.each_with_index.each do |lesson, index|
+    sheet.add_row [index+1, lesson.name, lesson.description]
+  end
+end

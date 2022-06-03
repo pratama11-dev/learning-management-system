@@ -1,0 +1,31 @@
+.d-flex.flex-row
+  .col-lg-8
+    = render 'exams/exam'
+  = render 'exams/navigation'
+
+#padding_for_smallscreen.d-flex.justify-content-between.mt-10
+  - if params[:no].to_i > 0
+    button#previous.btn.mr-5.font-weight-bolder.text-capitalize.text-white[
+      data-action="click->exam--quiz#show_question"
+      data-url="#{ajax_show_exam_path(id: @curriculum.id, disabled: params[:disabled], no: (params[:no].to_i - 1))}"
+      style="background-color: #EE6123 !important;"
+      type="button"
+    ]
+      | Previous Question
+
+  - if @exam_service.exam_questions.count == (params[:no].to_i + 1)
+    button#submit_quiz.btn.btn-warning.border-0.font-weight-bolder.text-capitalize[
+      style="background-color: #EE6123 !important;"
+      data-id="kt_sweetalert_reject"
+      data-controller="quizes--exam-trivia"
+      data-url="#{ajax_submit_exam_path(id: @curriculum.id)}"
+      data-score="#{@exam_service.exam_score}"
+    ]
+      | Finish
+  - else
+    button#next.btn.btn-warning.border-0.font-weight-bolder.text-capitalize.ml-auto[
+      data-action="click->exam--quiz#show_question"
+      data-url="#{ajax_show_exam_path(id: @curriculum.id, disabled: params[:disabled], no: (params[:no].to_i + 1))}"
+      style="background-color: #EE6123 !important;"
+    ]
+      | Next Question

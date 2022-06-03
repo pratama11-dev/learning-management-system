@@ -1,0 +1,64 @@
+- if webinar.is_live?
+  a.elementor-button-link.elementor-button.elementor-size-sm.ml-3.[href="#" role="button"]
+    span.elementor-button-content-wrapper
+      span.elementor-button-text
+        - if DateTime.now > (webinar.date + webinar.duration.minutes)
+          | Selesai
+        - else
+          | Live Now
+
+- if webinar.is_done?
+  button.elementor-button-link.elementor-button.elementor-size-sm.ml-3.px-1.py-0
+    span.elementor-button-content-wrapper
+      span.elementor-button-text
+        | Selesai
+
+- if !webinar.is_live? && !webinar.is_done? && current_user.present?
+  - if !webinar.attended_by(current_user.id)
+    button.elementor-button-link.elementor-button.elementor-size-sm.ml-3.px-1.py-0[
+      data-controller="homes--webinars--user-join"
+      data-action="click->homes--webinars--user-join#handleClick"
+      data-homes--webinars--user-join-path="#{user_webinars_path}"
+      data-homes--webinars--user-join-webinar-id="#{webinar.id}"
+      data-homes--webinars--user-join-button-wrapper-class=".js-homes-webinar-join-button-#{webinar.id}"
+      data-homes--webinars--user-join-remaining-quota-class=".js-homes-webinars-remaining-quota-#{webinar.id}"
+      data-homes--webinars--user-join-availability="#{webinar.remaining_quota > 0 ? "true" : "false" }"
+      style="background-color:#FFFFFF !important;"
+    ]
+      span.elementor-button-content-wrapper
+        span.elementor-button-text.text-dark
+          | Daftar
+
+  - if webinar.attended_by(current_user.id)
+    a.elementor-button-link.elementor-button.elementor-size-sm.ml-3[
+      role="button"
+      style="background-color:#1BC5BD;"
+      href="#{webinar_path(slug: webinar.slug)}"
+    ]
+      span.elementor-button-content-wrapper
+        span.elementor-button-text.text-light
+          | Terdaftar
+
+  button.elementor-button-link.elementor-button.elementor-size-sm.mx-3[href="#" role="button" style="background-color: #ED6408 !important;"]
+    span.elementor-button-content-wrapper
+      span.elementor-button-text[
+        class="js-homes-webinars-remaining-quota-#{webinar.id}"
+      ]
+        | Tersisa #{webinar.remaining_quota} Kursi
+
+- if !current_user.present? && !webinar.is_done? && !webinar.is_live?
+  button.elementor-button-link.elementor-button.elementor-size-sm.ml-3.px-1.py-0[
+    style="background-color:#FFFFFF !important;"
+    title="Login"
+    data-toggle="modal"
+    data-target="#login_modal"
+  ]
+    span.elementor-button-content-wrapper
+      span.elementor-button-text.text-dark
+        | Daftar
+  button.elementor-button-link.elementor-button.elementor-size-sm.mr-3[href="#" role="button" style="background-color: #ED6408 !important;"]
+    span.elementor-button-content-wrapper
+      span.elementor-button-text[
+        class="js-homes-webinars-remaining-quota-#{webinar.id}"
+      ]
+        | Tersisa #{webinar.remaining_quota} Kursi

@@ -1,0 +1,45 @@
+#newVideo.modal.fade aria-hidden="true" aria-labelledby="staticBackdrop" role="dialog" tabindex="-1"
+  .modal-dialog.modal-dialog-scrollable.modal-lg role="document"
+    = form_with model: @new_talk, url: admin_talks_path, html: { class: "form-group w-100" } do |f|
+      .modal-content
+        .modal-header
+          h5#exampleModalLabel.modal-title Upload Video
+          button.close aria-label="Close" data-dismiss="modal" type="button"
+            i.ki.ki-close aria-hidden="true"
+        .modal-body.d-flex
+          .col-lg-6 data-height="auto" data-scroll="true"
+            = f.hidden_field :id
+            .form-group
+              label Nama
+              = f.text_field :name, class: "form-control"
+            .form-group
+              label Pilih Video
+              select.form-control[
+                data-controller="admin--select2"
+                name="talk[video_id]"
+              ]
+                - @videos.each do |video|
+                  option
+                  option[
+                    value="#{video.id}"
+                  ] #{video.name}
+            .form-group
+              label
+                | Banner Image
+              div
+              .custom-file
+                = f.file_field :banner_image, class: "custom-file-input",
+                  accept:"image/x-png, image/gif, image/jpeg", required: true
+                label.custom-file-label[
+                  for="customFile"
+                ] Pilih Gambar
+          .col-lg-6
+            .form-group
+              label Deskripsi
+              = f.text_area :description, class: "form-control", rows: 7
+        .modal-footer
+          button.btn.btn-light-primary.font-weight-bold[
+            data-dismiss="modal"
+            type="button"
+          ] Close
+          = f.submit "Simpan", class: "btn btn-primary font-weight-bold"

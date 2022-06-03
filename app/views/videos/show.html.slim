@@ -1,0 +1,31 @@
+.card.card-custom.m-5
+  .card-header.row
+    .m-3
+      a.btn.btn-clean.mr-6 href="#{root_path}"
+        i.flaticon2-left-arrow-1.mr-4
+        | Back
+
+    .card-title.m-auto
+      h3.card-label.d-flex.flex-column.text-center
+        - if @lesson.present?
+          = @lesson.name
+          .d-flex.justify-content-center
+            span.font-weight-bold.text-muted.pt-2.font-size-sm.mr-2 = @video.name
+            span.text-muted.pt-2.font-size-sm.d-block = @lesson.description
+        - else
+          = @video.name
+          span.text-muted.pt-2.font-size-sm.d-block = @video.description
+
+    .m-3
+      - if @lesson.present? && @lesson.free?
+        a.btn.btn-clean.mr-6 href="#{quizes_path(@video.id)}"
+          | Next
+          i.flaticon2-fast-next.ml-4
+      a.d-none.js-next-video href="#{next_video_path(@video.id)}"
+
+  .card-body
+    - if @video.file.present?
+      - if @lesson.present? && !@lesson.free?
+        = render "videos/need_subscribe"
+      - else
+        = render "videos/show_video"

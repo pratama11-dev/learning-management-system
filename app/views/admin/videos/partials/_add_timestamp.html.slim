@@ -1,0 +1,17 @@
+#newVideo.modal.fade aria-hidden="true" aria-labelledby="staticBackdrop" role="dialog" tabindex="-1" 
+  .modal-dialog.modal-dialog-scrollable role="document" 
+    = form_with model: @video, url: admin_timestamp_videos_path(id: @video.id), method: :post, html: { class: "form-group w-100" } do |f|
+      .modal-content      
+        .modal-header
+          h5#exampleModalLabel.modal-title Upload Video
+          button.close aria-label="Close" data-dismiss="modal" type="button" 
+            i.ki.ki-close aria-hidden="true" 
+        .modal-body
+          div data-height="auto" data-scroll="true"
+            = f.hidden_field :id
+            .form-group
+              = f.text_area :timestamps, class: "form-control", rows: 10, placeholder: "format time HH:MM:SS / MM:SS contoh :\n\n00:10 ini menunjukan pada detik ke 10 terjadi....! \n01:00 pada menit ke 1 terdapat...! \n01:30:15 dan ini menjukan pada 1 jam 30 menit dan 15 detik....!"
+        
+        .modal-footer
+          button.btn.btn-light-primary.font-weight-bold data-dismiss="modal" type="button"  Close
+          = f.submit "Simpan", class: "btn btn-primary font-weight-bold"

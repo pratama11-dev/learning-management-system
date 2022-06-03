@@ -1,0 +1,17 @@
+development:
+  :concurrency: 5
+staging:
+  :concurrency: 10
+production:
+  :concurrency: 10
+
+:queues:
+  - default
+
+:schedule:
+  notification_job_scheduler:
+    cron: '0 7 * * *'   # Runs every day at 7:00 (cron notation)
+    class: WebinarNotificationJob
+  remedial_job_scheduler:
+    cron: '0 7 * * *'   # Runs every day at 7:00 (cron notation)
+    class: RemedialNotificationJob    

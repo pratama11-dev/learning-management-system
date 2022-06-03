@@ -1,0 +1,86 @@
+#kt_content.content.flex-column-fluid
+  .row
+    .col-md-10.mx-auto
+      / .row
+        .col-4.p-0
+          = form_tag admin_exam_path(id: params[:id]), method: :get do |f|
+            .form-group.row
+              .col-10
+                = text_field_tag :search, params[:seach], placeholder: "Search Question", class: "form-control", list: "questions", autocomplete: "off", data: { controller: "hide-input-list" }
+                datalist id="questions"
+                  - @questions.each do |question|
+                    option value="#{question.quest.truncate(10)}"
+              .col-2
+                = submit_tag "Search", class: "btn btn-secondary"
+                
+        .col-8.text-right
+          = link_to admin_exam_archive_path, class: "btn btn-secondary" do
+            span.fa.fa-archive.mr-4
+            | List Archive
+
+
+      #kt_card_1.card.card-custom.mb-4 data-card="true"
+        .card-header.col-md-12
+          h3.card-title.align-items-start.flex-column.pt-2
+            span.font-weight-bolder.text-success = params[:id]
+            span.text-muted.mt-3.font-weight-bold.font-size-sm Total: #{@questions.count} Soal
+
+          .card-toolbar
+            = link_to new_admin_exam_path(category: params[:id]), class: "btn btn-primary" do
+              span.fa.fa-plus.mr-4
+              | Add new Question
+
+            a.btn.btn-icon.btn-sm.btn-hover-light-primary.ml-5 data-card-tool="toggle" data-placement="top" data-toggle="tooltip" href="#" title=("Toggle Card") 
+              i.ki.ki-arrow-down.icon-nm
+
+        .card-body
+          - @questions.each.with_index(1) do |question, index|
+            .col-xl-12
+              .card.card-custom.bgi-no-repeat.card-border.gutter-b.card-stretch id="kt_card_#{index}" data-card="true"
+                .card-title
+                  - if question.updated_by.present?
+                    .text-left.p-5.position-absolute style="background-color: #eef0f8;"
+                      label.text-gray
+                        | Edited at : 
+                        = question.updated_at.strftime("%d %B %Y")
+                      .text-gray
+                        | By : #{question.updated_by}
+
+                  .text-right.mr-5.mt-5
+                    = link_to edit_admin_exam_path(id: question.id), class: "btn btn-primary mr-5" do
+                      span.fa.fa-pencil-alt.mr-4
+                      | Edit Question
+
+                    = link_to admin_exam_path(id: question.id), method: :delete, data: {confirm: "Are you sure remove this questions ?"}, class: "btn btn-warning" do
+                      span.fa.fa-archive.mr-4
+                      | Move to Archive
+                      
+                .card-body
+                  p.text-dark-75.font-weight-bolder.font-size-h5.m-0 = "No. #{index}"
+                  .text-dark-75.font-weight-bolder.font-size-h5.m-0.style-question
+                    / = image_tag(url_for(exam.image), height: "200") if exam.image.present?
+                    br
+                    = question.quest.to_s.gsub(/\n/, '<br/>').html_safe
+
+                  hr
+                  - alfabet_answer = ("A".."Z").to_a
+
+                  table
+                    tbody.font-size-h5.m-0.style-question
+                      - question.exam_answers.each_with_index do |answer, index|
+                        tr
+                          td.align-top
+                            - if answer.is_correct
+                              span.fa.fa-check.text-success.mr-4
+                            - else
+                              span.fa.fa-times.text-danger.mr-4
+                          td.align-top
+                            = "#{alfabet_answer[index]}. "
+                          td width="0%"
+                            = answer.answer.to_s.gsub(/\n/, '<br/>').html_safe
+
+                  hr
+                  | Note: 
+                  .card
+                    .card-body
+                      = question&.note&.html_safe

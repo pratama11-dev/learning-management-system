@@ -1,0 +1,12 @@
+doctype html
+html lang="en"
+  head
+    = render "layouts/partials/head_meta_data"
+    = render "layouts/partials/head_metronic"
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'videojs-custom'
+
+  body#kt_body.header-fixed.header-mobile-fixed.subheader-fixed.page-loading data-turbolinks='false'
+    - if flash.present?
+      = render 'shared/flash'
+    = yield

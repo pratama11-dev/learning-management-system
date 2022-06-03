@@ -1,0 +1,175 @@
+#kt_content.content.d-flex.flex-column.flex-column-fluid
+  #kt_subheader.subheader.py-2.py-lg-6.subheader-solid
+    .container-fluid.d-flex.align-items-center.justify-content-between.flex-wrap.flex-sm-nowrap
+      .d-flex.align-items-center.flex-wrap.mr-1
+        .d-flex.align-items-baseline.flex-wrap.mr-5
+          h5.text-dark.font-weight-bold.my-1.mr-5 Library
+    
+  .d-flex.flex-column-fluid
+    .container
+      .card.card-custom data-card="true"
+        .card-header.card-primary
+          .card-title
+            | Modul
+          .card-toolbar
+            a.btn.btn-icon.btn-sm.btn-hover-light-primary.mr-1[
+              data-card-tool="toggle"
+              data-placement="top"
+              data-toggle="tooltip"
+              href="#"
+              title="Toggle Card"
+            ] 
+              i.ki.ki-arrow-down.icon-nm
+        .card-body.p-6
+          .row.clearfix
+            .col-md-12.text-left
+              = form_with model: @library, url: admin_libraries_path, html: { class: "form-group custom-file" } do |f|
+                .row
+                  .col-8.ml-5
+                    = f.file_field :file, class: "custom-file-input", accept: "application/pdf, image/*"
+                    label.custom-file-label for="customFile" Choose file
+                  .col-1
+                    = f.hidden_field :category, value: "modules"
+                    = f.submit "Upload", class: "btn btn-primary"
+            - @libraries.modules.each do |library|
+              .col-md-3.p-5
+                .card
+                  a.hover_card href="#{admin_library_path(library)}" target="_blank"
+                    .card-header
+                      | #{library.name.truncate(25)}
+                    div
+                      - if library.cover.present?
+                        = image_tag library.cover, class: "w-100", style: "max-height: 350px;"
+                      - else
+                        = image_tag "services_01.png", class: "w-100", style: "max-height: 350px;"          
+                  .card-footer.text-center
+                    = link_to url_for(library.file), class: "btn btn-primary m-1" do
+                      span.fa.fa-download
+                    = link_to "Edit", edit_admin_library_path(library), class: "btn btn-warning m-1"
+                    = link_to "Delete", admin_library_path(library), method: :delete, data: {confirm: "Are you sure to delete this file ?"}, class: "btn btn-danger m-1"
+
+      .card.card-custom.mt-5 data-card="true"
+        .card-header.card-primary
+          .card-title
+            | Materi
+          .card-toolbar
+            a.btn.btn-icon.btn-sm.btn-hover-light-primary.mr-1[
+              data-card-tool="toggle"
+              data-placement="top"
+              data-toggle="tooltip"
+              href="#"
+              title="Toggle Card"
+            ] 
+              i.ki.ki-arrow-down.icon-nm
+        .card-body.p-6
+          .row.clearfix
+            .col-md-12.text-left
+              = form_with model: @library, url: admin_libraries_path, html: { class: "form-group custom-file" } do |f|
+                .row
+                  .col-8.ml-5
+                    = f.file_field :file, class: "custom-file-input"
+                    label.custom-file-label.truncate-text for="customFile" Choose file
+                  .col-1
+                    = f.hidden_field :category, value: "theory"
+                    = f.submit "Upload", class: "btn btn-primary"
+            - @libraries.theory.each do |library|
+              .col-md-3.p-5
+                .card
+                  a.hover_card href="#{url_for(library.file)}" target="_blank"
+                    .card-header
+                      | #{library.name.truncate(25)}
+                    div
+                      - if library.cover.present?
+                        = image_tag library.cover, class: "w-100", style: "max-height: 350px;"
+                      - else
+                        = image_tag "services_01.png", class: "w-100", style: "max-height: 350px;"
+
+                  .card-footer.text-center
+                    = link_to url_for(library.file), class: "btn btn-primary m-1" do
+                      span.fa.fa-download
+                    = link_to "Edit", edit_admin_library_path(library), class: "btn btn-warning m-1"
+                    = link_to "Delete", admin_library_path(library), method: :delete, data: {confirm: "Are you sure to delete this file ?"}, class: "btn btn-danger m-1"
+
+      .card.card-custom.mt-5 data-card="true"
+        .card-header.card-primary
+          .card-title
+            | Jurnal
+          .card-toolbar
+            a.btn.btn-icon.btn-sm.btn-hover-light-primary.mr-1[
+              data-card-tool="toggle"
+              data-placement="top"
+              data-toggle="tooltip"
+              href="#"
+              title="Toggle Card"
+            ] 
+              i.ki.ki-arrow-down.icon-nm
+        .card-body.p-6
+          .row.clearfix
+            .col-md-12.text-left
+              = form_with model: @library, url: admin_libraries_path, html: { class: "form-group custom-file" } do |f|
+                .row
+                  .col-8.ml-5
+                    = f.file_field :file, class: "custom-file-input"
+                    label.custom-file-label.truncate-text for="customFile" Choose file
+                  .col-1
+                    = f.hidden_field :category, value: "journal"
+                    = f.submit "Upload", class: "btn btn-primary"
+            - @libraries.journal.each do |library|
+              .col-md-3.p-5
+                .card
+                  a.hover_card href="#{url_for(library.file)}" target="_blank"
+                    .card-header
+                      | #{library.name.truncate(25)}
+                    div
+                      - if library.cover.present?
+                        = image_tag library.cover, class: "w-100", style: "max-height: 350px;"
+                      - else
+                        = image_tag "services_01.png", class: "w-100", style: "max-height: 350px;"
+
+                  .card-footer.text-center
+                    = link_to url_for(library.file), class: "btn btn-primary m-1" do
+                      span.fa.fa-download
+                    = link_to "Edit", edit_admin_library_path(library), class: "btn btn-warning m-1"
+                    = link_to "Delete", admin_library_path(library), method: :delete, data: {confirm: "Are you sure to delete this file ?"}, class: "btn btn-danger m-1"
+
+      .card.card-custom.mt-5 data-card="true"
+        .card-header.card-primary
+          .card-title
+            | Buku
+          .card-toolbar
+            a.btn.btn-icon.btn-sm.btn-hover-light-primary.mr-1[
+              data-card-tool="toggle"
+              data-placement="top"
+              data-toggle="tooltip"
+              href="#"
+              title="Toggle Card"
+            ] 
+              i.ki.ki-arrow-down.icon-nm
+        .card-body.p-6
+          .row.clearfix
+            .col-md-12.text-left
+              = form_with model: @library, url: admin_libraries_path, html: { class: "form-group custom-file" } do |f|
+                .row
+                  .col-8.ml-5
+                    = f.file_field :file, class: "custom-file-input"
+                    label.custom-file-label.truncate-text for="customFile" Choose file
+                  .col-1
+                    = f.hidden_field :category, value: "book"
+                    = f.submit "Upload", class: "btn btn-primary"
+            - @libraries.book.each do |library|
+              .col-md-3.p-5
+                .card
+                  a.hover_card href="#{url_for(library.file)}" target="_blank"
+                    .card-header
+                      | #{library.name.truncate(25)}
+                    div
+                      - if library.cover.present?
+                        = image_tag library.cover, class: "w-100", style: "max-height: 350px;"
+                      - else
+                        = image_tag "services_01.png", class: "w-100", style: "max-height: 350px;"
+
+                  .card-footer.text-center
+                    = link_to url_for(library.file), class: "btn btn-primary m-1" do
+                      span.fa.fa-download
+                    = link_to "Edit", edit_admin_library_path(library), class: "btn btn-warning m-1"
+                    = link_to "Delete", admin_library_path(library), method: :delete, data: {confirm: "Are you sure to delete this file ?"}, class: "btn btn-danger m-1"

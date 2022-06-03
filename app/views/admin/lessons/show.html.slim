@@ -1,0 +1,169 @@
+.d-flex.flex-column-fluid.mb-5
+  .container
+    .row
+      .col-12
+        .card.card-custom.gutter-b.mb-5
+          .card-header.h-auto.py-4.flex-wrap.border-0
+            .card-title
+              h3.card-label
+                | #{@lesson.name}
+                span.text-muted.pt-2.font-size-sm.d-block = @lesson.description.length > 100 ? truncate(@lesson.description, :length => 80, :separator => " ") : @lesson.description
+            .card-toolbar.d-flex.w-auto
+              a.btn.btn-default.mr-3 title="Ubah" data-toggle="modal" data-target="#editVideo-#{@lesson.id}"
+                span.fa.fa-pencil-alt.text-primary
+
+    .row
+      .col-xl-5.col-lg-6
+        .card.card-custom.gutter-b
+          .card-header.h-auto.py-4
+            .card-title
+              h3.card-label
+                | Informasi Materi
+          .card-body.py-4
+            .form-group.row.my-2
+              label.col-5.col-form-label Nama:
+              .col-7.my-auto
+                span.form-control-plaintext.font-weight-bolder
+                  = @lesson.name
+            .form-group.row.my-2
+              label.col-5.col-form-label Deskripsi
+              .col-7.my-auto
+                span.form-control-plaintext.font-weight-bolder
+                  = @lesson.description
+            .form-group.row.my-2
+              label.col-5.col-form-label Tipe:
+              .col-7.my-auto
+                span.form-control-plaintext.font-weight-bolder
+                  | Video Belajar Pajak
+            .form-group.row.my-2
+              label.col-5.col-form-label Nama Materi Belajar Pajak:
+              .col-7.my-auto
+                span.form-control-plaintext.font-weight-bolder
+                  = @lesson.learning_name
+            .form-group.row.my-2
+              label.col-5.col-form-label Kategori:
+              .col-7.my-auto
+                span.form-control-plaintext.font-weight-bolder
+                  = @lesson.category_name
+            .form-group.row.my-2
+              label.col-5.col-form-label Video Gratis :
+              .col-7.my-auto
+                span.form-control-plaintext.font-weight-bolder
+                  = @lesson.is_free ? "Ya" : "Tidak"
+
+        .card.card-custom.gutter-b
+          .card-header.h-auto.py-4
+            .card-title
+              h3.card-label
+                | Video Belajar Pajak
+          .card-body.row
+            .col-12
+              - if @lesson.video.present?
+                = render 'admin/lessons/partials/show_video', video: @lesson.video
+        .card.card-custom.gutter-b
+          .card-header.h-auto.py-4
+            .card-title
+              h3.card-label
+                | Banner Materi Pajak
+            .card-body.pl-0.pr-0
+              - if @lesson.banner_image.present?
+                = image_tag (@lesson.banner_image), class: "rounded mx-auto d-block",
+                  style: "max-width:100%"
+
+      .col-xl-7.col-lg-6
+        .card.card-custom.gutter-b
+          .card-header.h-auto.py-4
+            .card-title
+              h3.card-label
+                | Daftar User
+          .card-body.py-4
+            table.table data-controller="datatables-static"
+              thead
+                tr
+                  td
+                    h6.text-center No
+                  td
+                    h6.text-center Nama
+                  td
+                    h6.text-center Deskripsi
+                  td
+                    h6.text-center Tanggal Bergabung
+                  td
+                    h6.text-center Actions
+              tbody
+                - @lesson.users.each_with_index do |user,index|
+                  tr
+                    td.text-center
+                      = index + 1
+                    td.text-center
+                      = user.name
+                    td.text-center
+                      = user.email
+                    td.text-center
+                      = readable_timestamp_2(user.created_at)
+                    td.text-center
+                      a.btn.btn-sm.btn-light-primary[
+                        role="button"
+                        href="#{admin_user_path(user.id)}"
+                      ] Lihat Detail
+
+        .card.card-custom.gutter-b.mt-5
+          .card-header.h-auto.py-4
+            .card-title
+              h3.card-label
+                | Daftar Quiz/Trivia
+            .card-toolbar
+              = link_to admin_select_quiz_path(lesson_id: @lesson.id), class: 'btn btn-primary', title: 'Pilih Quiz/Trivia' do
+                span.fa.fa-plus.text-white
+
+          .card-body.py-4
+            table.table data-controller="datatables-static"
+              thead
+                tr
+                  td
+                    h6 No
+                  td width="50%"
+                    h6 Soal
+                  td width="40%"
+                    h6 Jawaban
+              tbody
+                - if @lesson.package.present?
+                  - @lesson.package.exam_questions.each_with_index do |question,index|
+                    tr
+                      td
+                        = index + 1
+                      td
+                        = question.quest.to_s.gsub(/\n/, '<br/>').html_safe
+                      td
+                        = question.exam_answers.correct_answer&.answer.to_s.gsub(/\n/, '<br/>').html_safe
+        div
+          .card.card-custom.gutter-b
+            .card-header.h-auto.py-4
+              .card-title
+                h3.card-label
+                  | Rating
+            .card-body.py-4
+              table.table data-controller="datatables-static"
+                thead
+                  tr
+                    td
+                      h6 No
+                    td
+                      h6 Nama User
+                    td
+                      h6 Rating
+                    td
+                      h6 Komentar
+                tbody
+                  - @user_ratings.select {|x|@lesson.id == x[:resource_id]}.each_with_index do |user_rating, index|
+                    tr
+                      td
+                        | #{index + 1}
+                      td
+                        | #{user_rating.user&.name}
+                      td
+                        | #{user_rating.rating}
+                      td
+                        | #{user_rating.comment}
+
+= render "admin/lessons/partials/edit_lesson", lesson: @lesson

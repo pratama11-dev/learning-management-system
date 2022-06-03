@@ -1,0 +1,56 @@
+a.elementor-button-link.btn.elementor-size-lg.px-15.mr-3[
+  style="background-color:#EE6123 !important;"
+  href="#{video_path(talk.video)}"
+  role="button"
+]
+  span.elementor-button-content-wrapper
+    span.elementor-button-icon.elementor-align-icon-left
+      i.fas.fa-play[aria-hidden="true"]
+    span.elementor-button-text.text-white
+      | Play
+      
+- if current_user.present?
+  form.form
+    button.btn.btn-icon.btn-outline-secondary.btn-circle.btn-lg.mr-4[
+      style="#{talk.bookmarked_by(current_user) ? "background-color:#E4E6EF;" : ""}"
+      data-container="body"
+      data-toggle="popover"
+      data-placement="top"
+      data-content="Bookmark video ini!"
+      data-controller="landing-pages--talks--bookmark"
+      data-action="click->landing-pages--talks--bookmark#handleClick"
+      data-landing-pages--talks--bookmark-path="#{user_bookmarks_path}"
+      data-landing-pages--talks--bookmark-resource-type="Talk"
+      data-landing-pages--talks--bookmark-resource-id="#{talk.id}"
+    ]
+      i.la.la-plus
+  form.form
+    button.btn.btn-icon.btn-outline-secondary.btn-circle.btn-lg.mr-4[
+      style="#{talk.liked_by(current_user) ? "background-color:#E4E6EF;" : ""}"
+      data-container="body"
+      data-toggle="popover"
+      data-placement="top"
+      data-content="Like video ini!"
+      data-controller="landing-pages--talks--feedback"
+      data-action="click->landing-pages--talks--feedback#handleClick"
+      data-landing-pages--talks--feedback-path="#{user_likes_path}"
+      data-landing-pages--talks--feedback-likes="true"
+      data-landing-pages--talks--feedback-resource-type="Talk"
+      data-landing-pages--talks--feedback-resource-id="#{talk.id}"
+    ]
+      i.la.la-thumbs-up
+  form.form
+    button.btn.btn-icon.btn-outline-secondary.btn-circle.btn-lg.mr-4[
+      style="#{talk.disliked_by(current_user) ? "background-color:#E4E6EF;" : ""}"
+      data-container="body"
+      data-toggle="popover"
+      data-placement="top"
+      data-content="Dislike video ini!"
+      data-controller="landing-pages--talks--feedback"
+      data-action="click->landing-pages--talks--feedback#handleClick"
+      data-landing-pages--talks--feedback-path="#{user_likes_path}"
+      data-landing-pages--talks--feedback-likes="false"
+      data-landing-pages--talks--feedback-resource-type="Talk"
+      data-landing-pages--talks--feedback-resource-id="#{talk.id}"
+    ]
+      i.la.la-thumbs-down

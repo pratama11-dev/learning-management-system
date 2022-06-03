@@ -1,0 +1,49 @@
+.d-flex.flex-column-fluid.mb-5
+  .container
+    .card.card-custom
+      .card-header.flex-wrap.border-0.pt-6.pb-0
+        .card-title
+          h3.card-label
+            = @talk.name
+
+      .card-body
+        .col-lg-12
+          - if @talk.video.file.present?
+            = content_tag :div, data: { controller: 'videos--player', thumbnails: @talk.video.thumbnails, fullscreen: false, autoplay: false } do
+              = content_tag :video, id: "video-js-player", data: { target: 'videojs.player' }, class: "video-js vjs-big-play-centered vjs-default-skin vjs-16-9" do
+                - if @talk.video.source_video_url.present?
+                  = tag :source, src: @talk.video.source_video_url, type: "application/x-mpegURL"
+                - elsif @talk.video.file.attached?
+                  = tag :source, src: url_for(@talk.video.file), type: @talk.video.file.content_type
+                p class="vjs-no-js"
+                  | To view this video please enable JavaScript, and consider upgrading to a web browser that
+                  a href="https://videojs.com/html5-video-support/" target="_blank" supports HTML5 video
+        .row.d-flex
+          .col-lg-6
+            .card.card-custom.gutter-b
+              .card-header.h-auto.py-4
+                .card-title
+                  h3.card-label
+                    | Banner Taxsam Talks
+                .card-body.pl-0.pr-0
+                  - if @talk.banner_image.present?
+                    = image_tag (@talk.banner_image), class: "rounded mx-auto d-block",
+                      style: "max-width:100%"
+          .col-lg-6
+            .card.card-custom.gutter-b
+              .card-header.h-auto.py-4
+                .card-title
+                  h3.card-label
+                    | Information
+              .card-body
+                .h6.text-primary Deskripsi
+                span.text-muted.pt-2.font-size-sm.d-block = @talk.description
+                .h6.mt-5.text-primary Total Feedback
+                - @talk.total_feedback.map do |k,v|
+                  span.font-weight-bolder.mr-5
+                    - if k.to_s == 'like'
+                      i.far.fa-thumbs-up
+                      | &nbsp#{v}
+                    - if k.to_s == 'dislike'
+                      i.far.fa-thumbs-down
+                      | &nbsp#{v}

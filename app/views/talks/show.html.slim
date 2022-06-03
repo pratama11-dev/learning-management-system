@@ -1,0 +1,73 @@
+.modal-dialog.modal-xl.m-0
+  .modal-content style="background-color:#242424 !important;"
+    .modal-body.p-0
+      section.elementor-element.elementor-element-8490d18.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section[style="background-size: cover !important;" data-id="8490d18" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"]
+        button.btn.btn-icon.btn-sm.float-right.btn-circle.btn-secondary[
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+          style="position: absolute;top: 10px;right: 10px;z-index: 999999;"
+        ]
+          i.ki.ki-close.icon-sm[aria-hidden="true"]
+        .elementor-background-overlay
+        .elementor-container.elementor-column-gap-default
+          .elementor-row
+            .elementor-element.elementor-element-3860f11.elementor-column.elementor-col-100.elementor-top-column[data-id="3860f11" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"]
+              - if talk.banner_image.present?
+                .elementor-column-wrap.elementor-element-populated style="background-image: url(#{url_for(talk.banner_image)}) !important;"
+                  .elementor-background-overlay
+                  .elementor-widget-wrap
+                    .elementor-element.elementor-element-0987816.elementor-widget.elementor-widget-heading[data-id="0987816" data-element_type="widget" data-widget_type="heading.default"]
+                      .elementor-widget-container
+                        h2.elementor-heading-title.elementor-size-default
+                          = @talk.name
+                    .elementor-element.elementor-element-73866d9.elementor-hidden-phone.elementor-widget.elementor-widget-text-editor[data-id="73866d9" data-element_type="widget" data-widget_type="text-editor.default"]
+                      .col-6.elementor-widget-container
+                        .elementor-text-editor.elementor-clearfix
+                          = truncate(@talk.description, :length => 200, :separator => " ")
+                    .elementor-element.elementor-element-73866d9.elementor-widget.elementor-widget-text-editor[data-id="73866d9" data-element_type="widget" data-widget_type="text-editor.default"]
+                      .col-6.elementor-widget-container
+                        .elementor-text-editor.elementor-clearfix
+                          .d-flex.flex-row.align-items-center.js-bookmark-and-feedback
+                            = render partial: "bookmark_and_feedback",
+                              locals: {talk: @talk}, cached: true 
+      .p-15
+        p.font-size-h3.text-white.font-weight-bold Deskripsi
+        .row
+          .col-lg-8
+            p.text-white
+              = @talk.description
+          .col-lg-4
+            .d-flex.justify-content-end
+              .flex-column
+                p.font-size-h3.text-white.font-weight-bold.text-right Kategori
+                a.btn.btn-secondary[href="#"]
+                  | Taxsamtalks
+        / .row.p-4.align-items-center
+          .d-flex.align-items-center
+            p.font-size-h1.text-white.font-weight-boldest.m-0 Daftar Video
+            .d-flex.ml-10
+              button.btn.btn-outline-warning.border-2.mr-5.font-weight-bolder[type="button"]
+                | All
+              button.btn.btn-outline-warning.border-2.mr-5.font-weight-bolder[type="button"]
+                | KUP A
+              button.btn.btn-outline-warning.border-2.mr-5.font-weight-bolder[type="button"]
+                | KUP B
+              button.btn.btn-outline-warning.border-2.mr-5.font-weight-bolder[type="button"]
+                | KUP C
+        / .row.p-4.align-items-center
+          -5.times do |a|
+            .elementor-element.elementor-element-8bff9d2.elementor-column.elementor-col-12.elementor-top-column.mr-5.mb-5[data-id="8bff9d2" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" style="width: auto;"]
+              .elementor-column-wrap.elementor-element-populated
+                .elementor-background-overlay
+                .elementor-widget-wrap
+                  .elementor-element.elementor-element-f3940c0.elementor-widget.elementor-widget-image[data-id="f3940c0" data-element_type="widget" data-widget_type="image.default"]
+                    .elementor-widget-container
+                      .elementor-image
+                        img.attachment-large.size-large[width="95" height="95" style="width: 15% !important;" src="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/0.png" alt="" loading="lazy"]
+                  .elementor-element.elementor-element-bb20e93.elementor-widget.elementor-widget-heading[data-id="bb20e93" data-element_type="widget" data-widget_type="heading.default"]
+                    .elementor-widget-container
+                      h2.elementor-heading-title.elementor-size-default
+                        | Pengantar Ketentuan Umum
+                        br
+                        | dan Pajak

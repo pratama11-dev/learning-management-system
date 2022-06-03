@@ -1,0 +1,107 @@
+#kt_header.header.py-xl-12 style="background-color:#242424 !important;"
+  .container-fluid.d-flex.align-items-stretch.justify-content-between.px-lg-20 style="background-color: #242424 !important;"
+    #kt_header_menu_wrapper.header-menu-wrapper.header-menu-wrapper-left style="background-color: #242424 !important;"
+      #kt_header_menu.header-menu.header-menu-mobile.header-menu-layout-default style="background-color: #242424 !important;"
+        .elementor-row.align-items-center
+          .elementor-element.elementor-element-102b32d.elementor-column.elementor-col-20.elementor-top-column.elementor-hidden-phone[data-id="102b32d" data-element_type="column"]
+            .elementor-column-wrap.elementor-element-populated
+              .elementor-widget-wrap
+                .elementor-element.elementor-element-e07bf87.elementor-widget.elementor-widget-image[data-id="e07bf87" data-element_type="widget" data-widget_type="image.default"]
+                  .elementor-widget-container
+                    .elementor-image
+                      a [href="/"]
+                        img.attachment-large[src="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/10/LOGO-TAXSAM-TAX-LEARNING-CENTER.png" alt="" loading="lazy" width="240" height="240"]
+          #hide_on_small_leptop.d-flex.flex-row.ml-5.border-left
+            .mx-5
+              a.text-hover-warning style="font-size: 16px;" class="#{'text-warning' if request.original_fullpath.match(/^\/courses\/?/)}" href=courses_path() Video Belajar Pajak
+            .mr-5
+              a.text-hover-warning style="font-size: 16px;" class="#{'text-warning' if request.original_fullpath.match(/^\/libraries\/?/)}" href=libraries_path() Perpustakaan
+            .mr-5
+              a.text-hover-warning style="font-size: 16px;" href="#" Database Perpajakan
+
+    .topbar.border-primary.align-items-center style="background-color:#242424 !important;"
+      .topbar-item.d-flex.justify-content-end
+        .d-flex.flex-wrap.align-items-center
+          .d-flex.align-items-center.mr-1.my-2
+            form.bg-transparent
+              .input-group.input-group-sm.input-group-solid.bg-transparent style=("max-width: 450px")
+                input#kt_datatable_search_query.form-control.text-white placeholder="Cari..." type="text" /
+                a.input-group-append.pl-0 [type="submit" href="/search" data-controller="search"]
+                  span.input-group-text
+                    span.svg-icon
+                      svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"
+                          rect height="24" width="24" x="0" y="0"
+                          path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"
+                          path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#000000" fill-rule="nonzero"
+        - if current_user.present?
+          .topbar-item[
+            data-toggle="dropdown" 
+            data-offset="10px,0px"
+            data-controller="homes--notifications-update"
+            data-path="#{notifications_path}"
+          ]
+            .btn.btn-icon.btn-dropdown.btn-lg.mr-2.pulse.pulse-white
+              span.svg-icon.svg-icon-xl.svg-icon-dark-50
+                svg[xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewbox="0 0 24 24" version="1.1"]
+                  g[stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"]
+                    path[d="M17,12 L18.5,12 C19.3284271,12 20,12.6715729 20,13.5 C20,14.3284271 19.3284271,15 18.5,15 L5.5,15 C4.67157288,15 4,14.3284271 4,13.5 C4,12.6715729 4.67157288,12 5.5,12 L7,12 L7.5582739,6.97553494 C7.80974924,4.71225688 9.72279394,3 12,3 C14.2772061,3 16.1902508,4.71225688 16.4417261,6.97553494 L17,12 Z" fill="#000000"]
+                    rect[fill="#000000" opacity="0.3" x="10" y="16" width="4" height="4" rx="2"]
+              - if current_user.notifications.unread.any?
+                span.label.label-dot.label-danger.mb-5
+
+          .dropdown-menu.p-0.m-0.dropdown-menu-right.dropdown-menu-anim-up.dropdown-menu-lg[
+            style="background-color: #242424 !important;"
+          ]
+            .d-flex.flex-column.pt-12.pl-5 style="background-color: #242424 !important;" class="#{'rounded-top' if current_user.notifications.unread.any?}"
+              h4.d-flex.rounded-top
+                span.text-white.text-left
+                  | Notifications
+            .card-body.px-5.pb-5.pt-0 style="background-color: #242424 !important;"
+              .ps--active-y[
+                data-height="300" 
+                data-mobile-height="200" 
+                data-target="notifications.itemsContainer" 
+                data-scroll="true" 
+                style="height: 300px; overflow: auto;"
+              ]
+                = render "shared/notifications"
+
+          .dropdown
+            .topbar-item[data-toggle="dropdown" data-offset="10px,0px" aria-expanded="true"]
+              .btn.btn-icon.btn-dropdown.btn-lg.mr-1
+                .symbol-list.d-flex.flex-wrap
+                  - if current_user.avatar.attached?
+                    .symbol.symbol-20.symbol-lg-30.symbol-circle.mr-3
+                      img alt="Pic" src="#{url_for(current_user.avatar)}" /
+                  - else
+                    .symbol.symbol-30.symbol-circle.symbol-light-success data-original-title=("#{current_user&.name}") data-toggle="tooltip" title=""
+                      span.symbol-label.font-size-h5.font-weight-bold= current_user.name&.chars&.first&.upcase || "U"
+
+            .dropdown-menu.p-0.m-0.dropdown-menu-anim-up.dropdown-menu-sm.dropdown-menu-right[x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-117px, 65px, 0px);background-color:#242424 !important;"]
+              ul.navi.py-4
+                li.navi-item
+                  a.navi-link[
+                    href="#{current_user.is_admin? ? admin_dashboard_path : dashboards_path}"
+                  ]
+                    span.navi-icon
+                      i.flaticon-imac.icon-1x
+                    span.navi-text.text-white
+                      | Dashboard
+                      
+                - unless current_user.is_admin?
+                  li.navi-item
+                    a.navi-link href=profiles_path
+                      span.navi-icon
+                        i.flaticon2-gear.icon-1x
+                      span.navi-text.text-white
+                        | Setting
+
+                li.navi-item
+                  a.navi-link[href="#"]
+                    span.navi-icon
+                      i.flaticon2-cross.icon-1x
+                    span.navi-text
+                      = button_to 'Keluar', authentications_session_path(id: current_user.id), method: :delete, class: 'text-capitalize font-weight-bolder border-0 p-0', style: "height: unset; font-family: Poppins !important; font-weight: 400 !important;"
+        - else
+          .btn.btn-outline-white.btn-hover-transparent-white.font-weight-bold.mr-2 title="Login" data-toggle="modal" data-target="#login_modal" Masuk

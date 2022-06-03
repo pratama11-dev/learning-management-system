@@ -1,0 +1,29 @@
+form#kt_login_singin_form.form
+  .form-group
+    .text-field
+      label.font-size-h6.font-weight-bolder.text-white.text-capitalize
+        | Email*
+      = form.text_field :email, type: 'email',
+        class: 'form-control h-auto py-5 px-6 rounded-lg border-0',
+        placeholder: 'Email',
+        autocomplete: 'off',
+        required: 1 
+  .form-group
+    .text-field
+      label.font-size-h6.font-weight-bolder.text-white.text-capitalize
+        | Nomer Telepon*
+      = form.text_field :phone_number, type: 'number',
+        class: 'form-control h-auto py-5 px-6 rounded-lg border-0',
+        placeholder: 'Nomer Telepon',
+        autocomplete: 'off',
+        required: 1 
+  .form-group
+    .password-field
+      label.font-size-h6.font-weight-bolder.text-white.text-capitalize
+        | Kata Sandi*
+      = form.password_field :password,
+        class: 'form-control h-auto border-0 py-5 px-6 rounded-lg placeholder-dark-75',
+        placeholder: 'Password',
+        required: 1
+  .pb-lg-0.pb-5
+    = form.submit "Daftar", class: "btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3 border-0 btn-block", style: "background-color: #EE6123 !important;"

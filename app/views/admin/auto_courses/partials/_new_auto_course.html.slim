@@ -1,0 +1,49 @@
+#newAutoCourse.modal.fade aria-hidden="true" aria-labelledby="staticBackdrop" role="dialog" tabindex="-1"
+  .modal-dialog role="document"
+    = form_with model: @new_auto_course, url: admin_auto_courses_path, html: { class: "form-group w-100" } do |f|
+      .modal-content
+        .modal-header
+          h5#exampleModalLabel.modal-title Tambah Brevet
+          button.close aria-label="Close" data-dismiss="modal" type="button"
+            i.ki.ki-close aria-hidden="true"
+        .modal-body.row
+          .col-12.border-right
+            .form-group
+              label.col-sm-6.col-form-label
+                | Pilih Modul
+              .col-sm-12.d-flex
+                = select_tag :lesson_id, options_for_select(options_for_select_lessons),\
+                  prompt: "Pilih Modul",\
+                  class: "form-control", \
+                  data: { controller: 'admin--select2' },\
+                  required: true
+
+          .col-12
+            h5 List User
+            .form-group
+              div[
+                data-controller='dynamic-input'
+                data-dynamic-input-insertion-adjacent-position='afterend'
+                data-dynamic-input-requesting-index="1"
+                class="form-group"
+              ]
+                div data-target='dynamic-input.element'
+                  .form-group.pt-2
+                    label.col-sm-6.col-form-label
+                      | Pilih User
+                    .col-sm-12.d-flex
+                      = select_tag 'users[][id]', options_for_select(options_for_select_users),\
+                        prompt: "Pilih User",\
+                        class: "form-control col-10", \
+                        data: { target: 'dynamic-input.input', controller: "admin--select2" },\
+                        required: true
+                      
+                      button.btn.btn-danger.col-2.ml-2 type='button' data-action='click->dynamic-input#remove'
+                        i.fas.fa-trash
+
+                .form-group.row.d-block.text-center.mt-2
+                  button.btn.btn-success type='button' data-action='click->dynamic-input#add'
+                    | Tambah User
+        .modal-footer
+          button.btn.btn-light-primary.font-weight-bold data-dismiss="modal" type="button"  Close
+          = f.submit "Simpan", class: "btn btn-primary font-weight-bold"

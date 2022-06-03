@@ -1,0 +1,149 @@
+#kt_content.content.d-flex.flex-column.flex-column-fluid
+  #kt_subheader.subheader.py-2.py-lg-6.subheader-solid
+    .container-fluid.d-flex.align-items-center.justify-content-between.flex-wrap.flex-sm-nowrap
+      .d-flex.align-items-center.flex-wrap.mr-1
+        .d-flex.align-items-baseline.flex-wrap.mr-5
+          h5.text-dark.font-weight-bold.my-1.mr-5 Detail User
+      
+  .d-flex.flex-column-fluid
+    .container
+      .card.card-custom
+        .card-body.p-5
+          .row.clearfix
+            .left-column.col-lg-7.col-md-10.col-sm-12.mx-auto
+              .inner-column
+                .text-center
+                  h6 Basic Information
+                .row
+
+          = form_for @user, url: profile_path(id: @user.id), method: :put do |f|
+            form.form
+              .card-body
+                .form-group.row
+                  .col-lg-4
+                    label.text-capitalize
+                      | Full Name:                    
+                    = f.text_field :full_name, class: "form-control bg-transparent ", placeholder: "Masukkan Nama Anda", disabled: true
+                    
+                  .col-lg-4
+                    label.text-capitalize
+                      | Email:                              
+                    = f.text_field :email, class: "form-control bg-transparent ", placeholder: "Masukkan Email Anda", type: "email", disabled: true
+                    
+                  .col-lg-4
+                    label.text-capitalize
+                      | Nomer Handphone:
+                    .input-group
+                      .input-group-prepend
+                        span.input-group-text.bg-transparent
+                          i.la.la-phone
+                      = f.number_field :phone_number, class: "form-control bg-transparent ", placeholder: "Masukkan Nomer Hanphone Anda", disabled: true
+                    
+                .form-group.row
+                  .col-lg-4
+                    label.text-capitalize
+                      | Pendidikan Terakhir:
+                    = f.text_field :last_education, class: "form-control bg-transparent ", placeholder: "Masukkan Pendidikan Terakhir Anda", disabled: true
+                      
+                  .col-lg-4
+                    label.text-capitalize
+                      | NIK:
+                    = f.text_field :nik, class: "form-control bg-transparent ", placeholder: "Masukkan NIK Anda", disabled: true
+                    
+                  .col-lg-4
+                    label.text-capitalize
+                      | Nomer Kartu Keluarga:
+                    = f.text_field :kk_number, class: "form-control bg-transparent ", placeholder: "Masukkan Nomer Kartu Keluarga Anda", disabled: true
+                    
+                .form-group.row
+                  .col-lg-4
+                    label.text-capitalize
+                      | Tanggal Lahir:
+                    .input-group
+                      = f.date_field :birthday, class: "form-control bg-transparent ", placeholder: "Masukkan Tanggal Lahir Anda", disabled: true
+                    
+                  .col-lg-3.pr-3
+                    label.text-capitalize
+                      | Jenis Kelamin:
+                    select#gender.form-control.rounded.py-1 name="user[gender]" disabled="true"
+                      option
+                        | Laki - laki
+                      option
+                        | Perempuan
+
+                  .col-lg-5.pl-0
+                    label.text-capitalize
+                      | Alamat Domisili:
+                    = f.text_field :address, class: "form-control bg-transparent ", placeholder: "Masukkan Alamat Domisili Anda", disabled: true
+
+                .form-group.row  
+                  .col-lg-1
+                    label.text-capitalize
+                      | RT:
+                    = f.text_field :rt, class: "form-control bg-transparent ", placeholder: "RT", disabled: true
+                  
+                  .col-lg-1
+                    label.text-capitalize
+                      | RW:
+                    = f.text_field :rw, class: "form-control bg-transparent ", placeholder: "RW", disabled: true
+
+                  .col-lg-5
+                    label.text-capitalize
+                      | Provinsi:
+                    = f.text_field :province, class: "form-control bg-transparent ", placeholder: "RW", disabled: true
+
+                  .col-lg-5
+                    label.text-capitalize
+                      | Kab/Kota:
+                    = f.text_field :city, class: "form-control bg-transparent ", placeholder: "Kab/Kota", disabled: true
+                h5.text-capitalize.font-white
+                  | Profile Pekerjaan     
+                .form-group.row
+                  .col-lg-4
+                    label.text-capitalize
+                      | Nama Perusahaan:
+                    = f.text_field :company, class: "form-control bg-transparent ", placeholder: "Masukkan Nama Perusahaan Anda", disabled: true
+
+                  .col-lg-4
+                    label.text-capitalize
+                      | Alamat Perusahaan:
+                    = f.text_field :company_address, class: "form-control bg-transparent ", placeholder: "Masukkan Alamat Perusahaan Anda", disabled: true
+
+                  .col-lg-4
+                    label.text-capitalize
+                      | Bidang Usaha Perusahaan:
+                    = f.text_field :business_field, class: "form-control bg-transparent ", placeholder: "Masukkan Bidang Usaha Perusahaan Anda", disabled: true
+                
+                .form-group.row
+                  .col-lg-4
+                    label.text-capitalize
+                      | Posisi Pekerjaan:
+                    = f.text_field :position, class: "form-control bg-transparent ", placeholder: "Masukkan Posisi Pekerjaan Anda", disabled: true
+
+                  .col-lg-4
+                    label.text-capitalize
+                      | Kecamatan Perusahaan:
+                    = f.text_field :districts_company, class: "form-control bg-transparent ", placeholder: "Masukkan Kecamatan Perusahaan Anda", disabled: true
+
+                  .col-lg-4
+                    label.text-capitalize
+                      | Kab/Kota Perusahaan:
+                    = f.text_field :city_company, class: "form-control bg-transparent ", placeholder: "Masukkan Kab/Kota Perusahaan Anda", disabled: true
+
+                .form-group.row
+                  .col-lg-1
+                    label.text-capitalize
+                      | Avatar
+                  .col-lg-4
+                    - avatar_url = "https://preview.keenthemes.com/metronic/theme/html/demo3/dist/assets/media/users/blank.png"
+                    - avatar_url = url_for(@user.avatar) if @user.avatar.attached?
+                    #kt_image_5.image-input.image-input-empty.image-input-outline.border-1[style="background-image: url(#{avatar_url})"]
+                      .image-input-wrapper
+                      / label.btn.btn-xs.btn-icon.btn-circle.btn-white.btn-hover-text-primary.btn-shadow.flex-wrap[data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar"]
+                        i.fa.fa-pen.icon-sm.text-muted.mt-2
+                        = f.file_field :avatar, class: "form-control"
+                        input[type="hidden" name="profile_avatar_remove"]
+                      span.btn.btn-xs.btn-icon.btn-circle.btn-white.btn-hover-text-primary.btn-shadow[data-action="cancel" data-toggle="tooltip" title="" data-original-title="Cancel avatar"]
+                        i.ki.ki-bold-close.icon-xs.text-muted
+                      span.btn.btn-xs.btn-icon.btn-circle.btn-white.btn-hover-text-primary.btn-shadow[data-action="remove" data-toggle="tooltip" title="" data-original-title="Remove avatar"]
+                        i.ki.ki-bold-close.icon-xs.text-muted

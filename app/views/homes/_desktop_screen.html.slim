@@ -1,0 +1,32 @@
+= render "homes/desktop_partials/slider"
+
+.container-fluid.px-lg-20  
+  div[
+    data-controller="home-partial-render"
+    data-url="#{index_partial_path(partial_path: "company")}"
+  ]
+    / = render "homes/desktop_partials/company"
+  div[
+    data-controller="home-partial-render"
+    data-url="#{index_partial_path(partial_path: "taxsam_talks")}"
+    style="height: 200px;"
+  ]
+    / = render "homes/desktop_partials/taxsam_talks"
+  div[
+    data-controller="home-partial-render"
+    data-url="#{index_partial_path(partial_path: "webinars")}"
+  ]
+    / = render "homes/desktop_partials/webinars"
+  div[
+    data-controller="home-partial-render"
+    data-url="#{index_partial_path(partial_path: "curriculums")}"
+  ]
+    / = render "homes/desktop_partials/curriculums"
+  div[
+    data-controller="home-partial-render"
+    data-url="#{index_partial_path(partial_path: "brevet")}"
+  ]
+    / = render "homes/desktop_partials/brevet"
+
+#modalExample.modal.fade aria-hidden="true" aria-labelledby="modalExample" role="dialog" tabindex="-1" 
+  = render partial: "homes/modals_example/modal_example"

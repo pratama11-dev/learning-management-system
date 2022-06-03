@@ -1,0 +1,19 @@
+.vjs-button-next {
+
+}
+
+.text__video::before {
+  content: "Lihat Modul";
+}
+
+.text__video{
+  width: max-content !important;
+  border: 0.06666em solid #fff !important;
+  border-radius: 0.3em !important;
+  padding: 0 5px 0 5px !important;
+}
+
+.vjs-control.vjs-button.text__video{
+  height: 80% !important;
+  margin-top: 4px !important;
+}

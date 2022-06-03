@@ -1,0 +1,390 @@
+.container-fluid style="overflow: hidden; z-index: 1 !important;"
+  div.d-none.mb-20.mt-md-10 class=("#{'d-block' if request.url.include?('Talk')}")
+    section.elementor-element.elementor-element-33a3bc6.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section.p-0[data-id="33a3bc6" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"]
+      .elementor-row
+        .elementor-element.elementor-element-60347ca.elementor-column.elementor-col-100.elementor-top-column[data-id="60347ca" data-element_type="column"]
+          .elementor-column-wrap.elementor-element-populated
+            .elementor-widget-wrap
+              section.elementor-element.elementor-element-de39b0e.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-inner-section.mt-10[data-id="de39b0e" data-element_type="section" data-settings="{&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"]
+                .elementor-row
+                  .elementor-element.elementor-element-a2fb8ab.elementor-column.elementor-col-100.elementor-inner-column[data-id="a2fb8ab" data-element_type="column"]
+                    .elementor-column-wrap.elementor-element-populated
+                      .elementor-widget-wrap
+                        .elementor-element.elementor-element-b03ef93.elementor-widget.elementor-widget-image[data-id="b03ef93" data-element_type="widget" data-widget_type="image.default"]
+                          .elementor-widget-container
+                            .elementor-image
+                              .d-flex.flex-column
+                                img.w-200px [src="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/Taxsamtalkslogo.png" alt="" loading="lazy" srcset="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/Taxsamtalkslogo.png 1184w, https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/Taxsamtalkslogo-300x45.png 300w, https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/Taxsamtalkslogo-1024x155.png 1024w, https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/Taxsamtalkslogo-768x116.png 768w, https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/Taxsamtalkslogo-500x76.png 500w, https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/Taxsamtalkslogo-800x121.png 800w, https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/Taxsamtalkslogo-960x145.png 960w" sizes="(max-width: 1184px) 100vw, 1184px"]
+                                h6.text-white.text-capitalize.font-weight-normal.my-5
+                                  | Bincang hangat seputar isu pajak terkini dengan suguhan informasi dari perspektif berbeda.
+    section.elementor-element.elementor-element-2d57062.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section.p-0 data-id="2d57062" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}" style="overflow: visible;"
+      .splide.js-dataId-desktop-screen-taxsam-talks-small[
+        data-controller="landing-pages--desktop-screen--splide-small"
+        data-id="desktop-screen-taxsam-talks"
+      ]
+        .splide__track
+          ul.splide__list
+            - @talks.each_with_index do |talk,i|
+              li.splide__slide
+                .elementor-hover
+                  .elementor-element.elementor-element-bf17446.elementor-column.elementor-col-12.elementor-top-column.[
+                    data-id="bf17446"
+                    data-element_type="column"
+                    data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
+                    style="width: auto; height: 160px !important;"
+                  ]
+                    - if talk.banner_image.present?
+                      .elementor-column-wrap.elementor-element-populated style="background-image: url(#{url_for(talk.banner_image)}) !important;"
+                        .elementor-background-overlay
+                        .elementor-widget-wrap
+                          .elementor-element.elementor-element-0ee5bb3.text-left.elementor-widget.elementor-widget-heading[data-id="0ee5bb3" data-element_type="widget" data-widget_type="heading.default"]
+                            a href="#{video_path(talk.video)}"
+                            .elementor-widget-container.pb-2
+                              / type="button" data-toggle="modal" data-target="#talks" data-dynamic-data-id="#{talk.id}"
+                              .d-flex.flex-column
+                                a.elementor-heading-title.font-size-h6.ml-2.mb-2
+                                  | Episode #{i+1}
+                                a.elementor-heading-title.font-size-h6.ml-2[
+                                  href="#{video_path(talk.video)}"
+                                  role="button"
+                                ]
+                                  = talk.name
+                              .text.pt-5.text-left
+                                - if current_user.present?
+                                  = render "shared/buttons/play_bookmark_like_landing_page_talks", source: talk.video.source, options: {talk: talk}
+                                .info.p-4.font-size-xs
+                                  span.mb-5.seasons
+                                    | 25% Complete
+                                    .progress[style="height: 5px;"]
+                                      .progress-bar[role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"]
+                    -else
+                      .elementor-column-wrap.elementor-element-populated
+                        .elementor-background-overlay
+                        .elementor-widget-wrap
+                          .elementor-element.elementor-element-0ee5bb3.text-left.elementor-widget.elementor-widget-heading[data-id="0ee5bb3" data-element_type="widget" data-widget_type="heading.default"]
+                            a href="#{video_path(talk.video)}"
+                            .elementor-widget-container.pb-2
+                              / type="button" data-toggle="modal" data-target="#talks" data-dynamic-data-id="#{talk.id}"
+                              .d-flex.flex-column
+                                a.elementor-heading-title.font-size-h6.ml-2.mb-2
+                                  | Episode #{i+1}
+                                a.elementor-heading-title.font-size-h6.ml-2
+                                  = talk.name
+                              .text.pt-5
+                                - if current_user.present?
+                                  = render "shared/buttons/play_bookmark_like_landing_page", source: talk.video.source, options: {talk: talk}
+                                .info.p-4.d-flex.justify-content-between.font-size-xs
+                                  span.match
+                                    | Taxsamtalks
+                                  span.mb-5.seasons
+                                    | 25% Complete
+                                    .progress[style="height: 5px;"]
+                                      .progress-bar[role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"]
+            - if @talks.count == 1
+              li.splide__slide
+                .elementor-element.elementor-element-6bc743e.elementor-column.elementor-col-12.elementor-top-column.h-100[
+                  data-id="6bc743e"
+                  data-element_type="column"
+                  data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
+                  style="width: auto; height: 194px !important;"
+                ]
+                  .elementor-column-wrap.elementor-element-populated style="background-image: url(https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/a9.png) !important;"
+                    .elementor-background-overlay
+                    .elementor-widget-wrap.py-8
+                      .elementor-element.elementor-element-3accdcb.elementor-view-default.elementor-widget.elementor-widget-icon[data-id="3accdcb" data-element_type="widget" data-widget_type="icon.default"]
+                        .elementor-widget-container
+                          .elementor-icon-wrapper
+                            .elementor-icon
+                              i.fas.fa-lock[aria-hidden="true" style="color: #EE6123 !important;"]
+                      .elementor-element.elementor-element-ec86b57.elementor-widget.elementor-widget-heading[data-id="ec86b57" data-element_type="widget" data-widget_type="heading.default"]
+                        .elementor-widget-container
+                          h2.elementor-heading-title.elementor-size-default
+                            | Comming Soon
+
+  / .separator.separator-dashed.mb-3.elementor-hidden-phone
+
+  div.d-none.mb-20 class=("#{'d-block' if request.url.include?('Webinar')}")
+    section.elementor-element.elementor-element-8c3a674.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section[data-id="8c3a674" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"]
+      .elementor-row
+        .elementor-element.elementor-element-ff8d119.elementor-column.elementor-col-100.elementor-top-column[data-id="ff8d119" data-element_type="column"]
+          .elementor-column-wrap.elementor-element-populated
+            .elementor-widget-wrap
+              section.elementor-element.elementor-element-e3aa3cb.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-inner-section[data-id="e3aa3cb" data-element_type="section" data-settings="{&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"]
+                .elementor-row.align-items-center
+                  .d-flex.flex-column
+                    .d-flex
+                      .elementor-icon.mx-4.d-flex.align-items-center
+                        i.fas.fa-broadcast-tower.icon-xl.text-white[aria-hidden="true"]
+                      .elementor-element.elementor-element-03a428e.elementor-column.elementor-col-50.elementor-inner-column[data-id="03a428e" data-element_type="column"]
+                        .elementor-element.elementor-element-713c300.elementor-widget.elementor-widget-heading[data-id="713c300" data-element_type="widget" data-widget_type="heading.default"]
+                          .elementor-widget-container.ml-md-0
+                            .d-flex.flex-column
+                              h3.text-capitalize.font-size-h3.m-0
+                                | Live Online Classes
+    section.elementor-element.elementor-element-36a2251.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section[data-id="36a2251" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}" style="overflow: visible;"]
+      .splide.js-dataId-desktop-screen-online-classes [data-controller="landing-pages--desktop-screen--splide" data-id="desktop-screen-online-classes"]
+        .splide__track
+          ul.splide__list
+            - @webinars.each do |webinar|
+              li.splide__slide
+                .elementor-live-hover
+                  .card-group.h-100
+                    .card.border-3 style="background-color:#242424 !important;"
+                      .elementor-element.elementor-element-58fc3a9.elementor-align-left.elementor-widget.elementor-widget-button[data-id="58fc3a9" data-element_type="widget" data-widget_type="button.default"]
+                        .elementor-widget-container
+                          .elementor-button-wrapper.d-flex.justify-content-between[
+                            class="js-homes-webinar-join-button-#{webinar.id}"
+                          ]
+                            = render partial: "homes/partials/register_webinar_button",
+                              locals: {webinar: webinar}, cached: true
+                      .card-body
+                        .elementor-element.elementor-element-04d4686.elementor-view-default.elementor-vertical-align-top.elementor-widget.elementor-widget-icon-box[data-id="04d4686" data-element_type="widget" data-widget_type="icon-box.default"]
+                          .elementor-widget-container.pt-0
+                            .elementor-icon-box-wrapper
+                              .elementor-icon-box-content
+                                h2.elementor-icon-box-title.font-weight-bolder.font-size-h2
+                                  a href="#{webinar_path(slug: webinar.slug)}"
+                                    = webinar.title
+                            .d-flex
+                              .elementor-icon-box-icon.mr-5
+                                span.elementor-icon.elementor-animation-
+                                  i.far.fa-calendar-alt
+                              .elementor-icon-box-content
+                                a.font-size-h6.elementor-icon-box-title href="#{webinar_path(slug: webinar.slug)}"
+                                  span
+                                    = readable_date_2(webinar.date)
+                            .d-flex
+                              .elementor-icon-box-icon.mr-5
+                                span.elementor-icon.elementor-animation-
+                                  i.far.fa-clock
+                              .elementor-icon-box-content
+                                a.font-size-h6.elementor-icon-box-title href="#{webinar_path(slug: webinar.slug)}"
+                                  span
+                                    | #{readable_hour(webinar.date)}
+                            .d-flex
+                              .elementor-icon-box-icon.mr-5
+                                span.elementor-icon.elementor-animation-
+                                  i.fas.fa-border-all
+                              .elementor-icon-box-content
+                                a.font-size-h6.elementor-icon-box-title href="#{webinar_path(slug: webinar.slug)}"
+                                  span
+                                    | Webinar
+                      .separator.separator-solid.mx-8
+                      .card-footer.border-0.py-7 style="background-color:#242424 !important;"
+                        .elementor-element.elementor-element-7a5c3da.mt-4.elementor-position-left.elementor-vertical-align-top.elementor-widget.elementor-widget-image-box[data-id="7a5c3da" data-element_type="widget" data-widget_type="image-box.default"]
+                          .elementor-widget-container
+                            .elementor-image-box-wrapper.align-items-center
+                              figure.elementor-image-box-img
+                                img.attachment-full.size-full[width="150" height="150" src="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/Desain-tanpa-judul-35.png" alt="" loading="lazy" srcset="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/Desain-tanpa-judul-35.png 150w, https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/Desain-tanpa-judul-35-100x100.png 100w" sizes="(max-width: 150px) 100vw, 150px"]
+                              .elementor-image-box-content
+                                h3.elementor-image-box-title.text-capitalize.mb-0
+                                  = webinar.speaker
+            - if @webinars.count == 1
+              li.splide__slide
+                .card-group.h-100
+                  .card style="background-color:#242424 !important;"
+                    .card-body.d-flex.align-items-center
+                      .elementor-element.elementor-element-04d4686.elementor-view-default.elementor-vertical-align-top.elementor-widget.elementor-widget-icon-box.mx-auto[data-id="04d4686" data-element_type="widget" data-widget_type="icon-box.default"]
+                        .elementor-widget-container.pt-0.d-flex.flex-column
+                          .d-flex.justify-content-center
+                            .elementor-icon-box-icon
+                              span.elementor-icon.elementor-animation-
+                                i.flaticon2-lock.icon-xl
+                          .d-flex.justify-content-center
+                            .text-center
+                              a.font-size-h6.elementor-icon-box-title href="/"
+                                span Coming Soon
+
+  / .separator.separator-dashed.mb-3.elementor-hidden-phone
+
+  div.d-none.mb-20 class=("#{'d-block' if request.url.include?('lessons')}")
+    section.elementor-element.elementor-element-74ec223.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section[data-id="74ec223" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}" style="z-index: -1 !important;"]
+      .elementor-row
+        .elementor-element.elementor-element-abfe5a9.elementor-column.elementor-col-100.elementor-top-column[data-id="abfe5a9" data-element_type="column"]
+          .elementor-column-wrap.elementor-element-populated
+            .elementor-widget-wrap
+              .elementor-element.elementor-element-2d6c17e.elementor-widget.elementor-widget-heading[data-id="2d6c17e" data-element_type="widget" data-widget_type="heading.default"]
+                .elementor-widget-container
+                  h2.elementor-heading-title.elementor-size-default
+                    | Video Materi Belajar Pajak
+    - @learning_taxes.each do |learning_name, lessons|
+      .d-flex.align-items-end.mb-8
+        section.elementor-element.elementor-element-3c26960.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section.pt-10.mb-5[
+          data-id="3c26960"
+          data-element_type="section"
+          data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"
+          style="z-index: -1 !important;"
+        ]
+          .elementor-row.align-items-center
+            .elementor-element.elementor-element-db0fc15.elementor-column.elementor-col-100.elementor-top-column[data-id="db0fc15" data-element_type="column"]
+              .elementor-column-wrap.elementor-element-populated
+                .elementor-widget-wrap
+                  .elementor-element.elementor-element-592a897.elementor-widget.elementor-widget-heading[data-id="592a897" data-element_type="widget" data-widget_type="heading.default"]
+                    .elementor-widget-container.d-flex.align-items-center
+                      h2.elementor-heading-title.font-weight-bolder
+                        = learning_name
+      section.elementor-element.elementor-element-ac04fb7.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section.p-0.mb-8[
+        data-id="ac04fb7"
+        data-element_type="section"
+        data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"
+        style="overflow: visible;"
+      ]
+        .splide[
+          data-controller="landing-pages--desktop-screen--splide-small"
+          data-id="#{lessons.first.id}"
+          class="js-dataId-#{lessons.first.id}-small"
+        ]
+          .splide__track
+            ul.splide__list
+              - lessons.each do |lesson|
+                - if lesson.free? && current_user.present?
+                  li.splide__slide
+                    .elementor-hover-curriculums
+                      .elementor-element.elementor-element-8bff9d2.elementor-column.elementor-col-12.elementor-top-column[
+                        data-id="8bff9d2"
+                        data-element_type="column"
+                        data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
+                        style="width: auto; height: 160px !important;"
+                      ]
+                        - if lesson.banner_image.present?
+                          .elementor-column-wrap.elementor-element-populated style="background-image: url(#{url_for(lesson.banner_image)}) !important;"
+                            - if lesson.progress(current_user) == 100
+                              .elementor-background-overlay [style="background: rgba(31, 136, 41, 0.7);"]
+                            - else
+                              .elementor-background-overlay
+                            .elementor-widget-wrap
+                              .elementor-element.elementor-element-f3940c0.elementor-widget.elementor-widget-image[
+                                data-id="f3940c0"
+                                data-element_type="widget"
+                                data-widget_type="image.default"
+                              ]
+                                .elementor-widget-container
+                                  .elementor-image
+                              .elementor-element.elementor-element-bb20e93.elementor-widget.elementor-widget-heading[
+                                data-id="bb20e93"
+                                data-element_type="widget"
+                                data-widget_type="heading.default"
+                              ]
+                                - if lesson.progress(current_user) == 100
+                                  i.far.fa-check-circle.mx-auto.my-auto.text-white.icon-2x [style="position: fixed; z-index: 1; top:60px;"]
+                                .elementor-widget-container.mt-20
+                                  a.elementor-heading-title.elementor-size-default.font-size-h5.text-hover-warning[
+                                    href="#{video_path(lesson.video)}"
+                                    role="button"
+                                  ]
+                                    = lesson.name.truncate(25)
+                                  .text.pt-5.text-left
+                                    = render "shared/buttons/play_bookmark_like_landing_page", source: lesson, options: {}
+
+                                    .info.p-4.font-size-xs
+                                      .d-flex.flex-wrap.align-items-start
+                                        .col-lg-6.pl-0
+                                          .d-flex.flex-column.flex-wrap
+                                            span.text-break.mb-3 [style="line-height: normal !important;"] = lesson.description.truncate(50)
+                                            span.text-white.m-0 [style="line-height: normal !important;"] category
+                                        .col-lg-6.px-0
+                                          span.mb-5.seasons.text-white
+                                            p.text-white.m-0 [style="line-height: normal !important;"] #{lesson.progress(current_user)}% Complete
+                                            .progress[style="height: 5px;"]
+                                              .progress-bar[
+                                                role="progressbar"
+                                                style="width: #{lesson.progress(current_user)}%;"
+                                                aria-valuenow="25"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100"
+                                              ]
+                        -else
+                          .elementor-column-wrap.elementor-element-populated
+                            - if lesson.progress(current_user) == 100
+                              i.far.fa-check-circle.mx-auto.my-auto.text-white.icon-2x [style="position: fixed; z-index: 1; top:60px;"]
+                            - else
+                              .elementor-background-overlay
+                            .elementor-widget-wrap
+                              .elementor-element.elementor-element-f3940c0.elementor-widget.elementor-widget-image[
+                                data-id="f3940c0"
+                                data-element_type="widget"
+                                data-widget_type="image.default"
+                              ]
+                                .elementor-widget-container
+                                  .elementor-image
+                              .elementor-element.elementor-element-bb20e93.elementor-widget.elementor-widget-heading[
+                                data-id="bb20e93"
+                                data-element_type="widget"
+                                data-widget_type="heading.default"
+                              ]
+                                .elementor-widget-container.mt-20
+                                  a.elementor-heading-title.elementor-size-default.font-size-h5.text-hover-warning[
+                                    href="#{video_path(lesson.video)}"
+                                    role="button"
+                                  ]
+                                    = lesson.name.truncate(25)
+                                  .text.pt-5.text-left
+                                    = render "shared/buttons/play_bookmark_like_landing_page", source: lesson, options: {}
+                                    .info.p-4.font-size-xs
+                                      .d-flex.flex-wrap.align-items-start
+                                        .col-lg-6.pl-0
+                                          .d-flex.flex-column.flex-wrap
+                                            span.text-break.mb-3 [style="line-height: normal !important;"] = lesson.description.truncate(50)
+                                            span.text-white.m-0 [style="line-height: normal !important;"] category
+                                        .col-lg-6.px-0
+                                          span.mb-5.seasons.text-white
+                                            p.text-white.m-0 [style="line-height: normal !important;"] #{lesson.progress(current_user)}% Complete
+                                            .progress[style="height: 5px;"]
+                                              .progress-bar[
+                                                role="progressbar"
+                                                style="width: #{lesson.progress(current_user)}%;"
+                                                aria-valuenow="25"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100"
+                                              ]
+                - else
+                  li.splide__slide
+                    .elementor-element.elementor-element-6bc743e.elementor-column.elementor-col-12.elementor-top-column.h-100[
+                      data-id="6bc743e"
+                      data-element_type="column"
+                      data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
+                      style="width: auto; height: 160px !important;"
+                    ]
+                      .elementor-column-wrap.elementor-element-populated
+                        .elementor-background-overlay
+                        .elementor-widget-wrap.py-9
+                          .elementor-element.elementor-element-3accdcb.elementor-view-default.elementor-widget.elementor-widget-icon[
+                            data-id="3accdcb"
+                            data-element_type="widget"
+                            data-widget_type="icon.default"
+                          ]
+                            .elementor-widget-container
+                              .elementor-icon-wrapper
+                                .elementor-icon
+                                  i.fas.fa-lock[aria-hidden="true" style="color: #EE6123 !important;"]
+                          .elementor-element.elementor-element-ec86b57.elementor-widget.elementor-widget-heading.pb-6[
+                            data-id="ec86b57"
+                            data-element_type="widget"
+                            data-widget_type="heading.default"
+                          ]
+                            .elementor-widget-container
+                              h2.elementor-heading-title.elementor-size-default
+                                = lesson.name.truncate(25)
+
+              - if lessons.count == 1
+                li.splide__slide
+                  .elementor-element.elementor-element-6bc743e.elementor-column.elementor-col-12.elementor-top-column.h-100[data-id="6bc743e" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" style="width: auto; height: 160px !important;"]
+                    .elementor-column-wrap.elementor-element-populated style="background-image: url(https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/a9.png) !important;"
+                      .elementor-background-overlay
+                      .elementor-widget-wrap.py-8
+                        .elementor-element.elementor-element-3accdcb.elementor-view-default.elementor-widget.elementor-widget-icon[data-id="3accdcb" data-element_type="widget" data-widget_type="icon.default"]
+                          .elementor-widget-container
+                            .elementor-icon-wrapper
+                              .elementor-icon
+                                i.fas.fa-lock[aria-hidden="true" style="color: #EE6123 !important;"]
+                        .elementor-element.elementor-element-ec86b57.elementor-widget.elementor-widget-heading[data-id="ec86b57" data-element_type="widget" data-widget_type="heading.default"]
+                          .elementor-widget-container
+                            h2.elementor-heading-title.elementor-size-default
+                              | Comming Soon
+
+              - if !lessons.present?
+                h6.text-white.text-capitalize.font-italic.my-5
+                  | Data Tidak Ditemukan
+
+
+  / .separator.separator-dashed.my-3.elementor-hidden-phone

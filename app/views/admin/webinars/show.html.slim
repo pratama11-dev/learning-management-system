@@ -1,0 +1,106 @@
+css:
+  .banner-image {
+    max-width: 50em;
+  }
+  img {
+    max-width: 100%;
+  }
+
+.d-flex.flex-column-fluid.mb-5
+  .container
+    .row
+      .col-12
+        .card.card-custom.gutter-b.mb-5
+          .card-header.h-auto.py-4.flex-wrap.border-0
+            .card-title
+              h3.card-label
+                | Webinar: #{@webinar.title}
+                span.text-muted.pt-2.font-size-sm.d-block = @webinar.description
+            .card-toolbar
+              button.btn.font-weight-bolder[
+                class="#{@webinar.remaining_quota > 0 ? "btn-success" : "btn-danger" }"
+              ]
+                | Sisa Kursi : #{@webinar.remaining_quota}
+
+    .row
+      .col-xl-5.col-lg-6
+        .card.card-custom.gutter-b
+          .card-header.h-auto.py-4
+            .card-title
+              h3.card-label
+                | Informasi Webinar
+          .card-body.py-4
+            .form-group.row.my-2
+              label.col-5.col-form-label Url:
+              .col-7.my-auto
+                span.form-control-plaintext.font-weight-bolder
+                  = @webinar.url
+            .form-group.row.my-2
+              label.col-5.col-form-label Durasi:
+              .col-7.my-auto
+                span.form-control-plaintext.font-weight-bolder
+                  = @webinar.duration
+            .form-group.row.my-2
+              label.col-5.col-form-label Tanggal:
+              .col-7.my-auto
+                span.form-control-plaintext.font-weight-bolder
+                  = @webinar.date.localtime.strftime("%d %B %Y %H:%M") + " WIB"
+            .form-group.row.my-2
+              label.col-5.col-form-label Tags:
+              .col-7.my-auto
+                span.form-control-plaintext.font-weight-bolder
+                  = @webinar.tag.map {|x| x }.join(", ")
+            .form-group.row.my-2
+              label.col-5.col-form-label Narasumber 
+              .col-7.my-auto
+                - @webinar.speaker_avatars.each do |avatar|
+                  .symbol-group.symbol-hover
+                    .symbol.symbol-30.symbol-circle[
+                      data-original-title=("#{avatar.filename}") 
+                      data-toggle="tooltip" 
+                      title="" 
+                    ]
+                      = image_tag avatar
+
+        .card.card-custom.gutter-b
+          .card-header.h-auto.py-4
+            .card-title
+              h3.card-label
+                | Banner Webinar
+            .card-body.pl-0.pr-0
+              - if @webinar.banner_image.present?
+                = image_tag (@webinar.banner_image), class: "rounded mx-auto d-block",
+                  style: "max-width:100%"
+
+      .col-xl-7.col-lg-6
+        .card.card-custom.gutter-b
+          .card-header.h-auto.py-4
+            .card-title
+              h3.card-label
+                | Daftar Peserta
+          .card-body.py-4
+            table.table.table-bordered
+              thead
+                tr
+                  td
+                    h6.text-center No
+                  td
+                    h6.text-center Nama
+                  td
+                    h6.text-center Tanggal Daftar
+                  td
+                    h6.text-center Actions
+              tbody
+                - @webinar.user_webinars.each_with_index do |user_webinar,index|
+                  tr
+                    td.text-center = index + 1
+                    td.text-center
+                      = user_webinar.user.name
+                    td.text-center = readable_timestamp_2(user_webinar.created_at) + " WIB"
+                    td.text-center
+                      a.btn.btn-sm.btn-light-danger[
+                        role="button"
+                        href="#{user_webinar_path(id: user_webinar.id, admin_page: true)}"
+                        data-method="delete"
+                        data-confirm="apakah anda yakin akan mengapus user: #{user_webinar.user.name} dari #{@webinar.title}"
+                      ] Delete

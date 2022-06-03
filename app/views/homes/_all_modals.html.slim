@@ -1,0 +1,46 @@
+= render "shared/modal/dynamic", \
+  dynamic_modal_id: "login_modal",\
+  dynamic_url: new_authentications_session_path, \
+  modal_show: current_user.blank? && (params[:login] == "true")
+
+= render "shared/modal/dynamic", \
+  dynamic_modal_id: "register",\
+  dynamic_url: new_registrations_sign_up_path, \
+  modal_show: current_user.blank? && (params[:register] == "true")
+
+= render "shared/modal/dynamic", \
+  dynamic_modal_id: "confirmation_modal",\
+  dynamic_url: registrations_new_confirmations_path(id: params[:id]), \
+  modal_show: current_user.blank? && (params[:confirmation] == "true")
+
+= render "shared/modal/dynamic", \
+  dynamic_modal_id: "forget_password",\
+  dynamic_url: new_authentications_password_path, \
+  modal_show: current_user.blank? && (params[:forget_password] == "true")
+
+= render "shared/modal/dynamic", \
+  dynamic_modal_id: "talks",\
+  dynamic_url: talk_path(id: "default"), \
+  modal_show: false
+
+= render "shared/modal/dynamic", \
+  dynamic_modal_id: "curriculums",\
+  dynamic_url: course_path(id: "default"), \
+  modal_show: false
+
+= render "shared/modal/dynamic", \
+  dynamic_modal_id: "lessons",\
+  dynamic_url: lesson_path(id: "default"), \
+  modal_show: false
+
+- if params[:lesson_id].present?
+  = render "shared/modal/dynamic", \
+    dynamic_modal_id: "lessons",\
+    dynamic_url: lesson_path(id: params[:lesson_id]), \
+    modal_show: true
+
+- if params[:curriculum_id].present?
+  = render "shared/modal/dynamic", \
+    dynamic_modal_id: "curriculums",\
+    dynamic_url: course_path(id: params[:curriculum_id]), \
+    modal_show: true

@@ -1,0 +1,80 @@
+section.elementor-element.elementor-element-74ec223.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section.mt-10[
+  data-id="74ec223"
+  data-element_type="section"
+  data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"
+  style="z-index: -1 !important;"
+]
+  .elementor-row
+    .elementor-element.elementor-element-abfe5a9.elementor-column.elementor-col-100.elementor-top-column[data-id="abfe5a9" data-element_type="column"]
+      .elementor-column-wrap.elementor-element-populated
+        .elementor-widget-wrap
+          .elementor-element.elementor-element-2d6c17e.elementor-widget.elementor-widget-heading[data-id="2d6c17e" data-element_type="widget" data-widget_type="heading.default"]
+            .elementor-widget-container
+              h2.elementor-heading-title.elementor-size-default
+                | Video Materi Belajar Pajak
+          .elementor-element.elementor-element-fd83db8.elementor-widget.elementor-widget-heading[data-id="fd83db8" data-element_type="widget" data-widget_type="heading.default"]
+            .elementor-widget-container
+              h2.elementor-heading-title.elementor-size-default.font-weight-normal
+                | Belajar pajak dengan materi teraktual berdasarkan
+                br
+                |  Undang-undang yang berlaku di Indonesia
+
+- @learning_taxes.each do |learning_name, lessons|
+  .d-flex.align-items-end.mb-8
+    section.elementor-element.elementor-element-3c26960.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section.pt-10.mb-5[
+      data-id="3c26960"
+      data-element_type="section"
+      data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"
+      style="z-index: -1 !important;"
+    ]
+      .elementor-row.align-items-center
+        .elementor-element.elementor-element-db0fc15.elementor-column.elementor-col-100.elementor-top-column[data-id="db0fc15" data-element_type="column"]
+          .elementor-column-wrap.elementor-element-populated
+            .elementor-widget-wrap
+              .elementor-element.elementor-element-592a897.elementor-widget.elementor-widget-heading[data-id="592a897" data-element_type="widget" data-widget_type="heading.default"]
+                .elementor-widget-container.d-flex.align-items-center
+                  h2.elementor-heading-title.font-weight-bolder
+                    = learning_name
+
+    - if current_user.present?
+      a.elementor-hidden-phone.btn__hover__more.btn.btn-hover-bg-warning.btn-text-warning.btn-hover-text-white.border-0.font-weight-bold.ml-2.mb-2[
+        type="button"
+        data-toggle="modal"
+        data-target="#lessons"
+        data-dynamic-data-id="#{lessons.first.id}"
+      ]
+        | Lihat Selengkapnya
+
+  section.elementor-element.elementor-element-ac04fb7.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section.p-0[
+    data-id="ac04fb7"
+    data-element_type="section"
+    data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"
+    style="overflow: visible;"
+  ]
+    .splide[
+      data-controller="landing-pages--desktop-screen--splide-small"
+      data-id="#{lessons.first.id}"
+      class="js-dataId-#{lessons.first.id}-small"
+    ]
+      .splide__track
+        ul.splide__list
+          - lessons.each do |lesson|
+            li.splide__slide[
+              data-controller="home-partial-render"
+              data-url="#{show_curriculum_partial_path(lesson_id: lesson.id)}"
+            ]
+          - if lessons.count == 1
+            li.splide__slide
+              .elementor-element.elementor-element-6bc743e.elementor-column.elementor-col-12.elementor-top-column.h-100[data-id="6bc743e" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" style="width: auto; height: 160px !important;"]
+                .elementor-column-wrap.elementor-element-populated style="background-image: url(https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/a9.png) !important;"
+                  .elementor-background-overlay
+                  .elementor-widget-wrap.py-8
+                    .elementor-element.elementor-element-3accdcb.elementor-view-default.elementor-widget.elementor-widget-icon[data-id="3accdcb" data-element_type="widget" data-widget_type="icon.default"]
+                      .elementor-widget-container
+                        .elementor-icon-wrapper
+                          .elementor-icon
+                            i.fas.fa-lock[aria-hidden="true" style="color: #EE6123 !important;"]
+                    .elementor-element.elementor-element-ec86b57.elementor-widget.elementor-widget-heading[data-id="ec86b57" data-element_type="widget" data-widget_type="heading.default"]
+                      .elementor-widget-container
+                        h2.elementor-heading-title.elementor-size-default
+                          | Comming Soon

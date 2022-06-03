@@ -1,0 +1,154 @@
+.elementor.elementor-17058[data-elementor-type="wp-post" data-elementor-id="17058" data-elementor-settings="[]" style="z-index: -4 !important"]
+  .elementor-inner style="z-index: -3 !important"
+    .elementor-section-wrap style="overflow: hidden; z-index: -2 !important"
+      = render 'homes/components/header'
+      = render 'homes/components/header_desktop'
+      .d-flex.flex-column.flex-root
+        .d-flex.flex-row.flex-column-fluid.page
+          = render 'homes/nav_header'
+
+      .container-fluid
+        .d-flex.flex-column-fluid.mt-5
+          a.elementor-hidden-phone.btn.btn-hover-bg-warning.btn-text-warning.btn-hover-text-white.border-0.font-weight-bold.ml-2.mb-2[
+            type="button"
+            href=root_path()
+          ]
+            | Kembali
+
+        - @user_certificates.each do |user_certificate|
+          - exam_user_package_variant_result = nil
+          - if user_certificate.base_resource_type == 'Curriculum'
+            - curriculum = user_certificate.base_source
+            - exam_user_package_variant_result = curriculum.exam_user_package_variant_result(@user)
+            - next if exam_user_package_variant_result.blank?
+          
+          - if user_certificate.base_resource_type == "Webinar"
+            - claim_date = user_certificate.base_resource.date.localtime + user_certificate.base_resource.certificate_claim_duration.to_i.days
+            - if claim_date > DateTime.now.localtime
+              - next
+
+          .row.mt-5.d-flex
+            .col-lg-4.col-md-12
+              h6.text-capitalize.font-white.font-weight-normal.text-center
+                | Sertifikat
+              .card.bg-transparent
+                .card-toolbar.ml-auto
+                  a.btn.btn-icon.btn-xl.text-hover-warning[
+                    href="#{generate_certificate_path(\
+                        base_resource_type: user_certificate.base_resource_type,\
+                        base_resource_id: user_certificate.base_resource_id,\
+                        resource_id: user_certificate.resource_id,\
+                        resource_type: user_certificate.resource_type,\
+                        type: user_certificate.base_resource_type.downcase, \
+                        user_id: @user_id, \
+                        format: 'pdf'
+                      )
+                    }"
+                  ]
+                    i.la.la-download.icon-xl
+
+                .card-body
+                  .form-group
+                    label.text-white
+                      | Jenis Sertifikat
+                    span.font-weight-boldest.text-white
+                      = user_certificate.base_resource_type
+                    .form-group
+                      label.text-white
+                        | Judul
+                      span.font-weight-boldest.text-white
+                        = user_certificate.base_resource.try(:name) || user_certificate.base_resource.try(:title)
+                    - if exam_user_package_variant_result.present?
+                      .form-group
+                        label.text-white
+                          | Nilai
+                        span.font-weight-boldest.text-white
+                          = exam_user_package_variant_result.score
+
+                    .form-group
+                      label.text-white
+                        | Diperoleh
+                      span.font-weight-boldest.text-white
+                        = user_certificate.created_at.strftime("%d %b %Y")
+
+            .col-lg-8.col-md-12 style="overflow: hidden;"
+              h4.text-capitalize.font-white.font-weight-bolder
+                | Preview
+              .card.card-custom.bg-transparent
+                .card-body
+                  iframe[
+                    src="#{generate_certificate_path(\
+                        base_resource_type: user_certificate.base_resource_type,\
+                        base_resource_id: user_certificate.base_resource_id,\
+                        resource_id: user_certificate.resource_id,\
+                        resource_type: user_certificate.resource_type,\
+                        type: user_certificate.base_resource_type.downcase, \
+                        user_id: @user_id, \
+                        format: 'pdf'
+                      )
+                    }" 
+                    width="100%" 
+                    height="600px"
+                  ]
+
+        / - @user_course.each do |course|
+          - course.curriculums.each do |curriculum|
+            - exam_user_package_variant_result = curriculum.exam_user_package_variant_result(@user)
+            - next if exam_user_package_variant_result.blank?
+            .row.mt-5.d-flex
+              .col-lg-4.col-md-12
+                h6.text-capitalize.font-white.font-weight-normal.text-center
+                  | Sertifikat
+                .card.bg-transparent
+                  .card-toolbar.ml-auto
+                    a.btn.btn-icon.btn-xl.text-hover-warning[
+                      href="#{generate_certificate_path(\
+                      base_resource_type: curriculum.class.to_s,\
+                      base_resource_id: curriculum.id,\
+                      resource_id: curriculum.ticket_for(@user.id),\
+                      resource_type: 'Exam::UserPackageVariantResult', type: 'curriculum', format: 'pdf')}"
+                    ]
+                      i.la.la-download.icon-xl
+                  .card-body
+                    .form-group
+                      label.text-white
+                        | Jenis Sertifikat
+                      span.font-weight-boldest.text-white
+                        = course.name
+                      .form-group
+                        label.text-white
+                          | Judul
+                        span.font-weight-boldest.text-white
+                          = curriculum.name
+                      / .form-group
+                        label.text-white
+                          | Nama
+                        span.font-weight-boldest.text-white
+                          = @user_certificates.user.full_name
+                      .form-group
+                        label.text-white
+                          | Diperoleh
+                        span.font-weight-boldest.text-white
+                          = exam_user_package_variant_result.submit_exam_at.strftime("%d %b %Y")
+
+
+              / .col-lg-8.col-md-12 style="overflow: hidden;"
+                h4.text-capitalize.font-white.font-weight-bolder
+                  | Preview
+                .card.card-custom.bg-transparent
+                  .card-body
+                    iframe[src="#{generate_certificate_path(
+                        base_resource_type: curriculum.class.to_s,
+                        base_resource_id: curriculum.id,
+                        resource_id: curriculum.ticket_for(@user.id),
+                        user_id: @user.id,
+                        resource_type: 'Exam::UserPackageVariantResult',
+                        type: 'curriculum',
+                        format: 'pdf'
+                      )
+                    }" width="100%" height="600px"]
+
+
+
+      = render 'homes/components/footer_desktop'
+      = render 'homes/components/footer_phone'

@@ -1,0 +1,54 @@
+#kt_content.content.flex-column-fluid
+  .row
+    .col-md-10.mx-auto
+      #kt_card_1.card.card-custom.mb-4 data-card="true"
+        .card-header.col-md-12
+          .card-title
+            h3 Add New Question          
+        .card-body.col-md-10.mx-auto
+          = form_for @new_question, url: admin_exams_path, html: { class: "form", id: "kt_form"} do |form|
+            - if @new_question.category.present?
+              = form.hidden_field :category
+            - else
+              .form-group
+                label Category Name
+                = form.text_field :category, class: "form-control", placeholder: "Category", required: true
+
+            .form-group
+              label Question
+              = form.text_area :quest, class: "form-control", placeholder: "Question", rows: 5, style: "resize: none;", data: { controller: "picker--texteditor"}
+
+            .form-group
+              label Note
+              = form.text_area :note, class: "form-control", placeholder: "Note Question", rows: 7, style: "resize: none;", data: { controller: "picker--texteditor"}
+
+            .card.card-body.bg-secondary
+              h4.mb-10.font-weight-bold.text-dark Enter New Answer
+              #kt_repeater_1 data-controller="picker--repeater"
+                .form-group.row
+                  .col-lg-12 data-repeater-list="answers" 
+                    .form-group.row.align-items-center data-repeater-item=""
+                      .card.col-md-12
+                        .card-body.row
+                          .col-md-8.mt-2
+                            label Answer
+                            textarea.form-control placeholder=("Answer") type="text" name="answer" style="resize: none;height: 70px" styl="resize: none;"
+
+                          .col-md-2.mt-2.text-center
+                            label Correct Answer
+                            br
+                            input.form-control type="checkbox" name="correct" style="height: 20px;"
+                            
+                          .col-md-2.mt-2
+                            a.btn.btn-sm.font-weight-bolder.btn-light-danger.mt-5 data-repeater-delete="" href="javascript:;" 
+                              i.la.la-trash-o
+                              | Delete
+
+                .form-group.row
+                  .col-lg-4
+                    a.btn.btn-sm.font-weight-bolder.btn-light-primary.js-date-reload data-repeater-create="" href="javascript:;" 
+                      i.la.la-plus
+                      | Add
+
+            .text-center.mt-5
+              = form.submit "Save Question", class: "btn btn-primary"

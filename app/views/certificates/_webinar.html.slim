@@ -1,0 +1,27 @@
+
+body.text-center style="background-image:url('#{wicked_pdf_asset_base64('certificate/certificate.png')}');background-size: cover;background-repeat: no-repeat;"
+  .no-certificate
+    = @user_certificate.id.truncate(25)
+
+  .name-brvete-session [style="text-align: center;"]
+    | PARTISIPASI
+    / = @lesson.name
+
+  .name-certificate [style="text-transform: capitalize;"]
+    = @user_certificate.user.name
+
+  .number-participant
+    | NIP: #{@user_certificate.user.id}
+
+  .text-detail
+    br
+    | Telah berpartisipasi sebagai peserta webinar #{@user_certificate.base_source.title&.titleize}
+    br pada tanggal #{readable_date_2(@user_certificate.base_source.date || Date.today)}
+
+  .barcode-image style="position: absolute; bottom: 140px; left: 56px;"
+    / = barcode_svg
+    = image_tag barcode_png, height: 100, width: 100
+  / .barcode-image
+  /   = barcode_svg
+  / .ttd
+    = image_tag wicked_pdf_asset_base64('certificate/ttd.png'), height: 100

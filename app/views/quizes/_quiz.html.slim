@@ -1,0 +1,24 @@
+a.d-none.js-next-video href="#{next_video_path(@video.id)}"
+.font-weight-normal.text-white.text-capitalize.font-size-h5
+  = @question['question']['quest'].html_safe
+
+.d-flex.flex-column.flex-grow-1.mr-5.radio-list.mt-5[
+  data-controller="exam--answer"
+  data-url="#{ajax_answer_quiz_path(id: @video.id)}"
+  data-question-id="#{@question['question']['id']}"
+  data-number="#{params[:no] || 0}"
+]
+  - alfabet_answer = ("A".."Z").to_a
+  - @question['answers'].each_with_index do |answer, index|
+    -  if @quizes_service.exam_answers(@question['question']['id'], answer['id'])
+      label.radio.radio-outline.radio-success.list-item.card-spacer-x.py-4.mb-5.border.rounded.text-white.text-capitalize
+        input name="answer" type="radio" value="#{answer['id']}" checked=true
+        span
+        sp.mr-3 #{alfabet_answer[index]}.
+        = answer['answer'].html_safe
+    - else
+      label.radio.radio-outline.radio-success.list-item.card-spacer-x.py-4.mb-5.border.rounded.text-white.text-capitalize
+        input name="answer" type="radio" value="#{answer['id']}"
+        span
+        sp.mr-3 #{alfabet_answer[index]}.
+        = answer['answer'].html_safe

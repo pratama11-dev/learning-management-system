@@ -1,0 +1,109 @@
+section.elementor-element.elementor-element-4d18ab1.elementor-hidden-desktop.elementor-hidden-tablet.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section.px-7[data-id="4d18ab1" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"]
+  .elementor-container.elementor-column-gap-default
+    .elementor-row
+      .elementor-element.elementor-element-f2ddc9d.elementor-column.elementor-col-100.elementor-top-column[data-id="f2ddc9d" data-element_type="column"]
+        .elementor-column-wrap.elementor-element-populated
+          .elementor-widget-wrap
+            .elementor-element.elementor-element-66510db.elementor-widget.elementor-widget-heading[data-id="66510db" data-element_type="widget" data-widget_type="heading.default"]
+              .mr-6
+                h6.elementor-heading-title.font-size-h6
+                  | Program Sertifikasi
+            .elementor-element.elementor-element-c232a4a.elementor-widget.elementor-widget-heading[data-id="c232a4a" data-element_type="widget" data-widget_type="heading.default"]
+              .elementor-widget-container
+                p.elementor-size-default.font-size-h6 [style="line-height: initial !important;"]
+                  | Membimbing peserta didik melalui pembelajaran sesuai dengan silabus Brevet untuk mendapatkan sertifikat kemampuan
+- @courses.each do |course|
+  - next if course.curriculums.blank?
+  section.elementor-element.elementor-element-ef05f0d.elementor-hidden-desktop.elementor-hidden-tablet.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section[
+    data-id="ef05f0d"
+    data-element_type="section"
+    data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"
+  ]
+    .elementor-container.elementor-column-gap-default
+      .elementor-row
+        .elementor-element.elementor-element-52c4f50.elementor-column.elementor-col-100.elementor-top-column[data-id="52c4f50" data-element_type="column"]
+          .elementor-column-wrap.elementor-element-populated.pl-0
+            .elementor-widget-wrap
+              .elementor-element.elementor-element-2066933.elementor-widget.elementor-widget-heading[data-id="2066933" data-element_type="widget" data-widget_type="heading.default"]
+                .elementor-widget-container
+                  h6.elementor-heading-title.font-size-h6.mb-5
+                    = course.name
+  section.elementor-element.elementor-element-c62a98e.elementor-hidden-desktop.elementor-hidden-tablet.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section.p-0[
+    data-id="c62a98e"
+    data-element_type="section"
+    data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"
+  ]
+    .splide.[
+      data-controller="landing-pages--phone-screen--splide-phone-screen"
+      data-id="#{course.id}"
+      class="js-dataId-#{course.id}-phone"
+    ]
+      .splide__track.px-0
+        ul.splide__list
+          - course.curriculums.each do |curriculum|
+            - if current_user.present?
+              / li.splide__slide
+                .elementor-element.elementor-element-66bb911.elementor-column.elementor-col-12.elementor-top-column.h-100[
+                  data-id="66bb911"
+                  data-element_type="column"
+                  data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
+                ]
+                  .elementor-column-wrap.elementor-element-populated
+                    .elementor-background-overlay
+                    .elementor-widget-wrap
+                      .elementor-element.elementor-element-ce510cd.elementor-align-center.elementor-widget.elementor-widget-button[data-id="ce510cd" data-element_type="widget" data-widget_type="button.default"]
+                        .elementor-widget-container
+                          .elementor-button-wrapper
+                            a.elementor-button-link.elementor-button.elementor-size-sm[href="#" role="button"]
+                              span.elementor-button-content-wrapper
+                                span.elementor-button-text
+                                  | Ambil Ujian
+                      .elementor-element.elementor-element-4c8c15c.elementor-widget.elementor-widget-heading[data-id="4c8c15c" data-element_type="widget" data-widget_type="heading.default"]
+                        .elementor-widget-container
+                          h6.elementor-heading-title.font-size-h6
+                            | Pengantar Ketentuan Umum dan Pajak
+              li.splide__slide
+                .elementor-element.elementor-element-d97271f.elementor-column.elementor-col-12.elementor-top-column.h-100[
+                  data-id="d97271f"
+                  data-element_type="column"
+                  data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
+                ]
+                  - if course.banner_image.present?
+                    .elementor-column-wrap.elementor-element-populated style="background-image: url(#{url_for(course.banner_image)}) !important;"
+                      .elementor-background-overlay
+                      .elementor-widget-wrap
+                        .elementor-element.elementor-element-70de938.elementor-widget.elementor-widget-heading.mb-0[data-id="70de938" data-element_type="widget" data-widget_type="heading.default"]
+                          .elementor-widget-container.pb-0
+                            h6.elementor-heading-title.font-size-h6
+                              = curriculum.name.truncate(30)
+                        .elementor-element.elementor-element-cb6c729.elementor-widget.elementor-widget-spacer[data-id="cb6c729" data-element_type="widget" data-widget_type="spacer.default"]
+                          .elementor-widget-container
+                            .elementor-spacer
+                              .elementor-spacer-inner
+                  - else
+                    .elementor-column-wrap.elementor-element-populated
+                      .elementor-background-overlay
+                      .elementor-widget-wrap
+                        .elementor-element.elementor-element-70de938.elementor-widget.elementor-widget-heading.mb-0[data-id="70de938" data-element_type="widget" data-widget_type="heading.default"]
+                          .elementor-widget-container.pb-0
+                            h6.elementor-heading-title.font-size-h6
+                              = curriculum.name.truncate(30)
+                        .elementor-element.elementor-element-cb6c729.elementor-widget.elementor-widget-spacer[data-id="cb6c729" data-element_type="widget" data-widget_type="spacer.default"]
+                          .elementor-widget-container
+                            .elementor-spacer
+                              .elementor-spacer-inner
+            - else
+              li.splide__slide
+                .elementor-element.elementor-element-f59b68f.elementor-column.elementor-col-12.elementor-top-column.h-100[data-id="f59b68f" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"]
+                  .elementor-column-wrap.elementor-element-populated
+                    .elementor-background-overlay
+                    .elementor-widget-wrap
+                      .elementor-element.elementor-element-4aae6fc.elementor-view-default.elementor-widget.elementor-widget-icon[data-id="4aae6fc" data-element_type="widget" data-widget_type="icon.default"]
+                        .elementor-widget-container
+                          .elementor-icon-wrapper
+                            .elementor-icon
+                              i.fas.fa-lock[aria-hidden="true" style="color: #EE6123 !important;"]
+                      .elementor-element.elementor-element-6ebf33a.elementor-widget.elementor-widget-heading[data-id="6ebf33a" data-element_type="widget" data-widget_type="heading.default"]
+                        .elementor-widget-container.pb-0
+                          h6.elementor-heading-title.font-size-h6.mb-5
+                            = curriculum.name

@@ -1,0 +1,126 @@
+.d-flex.flex-column-fluid.mb-5
+  .container
+    .row
+      .col-12
+        .card.card-custom.gutter-b.mb-5
+          .card-header.h-auto.py-4.flex-wrap.border-0
+            .card-title
+              h3.card-label
+                | #{@course.name}
+                span.text-muted.pt-2.font-size-sm.d-block = @course.description.length > 100 ? truncate(@course.description, :length => 80, :separator => " ") : @course.description
+            .card-toolbar.d-flex.w-auto
+              a.btn.btn-default.mr-3 title="Ubah" data-toggle="modal" data-target="#editVideo-#{@course.id}"
+                span.fa.fa-pencil-alt.text-primary
+
+    .row
+      .col-xl-12.col-lg-12
+        .card.card-custom.gutter-b
+          .card-header.h-auto.py-4
+            .card-title
+              h3.card-label
+                | Informasi Brevet
+          .card-body.d-flex.py-4
+            .col-lg-6
+              .form-group.column.my-2
+                label.col-12.col-form-label Nama :
+                .col-12.my-auto
+                  span.form-control-plaintext.font-weight-bolder
+                    = @course.name
+              .form-group.column.my-2
+                label.col-12.col-form-label Deskripsi :
+                .col-12.my-auto
+                  span.form-control-plaintext.font-weight-bolder
+                    = @course.description
+              .form-group.column.my-2
+                label.col-12.col-form-label Tipe :
+                .col-12.my-auto
+                  span.form-control-plaintext.font-weight-bolder
+                    | Brevet
+            .col-lg-6
+              .card.card-custom.gutter-b.bg-transparent.shadow-none
+                .card-header.h-auto.border-0
+                  .card-title
+                    h3.card-label
+                      | Banner Brevet
+                .card-body.pl-0.pr-0
+                  - if @course.banner_image.present?
+                    = image_tag (@course.banner_image), class: "rounded mx-auto d-block",
+                      style: "max-width:100%"
+
+      .col-xl-12.col-lg-12
+        .card.card-custom.gutter-b
+          .card-header.h-auto.py-4
+            .card-title
+              h3.card-label
+                | Daftar Modul
+          .card-body.py-4
+            table.table data-controller="datatables-static"
+              thead
+                tr
+                  td
+                    h6.text-center No
+                  td
+                    h6.text-center Nama
+                  td
+                    h6.text-center Deskripsi
+                  td
+                    h6.text-center Waktu Ujian
+                  td
+                    h6.text-center Nilai Minimum Ujian
+                  td
+                    h6.text-center Total Soal Ujian
+                  td
+                    h6.text-center Tanggal Dibuat
+                  td
+                    h6.text-center Actions
+              tbody
+                - @course.curriculums.each_with_index do |curriculum,index|
+                  tr
+                    td.text-center = index + 1
+                    td title="#{curriculum.name}"
+                      = truncate(curriculum.name, :length => 50, :separator => " ")
+                    td title="#{curriculum.description}"
+                      = truncate(curriculum.description, :length => 80, :separator => " ")
+                    td.text-center
+                      = curriculum.exam_time
+                    td.text-center
+                      = curriculum.exam_minimum_score
+                    td.text-center
+                      = curriculum.total_question
+                    td.text-center
+                      = readable_date_3(curriculum.created_at)
+                    td.text-center
+                      .col-lg-12
+                        = link_to admin_select_questions_path(curriculum_id: curriculum.id), class: 'btn btn-primary mb-2', title: 'Pilih Quiz/Trivia' do
+                          span.fa.fa-plus.text-white.mr-2
+                          | Pilih Soal Ujian
+                      .d-flex
+                        .col-lg-6
+                          a.btn.btn-sm.btn-light-primary[
+                            role="button"
+                            href="#{admin_curriculum_path(id: curriculum.id)}"
+                          ] Detail
+                        .col-lg-6
+                          a.btn.btn-sm.btn-light-danger[
+                            role="button"
+                            href="#{admin_curriculum_path(id: curriculum.id)}"
+                            data-method="delete"
+                            data-confirm="apakah anda yakin akan mengapus user: #{curriculum.name} dari #{@course.name}"
+                          ] Delete
+                      .col-lg-12
+                        a.btn.btn-link[
+                          type="button"
+                          data-toggle="modal"
+                          data-target="#listReviewModal"
+                        ] Lihat Review
+
+                      #listReviewModal.modal.fade[
+                        tabindex="-1"
+                        role="dialog"
+                        aria-labelledby="exampleModalLabel"
+                        aria-hidden="true"
+                      ]
+                        = render partial: "admin/courses/partials/list_review", locals: {curriculum: curriculum}, cached: true 
+
+
+= render "admin/courses/partials/edit_course", course: @course

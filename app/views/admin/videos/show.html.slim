@@ -1,0 +1,76 @@
+.d-flex.flex-column-fluid.mb-5
+  .container
+    .card.card-custom
+      .card-header.flex-wrap.border-0.pt-6.pb-0
+        .card-title
+          h3.card-label
+            = @video.name
+            span.text-muted.pt-2.font-size-sm.d-block = @video.description
+        .card-toolbar        
+          a.btn.btn-primary.font-weight-bolder data-toggle="modal" data-target="#newVideo"
+            span.svg-icon.svg-icon-md
+              svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1" 
+                  rect height="24" width="24" x="0" y="0" /
+                  circle cx="9" cy="15" fill="#000000" r="6" /
+                  path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3" /
+            | Tambah Timestamp
+            
+      .card-body
+        - if @video.file.present?
+          = content_tag :div, data: { controller: 'videos--player', thumbnails: @video.thumbnails, fullscreen: false, autoplay: false } do 
+            = content_tag :video, id: "video-js-player", data: { target: 'videojs.player' }, class: "video-js vjs-big-play-centered vjs-default-skin vjs-16-9" do
+              - if @video.source_video_url.present? 
+                = tag :source, src: @video.source_video_url, type: "application/x-mpegURL"
+              - elsif @video.file.attached? 
+                = tag :source, src: url_for(@video.file), type: @video.file.content_type 
+              p class="vjs-no-js"
+                | To view this video please enable JavaScript, and consider upgrading to a web browser that
+                a href="https://videojs.com/html5-video-support/" target="_blank" supports HTML5 video
+
+      .card-footer
+        -  if @video.timestamps.present?
+          h3 TimeStamp
+          hr
+          table.table.table-bordered.timestamps
+            tbody
+              - @video.timestamps.split("\n").each do |desc|
+                - timestamp = desc.split(" ").first
+                - details = (desc.split(" ") - [timestamp]).join(" ")
+                tr
+                  td 
+                    a.js-timestamp href="javascript:;" = timestamp
+                  td = details
+          hr
+
+= render  "admin/videos/partials/add_timestamp"
+
+.d-none.js-url-timestamp[
+  data-url="#{ajax_timestamp_path(id: @video.id)}" 
+  data-time="0"
+  data-controls="true"
+  data-is-update-timestamp="false"
+  data-watch-video-id="#{@video.id}"
+  data-is-video-talks="#{@is_video_talks}"
+]
+#modal-timestamp.d-none
+  .timestamps style="background-color: white;width: 20%;top: 3%;right: 3%;position: absolute;"
+    .card.custom-card
+      .card-header.pb-0
+        h3.card-title.text-secondary
+          | Timestamp
+      .card-body
+        table.table.table-bordered
+          tbody
+            -  if @video.timestamps.present?
+              - @video.timestamps.split("\n").each do |desc|
+                - timestamp = desc.split(" ").first
+                - details = (desc.split(" ") - [timestamp]).join(" ")
+                tr
+                  td
+                    a.js-timestamp href="javascript:;" = timestamp
+                  td = details
+            - else
+              tr
+                td colspan="2"
+                  | No Timestamp

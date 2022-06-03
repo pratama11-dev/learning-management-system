@@ -1,0 +1,61 @@
+- if webinar.attended_by(current_user.id) && DateTime.now > (webinar.date - 60.minutes)
+  a.btn.btn-warning.font-weight-bolder.btn-sm[
+    role="button"
+    href="#{webinar.url}"
+    target="_blank"
+  ]
+    | Join Zoom Meeting
+
+- if webinar.is_done?
+  button.btn.btn-danger.font-weight-bolder.btn-sm
+    | Webinar telah selesai
+
+- if !webinar.is_live? && !webinar.is_done?
+  - if !webinar.attended_by(current_user.id)
+    button.btn.btn-warning.font-weight-bolder.mr-2.btn-sm[
+      style="background-color: #EE6123 !important;"
+      data-controller="webinars--user-join"
+      data-action="click->webinars--user-join#handleClick"
+      data-webinars--user-join-path="#{user_webinars_path}"
+      data-webinars--user-join-webinar-id="#{webinar.id}"
+      data-webinars--user-join-availability="#{webinar.remaining_quota > 0 ? "true" : "false" }"
+    ]
+      | Daftar Disini
+
+  - if webinar.attended_by(current_user.id) && DateTime.now < (webinar.date - 60.minutes)
+    button.btn.btn-success.font-weight-bolder.btn-sm.text-capitalize.mr-2.mb-2
+      | Anda telah terdaftar
+
+    button.btn.btn-warning.font-weight-bolder.btn-sm.text-capitalize.mb-2[
+      data-toggle="modal"
+      data-target="#removeFromUserWebinar"
+    ]
+      | Batalkan
+
+    #removeFromUserWebinar.modal.fade[
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="removeFromUserWebinar"
+      aria-hidden="true"
+    ]
+      .modal-dialog[role="document"]
+        .modal-content style="background-color:#242424 !important;"
+          .modal-header.d-none
+          .modal-body
+            | Apakah anda yakin akan membatalkan untuk mengikuti Webinar: #{webinar.title}
+          .modal-footer[
+            style="border:0px;"
+          ]
+            button.btn.btn-light-danger.font-weight-bolder.btn-sm[
+              type="button"
+              data-dismiss="modal"
+            ]
+              | Tidak
+            button.btn.btn-primary.font-weight-bolder.btn-sm[
+              type="button"
+              data-controller="webinars--user-removal"
+              data-action="click->webinars--user-removal#handleClick"
+              data-webinars--user-removal-path="#{user_webinar_path(id: webinar.ticket_for(current_user.id), webinar_id: webinar.id)}"
+              data-webinars--user-removal-webinar-title="#{webinar.title}"
+            ]
+              | Setuju

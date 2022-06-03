@@ -1,0 +1,95 @@
+.d-flex.flex-column-fluid
+  /! begin::Container
+  .container
+    .card.card-custom
+      .card-header.flex-wrap.border-0.pt-6.pb-0
+        .card-title
+          h3.card-label
+            | List Taxsamtalks
+            span.text-muted.pt-2.font-size-sm.d-block All List Taxsamtalks you have created.
+        .card-toolbar
+          a.btn.btn-primary.font-weight-bolder[
+            data-toggle="modal"
+            data-target="#newVideo"
+          ]
+            span.svg-icon.svg-icon-md
+              svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1" 
+                  rect height="24" width="24" x="0" y="0" /
+                  circle cx="9" cy="15" fill="#000000" r="6" /
+                  path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3" /
+            | Tambah Taxsamtalks
+            
+      .card-body
+        / .mb-7
+          .row.align-items-center
+            .col-lg-9.col-xl-8
+              .row.align-items-center
+                .col-md-4.my-2.my-md-0
+                  .input-icon
+                    input#kt_datatable_search_query.form-control placeholder="Search..." type="text" /
+                    span
+                      i.flaticon2-search-1.text-muted
+        .tab-content
+          .tab-pane.p-5.active role="tabpanel"
+            / #kt_datatable.datatable.datatable-bordered.datatable-head-custom[
+            /   data-admin--api--talks--index-data-path=api_talks_index_path
+            /   data-controller="admin--api--talks--index table-dragula"
+            / ]
+
+            table.table[
+              data-controller="table-dragula"
+              data-url="#{admin_number_order_talks_path}"
+            ]
+              thead
+                tr
+                  th
+                  th Nama
+                  th Deskripsi
+                  th Feedback
+                  th Tanggal
+                  th Actions
+              tbody
+                - @talks.each_with_index do|talk|
+                  tr#id data-id="#{talk.id}"
+                    td.cursor-pointer
+                      span.fas.fa-align-justify
+                    td = talk.name
+                    td = talk.description
+                    td 
+                      span.font-weight-bolder
+                        i.far.fa-thumbs-up.mr-5
+                          = talk.total_feedback[:like]
+                        i.far.fa-thumbs-down
+                          = talk.total_feedback[:dislike]                      
+                    td = talk.created_at
+                    td
+                      a.btn.btn-sm.btn-clean.btn-icon[
+                        href="#{admin_talk_path(id: talk.id)}" 
+                        title="Tampilkan"
+                      ]
+                        i.fa.fa-eye.text-primary
+                      a.btn.btn-sm.btn-clean.btn-icon[
+                        data-toggle="modal" 
+                        data-target="#editVideo-#{talk.id}" 
+                        title="Ubah"
+                      ]
+                        i.fa.fa-pencil-alt.text-primary
+                      a.btn.btn-sm.btn-clean.btn-icon[
+                        data-confirm=("Apakah anda yakin ingin menghapus data ini?") 
+                        data-method="delete" 
+                        href="#{admin_talk_path(id: talk.id)}"
+                        title="Delete" 
+                      ]
+                        i.la.la-trash.text-danger
+
+
+                    
+= render "admin/talks/partials/new_talk"
+- @talks.each_with_index do|talk, index|
+  = render "admin/talks/partials/edit_talk", talk: talk
+
+css:
+  .gu-mirror {
+    display: none;
+  }

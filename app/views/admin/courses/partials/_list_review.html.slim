@@ -1,0 +1,33 @@
+.modal-dialog.modal-xl[role="document"]
+  .modal-content
+    .modal-header
+      h5#exampleModalLabel.modal-title
+        | List Review
+      button.close[type="button" data-dismiss="modal" aria-label="Close"]
+        i.ki.ki-close[aria-hidden="true"]
+    .modal-body
+      table.table
+        thead
+          tr
+            td
+              h6 No
+            td
+              h6 Nama User
+            td
+              h6 Rating
+            td
+              h6 Komentar
+        tbody
+          - @user_ratings.select {|x|curriculum.id == x[:resource_id]}.each_with_index do |user_rating, index|
+            tr
+              td
+                | #{index + 1}
+              td
+                | #{user_rating.user&.name}
+              td
+                | #{user_rating.rating}
+              td
+                | #{user_rating.comment}
+    .modal-footer
+      button.btn.btn-light-primary.font-weight-bold[type="button" data-dismiss="modal"]
+        | Close

@@ -1,0 +1,98 @@
+#newVideo.modal.fade aria-hidden="true" aria-labelledby="staticBackdrop" role="dialog" tabindex="-1"
+  .modal-dialog.modal-xl role="document"
+    = form_with model: @new_course, url: admin_courses_path, html: { class: "form-group w-100" } do |f|
+      .modal-content
+        .modal-header
+          h5#exampleModalLabel.modal-title Tambah Brevet
+          button.close aria-label="Close" data-dismiss="modal" type="button"
+            i.ki.ki-close aria-hidden="true"
+        .modal-body.d-flex
+          .col-lg-6.border-right
+            = f.hidden_field :id
+            .form-group
+              label.col-sm-2.col-form-label Nama
+              = f.text_field :name, class: "form-control", placeholder: "Nama Brevet Pajak"
+            .form-group
+              label.col-sm-2.col-form-label Deskripsi
+              = f.text_area :description, class: "form-control", rows: 4, placeholder: "Deskrisi Brevet Pajak"
+            .form-group
+              label
+                | Banner Image
+              div              
+              - banner_image = "https://preview.keenthemes.com/metronic/theme/html/demo3/dist/assets/media/users/blank.png"
+              #kt_image_5.image-input.image-input-empty.image-input-outline.border-1[style="background-image: url(#{banner_image})"]
+                .image-input-wrapper
+                label.btn.btn-xs.btn-icon.btn-circle.btn-white.btn-hover-text-primary.btn-shadow.flex-wrap[data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar"]
+                  i.fa.fa-pen.icon-sm.text-muted.mt-2
+                  = f.file_field :banner_image, class: "form-control",accept:"image/x-png, image/gif, image/jpeg"
+                  input[type="hidden" name="profile_avatar_remove"]
+                span.btn.btn-xs.btn-icon.btn-circle.btn-white.btn-hover-text-primary.btn-shadow[data-action="cancel" data-toggle="tooltip" title="" data-original-title="Cancel avatar"]
+                  i.ki.ki-bold-close.icon-xs.text-muted
+                span.btn.btn-xs.btn-icon.btn-circle.btn-white.btn-hover-text-primary.btn-shadow[data-action="remove" data-toggle="tooltip" title="" data-original-title="Remove avatar"]
+                  i.ki.ki-bold-close.icon-xs.text-muted
+
+          .col-lg-6
+            h5 Modul Pajak
+            .form-group
+              div[
+                data-controller='dynamic-input'
+                data-dynamic-input-insertion-adjacent-position='afterend'
+                data-dynamic-input-requesting-index="1"
+                class="form-group"
+              ]
+                div data-target='dynamic-input.element'
+                  .form-group.pt-2
+                    label.col-sm-6.col-form-label
+                      | Nama Modul
+                    .col-sm-12.d-flex
+                      = text_field_tag 'curriculum[][name]', "",
+                        class: 'form-control mr-2',
+                        placeholder: 'Nama Modul Pajak',
+                        required: true,
+                        data: { target: 'dynamic-input.input', controller: "select2" }
+
+                      button.btn.btn-danger type='button' data-action='click->dynamic-input#remove'
+                        i.fas.fa-trash
+
+                  .form-group
+                    label.col-sm-6.col-form-label
+                      | Deskripsi Modul
+                    .col-sm-12
+                      = text_area_tag 'curriculum[][description]', "",
+                        class: 'form-control',
+                        required: true,
+                        rows: 4,
+                        placeholder: "Deskripsi Modul Pajak",
+                        data: { target: 'dynamic-input.input' }
+                  .separator.separator-solid.mb-5
+                  h5 Ujian
+                  .form-group
+                    label.col-sm-6.col-form-label
+                      | Waktu Ujian (*Menit)
+                    .col-sm-12
+                      = number_field_tag 'curriculum[][exam_time]', "",
+                        class: 'form-control',
+                        required: true,
+                        rows: 4,
+                        placeholder: "Waktu Ujian",
+                        data: { target: 'dynamic-input.input' }
+
+
+                  .form-group
+                    label.col-sm-6.col-form-label
+                      | Minimal Score Ujian
+                    .col-sm-12
+                      = number_field_tag 'curriculum[][exam_minimum_score]', "",
+                        class: 'form-control',
+                        required: true,
+                        rows: 4,
+                        placeholder: "Minimal Score Ujian",
+                        data: { target: 'dynamic-input.input' }
+                  .separator.separator-solid.mb-5
+
+                .form-group.row.d-block.text-center.mt-2
+                  button.btn.btn-success type='button' data-action='click->dynamic-input#add'
+                    | Tambah Modul Pajak
+        .modal-footer
+          button.btn.btn-light-primary.font-weight-bold data-dismiss="modal" type="button"  Close
+          = f.submit "Simpan", class: "btn btn-primary font-weight-bold"

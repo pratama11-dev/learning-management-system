@@ -1,0 +1,59 @@
+#kt_content.content.flex-column-fluid
+  .row
+    .col-md-10.mx-auto
+      #kt_card_1.card.card-custom.mb-4 data-card="true"
+        .card-header.col-md-12
+          h3.card-title.align-items-start.flex-column.pt-2
+            span.font-weight-bolder.text-success = @curriculum.name
+            span.text-muted.mt-3.font-weight-bold.font-size-sm Total: #{@questions.count} Soal
+
+          .card-toolbar
+            = link_to admin_select_questions_path(curriculum_id: @curriculum.id, category_question: @questions&.first&.category), class: "btn btn-primary" do
+              span.fa.fa-plus.mr-4
+              | Add new Question
+
+            a.btn.btn-icon.btn-sm.btn-hover-light-primary.ml-5 data-card-tool="toggle" data-placement="top" data-toggle="tooltip" href="#" title=("Toggle Card") 
+              i.ki.ki-arrow-down.icon-nm
+
+        .card-body
+          - @questions.each.with_index(1) do |question, index|
+            .col-xl-12
+              .card.card-custom.bgi-no-repeat.card-border.gutter-b.card-stretch id="kt_card_#{index}" data-card="true"
+                .card-title
+                  - if question.updated_by.present?
+                    .text-left.p-5.position-absolute style="background-color: #eef0f8;"
+                      label.text-gray
+                        | Edited at : 
+                        = question.updated_at.strftime("%d %B %Y")
+                      .text-gray
+                        | By : #{question.updated_by}
+                      
+                .card-body
+                  p.text-dark-75.font-weight-bolder.font-size-h5.m-0 = "No. #{index}"
+                  .text-dark-75.font-weight-bolder.font-size-h5.m-0.style-question
+                    / = image_tag(url_for(exam.image), height: "200") if exam.image.present?
+                    br
+                    = question.quest.to_s.gsub(/\n/, '<br/>').html_safe
+
+                  hr
+                  - alfabet_answer = ("A".."Z").to_a
+
+                  table
+                    tbody.font-size-h5.m-0.style-question
+                      - question.exam_answers.each_with_index do |answer, index|
+                        tr
+                          td.align-top
+                            - if answer.is_correct
+                              span.fa.fa-check.text-success.mr-4
+                            - else
+                              span.fa.fa-times.text-danger.mr-4
+                          td.align-top
+                            = "#{alfabet_answer[index]}. "
+                          td width="0%"
+                            = answer.answer.to_s.gsub(/\n/, '<br/>').html_safe
+
+                  hr
+                  | Note: 
+                  .card
+                    .card-body
+                      = question&.note&.html_safe

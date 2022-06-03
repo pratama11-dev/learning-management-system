@@ -1,0 +1,43 @@
+#kt_content.content.d-flex.flex-column.flex-column-fluid
+  #kt_subheader.subheader.py-2.py-lg-6.subheader-solid
+    .container-fluid.d-flex.align-items-center.justify-content-between.flex-wrap.flex-sm-nowrap
+      .d-flex.align-items-center.flex-wrap.mr-1
+        .d-flex.align-items-baseline.flex-wrap.mr-5
+          h5.text-dark.font-weight-bold.my-1.mr-5 Library
+    
+  .d-flex.flex-column-fluid
+    .container
+      .card.card-custom data-card="true"
+        .card-header.card-primary
+          .card-title
+            | Edit #{@library.name} 
+          .card-toolbar
+            a.btn.btn-icon.btn-sm.btn-hover-light-primary.mr-1 data-card-tool="toggle" data-placement="top" data-toggle="tooltip" href="#" title=("Toggle Card") 
+              i.ki.ki-arrow-down.icon-nm
+        .card-body.p-6
+          .row.clearfix
+
+            .col-md-3.p-5
+              .card
+                a.hover_card href="#{admin_library_path(@library)}" target="_blank"
+                  .card-header
+                    | Dokumen #{@library.name.truncate(20)}
+                  div style="height: 350px;"
+                    - if @library.cover.present?
+                      = image_tag @library.cover, class: "w-100", style: "max-height: 350px;"
+                    - else
+                      = image_tag "services_01.png", class: "w-100", style: "max-height: 350px;"
+          
+            .col-md-8.text-left
+              = form_with model: @library, url: admin_library_path(@library), html: { class: "form-group custom-file" } do |f|
+                .row
+                  .col-md-12.ml-5.p-0
+                    = f.text_field :name, class: "form-control", placeholder: "File Name : #{@library&.file&.filename} "
+                  .col-md-10.ml-5.form-group.mt-4.p-0
+                    = f.file_field :cover, class: "custom-file-input", accept: "image/*"
+                    label.custom-file-label for="customFile" Choose Cover
+                  .col-md-12.pt-4
+                    = f.file_field :content_html, class: "d-none"
+                  .col-md-12.pt-4
+                    = f.submit "Simpan", class: "btn btn-primary"
+                      

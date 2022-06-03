@@ -1,0 +1,23 @@
+#newBanner.modal.fade aria-hidden="true" aria-labelledby="staticBackdrop" role="dialog" tabindex="-1"
+  .modal-dialog role="document"
+    = form_with model: @new_banner, url: admin_new_banner_path, html: { class: "form-group w-100" } do |f|
+      .modal-content
+        .modal-header
+          h5#exampleModalLabel.modal-title Tambah Banner
+          button.close aria-label="Close" data-dismiss="modal" type="button"
+            i.ki.ki-close aria-hidden="true"
+
+        .modal-body.d-flex
+          .col-lg-12
+            = f.hidden_field :id
+            .form-group
+              label Pilih Video Belajar Pajak / Taksam Talks
+              = select_tag :resource_id, options_for_select(options_for_select_banners),\
+                prompt: "Pilih Video",\
+                class: "form-control", \
+                data: { controller: 'admin--select2' },\
+                required: true             
+
+        .modal-footer
+          button.btn.btn-light-primary.font-weight-bold data-dismiss="modal" type="button"  Close
+          = f.submit "Simpan", class: "btn btn-primary font-weight-bold"

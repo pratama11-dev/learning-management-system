@@ -1,0 +1,23 @@
+@import '@syncfusion/ej2-base/styles/material.css';
+@import '@syncfusion/ej2-buttons/styles/material.css';
+@import '@syncfusion/ej2-calendars/styles/calendar/material-dark.css';
+
+span.dot {
+  width: 25px;
+  height: 25px;
+  background-color: #f5f5f585;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  right: -1px;
+}
+
+span.dot-active {
+  width: 25px;
+  height: 25px;
+  background-color: #ee612394;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  right: -1px;
+}

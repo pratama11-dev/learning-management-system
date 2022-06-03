@@ -1,0 +1,66 @@
+#newVideo.modal.fade aria-hidden="true" aria-labelledby="staticBackdrop" role="dialog" tabindex="-1"
+  .modal-dialog.modal-dialog-scrollable.modal-lg role="document"
+    = form_with model: @new_lesson, url: admin_lessons_path, html: { class: "form-group w-100" } do |f|
+      .modal-content
+        .modal-header
+          h5#exampleModalLabel.modal-title Tambah Materi Belajar Pajak
+          button.close aria-label="Close" data-dismiss="modal" type="button"
+            i.ki.ki-close aria-hidden="true"
+        .modal-body.d-flex
+          .col-lg-6 data-height="auto" data-scroll="true"
+            = f.hidden_field :id
+            .form-group
+              label Pilih Curriculum
+              = select_tag :curriculum_id, options_for_select(options_for_curriculums),\
+                prompt: "Pilih Curriculum",\
+                class: "form-control", \
+                data: { controller: 'admin--select2' },\
+                required: true
+
+            .form-group
+              label Pilih Video Belajar Pajak
+              = select_tag :video_id, options_for_select(options_for_videos),\
+                prompt: "Pilih Video",\
+                class: "form-control", \
+                data: { controller: 'admin--select2' },\
+                required: true
+
+            .form-group
+              label Nama Materi
+              = f.text_field :name, class: "form-control"
+            .form-group
+              label
+                | Banner Image
+              div
+              / .custom-file
+              /   = f.file_field :banner_image, class: "custom-file-input",
+              /     accept:"image/x-png, image/gif, image/jpeg", required: true
+              /   label.custom-file-label[
+              /     for="customFile"
+              /   ] Pilih Gambar
+              - banner_image = "https://preview.keenthemes.com/metronic/theme/html/demo3/dist/assets/media/users/blank.png"
+              #kt_image_5.image-input.image-input-empty.image-input-outline.border-1[style="background-image: url(#{banner_image})"]
+                .image-input-wrapper
+                label.btn.btn-xs.btn-icon.btn-circle.btn-white.btn-hover-text-primary.btn-shadow.flex-wrap[data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar"]
+                  i.fa.fa-pen.icon-sm.text-muted.mt-2
+                  = f.file_field :banner_image, class: "form-control",accept:"image/x-png, image/gif, image/jpeg"
+                  input[type="hidden" name="profile_avatar_remove"]
+                span.btn.btn-xs.btn-icon.btn-circle.btn-white.btn-hover-text-primary.btn-shadow[data-action="cancel" data-toggle="tooltip" title="" data-original-title="Cancel avatar"]
+                  i.ki.ki-bold-close.icon-xs.text-muted
+                span.btn.btn-xs.btn-icon.btn-circle.btn-white.btn-hover-text-primary.btn-shadow[data-action="remove" data-toggle="tooltip" title="" data-original-title="Remove avatar"]
+                  i.ki.ki-bold-close.icon-xs.text-muted
+
+          .col-lg-6
+            .form-group
+              label Nama Materi Belajar Pajak
+              = f.text_field :learning_name, class: "form-control"
+            .form-group
+              label Kategori Materi
+              = f.text_field :category_name, class: "form-control"
+            .form-group
+              label Deskripsi Materi
+              = f.text_area :description, class: "form-control", rows: 6
+
+        .modal-footer
+          button.btn.btn-light-primary.font-weight-bold data-dismiss="modal" type="button"  Close
+          = f.submit "Simpan", class: "btn btn-primary font-weight-bold"

@@ -1,0 +1,24 @@
+# == Schema Information
+#
+# Table name: exam_packages
+#
+#  id            :uuid             not null, primary key
+#  duration      :string
+#  is_active     :boolean
+#  resource_type :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  resource_id   :string
+#
+
+one:
+  resource_id: MyString
+  resource_type: MyString
+  duration: MyString
+  is_active: false
+
+two:
+  resource_id: MyString
+  resource_type: MyString
+  duration: MyString
+  is_active: false

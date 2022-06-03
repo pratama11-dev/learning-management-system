@@ -1,0 +1,254 @@
+section.elementor-element.elementor-element-8c3a674.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section.mt-10[data-id="8c3a674" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}" style="z-index: -1 !important;"]
+  .elementor-row
+    .elementor-element.elementor-element-ff8d119.elementor-column.elementor-col-100.elementor-top-column[data-id="ff8d119" data-element_type="column"]
+      .elementor-column-wrap.elementor-element-populated
+        .elementor-widget-wrap
+          section.elementor-element.elementor-element-e3aa3cb.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-inner-section[data-id="e3aa3cb" data-element_type="section" data-settings="{&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"]
+            .elementor-row.align-items-center
+              .elementor-icon.mr-5.ml-2
+                i.fas.fa-broadcast-tower.icon-xl.text-white[aria-hidden="true"]
+              .elementor-element.elementor-element-03a428e.elementor-column.elementor-col-50.elementor-inner-column[data-id="03a428e" data-element_type="column"]
+                .elementor-element.elementor-element-713c300.elementor-widget.elementor-widget-heading[data-id="713c300" data-element_type="widget" data-widget_type="heading.default"]
+                  .elementor-widget-container.ml-md-0.
+                    h2.elementor-heading-title.elementor-size-default
+                      | Live Online Classes
+            .elementor-element.elementor-column.elementor-inner-column[data-id="335fc9d" data-element_type="column"]
+              .elementor-column-wrap.elementor-element-populated
+                .elementor-widget-wrap
+                  .elementor-element.elementor-element-5b7ba24.elementor-widget.elementor-widget-heading[data-id="5b7ba24" data-element_type="widget" data-widget_type="heading.default"]
+                    .elementor-widget-container
+                      h2.elementor-heading-title.elementor-size-default.my-8
+                        | Belajar pajak secara interaktif bersama narasumber berpengalaman dan dapatkan ilmu disetiap kelasnya. #SemuaBisaPahamPajak
+
+section.elementor-element.elementor-element-36a2251.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section[data-id="36a2251" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}" style="overflow: visible;"]
+  .splide.js-dataId-desktop-screen-online-classes [data-controller="landing-pages--desktop-screen--splide" data-id="desktop-screen-online-classes"]
+    .splide__track
+      ul.splide__list
+        - @webinars.each do |webinar|
+          - next if webinar.tag.include?("coming_soon")
+          - next if webinar.is_done?          
+          li.splide__slide
+            .elementor-live-hover
+              .card-group.h-100
+                .card.border-3 style="background-color:#242424 !important;"
+                  .elementor-element.elementor-element-58fc3a9.elementor-align-left.elementor-widget.elementor-widget-button[data-id="58fc3a9" data-element_type="widget" data-widget_type="button.default"]
+                    .elementor-widget-container
+                      .elementor-button-wrapper.d-flex.justify-content-between[
+                        class="js-homes-webinar-join-button-#{webinar.id}"
+                      ]
+                        = render partial: "homes/partials/register_webinar_button",
+                          locals: {webinar: webinar}, cached: true
+                  .card-body.px-4
+                    .elementor-element.elementor-element-04d4686.elementor-view-default.elementor-vertical-align-top.elementor-widget.elementor-widget-icon-box[data-id="04d4686" data-element_type="widget" data-widget_type="icon-box.default"]
+                      .elementor-widget-container.pt-0
+                        .elementor-icon-box-wrapper style="height: 140px;"
+                          .elementor-icon-box-content
+                            h4.elementor-icon-box-title.font-weight-bolder.font-size-h3
+                              a href="#{webinar_path(slug: webinar.slug)}"
+                                = webinar.title.truncate(90)
+                        .d-flex
+                          .elementor-icon-box-icon.mr-5
+                            span.elementor-icon.elementor-animation-
+                              i.far.fa-calendar-alt
+                          .elementor-icon-box-content
+                            a.font-size-h6.elementor-icon-box-title href="#{webinar_path(slug: webinar.slug)}"
+                              span
+                                = readable_date_2(webinar.date.localtime)
+                        .d-flex
+                          .elementor-icon-box-icon.mr-5
+                            span.elementor-icon.elementor-animation-
+                              i.far.fa-clock
+                          .elementor-icon-box-content
+                            a.font-size-h6.elementor-icon-box-title href="#{webinar_path(slug: webinar.slug)}"
+                              span
+                                = webinar.date.localtime.strftime("%H:%M") + " WIB"
+                        .d-flex
+                          .elementor-icon-box-icon.mr-5
+                            span.elementor-icon.elementor-animation-
+                              i.fas.fa-border-all
+                          .elementor-icon-box-content
+                            a.font-size-h6.elementor-icon-box-title href="#{webinar_path(slug: webinar.slug)}"
+                              span
+                                | Webinar
+                  .separator.separator-solid.mx-4
+                  .card-footer.border-0.py-7.px-4 style="background-color:#242424 !important;"
+                    .elementor-element.elementor-element-7a5c3da.mt-4.elementor-position-left.elementor-vertical-align-top.elementor-widget.elementor-widget-image-box[data-id="7a5c3da" data-element_type="widget" data-widget_type="image-box.default"]
+                      .elementor-widget-container
+                        .elementor-image-box-wrapper.align-items-center
+                          - webinar.speaker_avatars.each do |avatar|
+                            .symbol-group.symbol-hover
+                              .symbol.symbol-30.symbol-circle[
+                                data-original-title=("#{avatar.filename}")
+                                data-toggle="tooltip"
+                                title=""
+                              ]
+                                = image_tag avatar
+
+        - @webinars.cooming_soons.each do |webinar|
+          li.splide__slide
+            .elementor-live-hover
+              .card-group
+                .card.border-3 style="background-color:#242424 !important;"
+                  .elementor-element.elementor-element-58fc3a9.elementor-align-left.elementor-widget.elementor-widget-button[data-id="58fc3a9" data-element_type="widget" data-widget_type="button.default"]
+                    .elementor-widget-container
+                      .elementor-button-wrapper.d-flex.justify-content-between
+                        a.elementor-button-link.elementor-button.elementor-size-sm.ml-3[href="#" role="button" style="background-color: #F5C497;"]
+                          span.elementor-button-content-wrapper
+                            span.elementor-button-text
+                              | Akan Datang
+                  .card-body.px-4
+                    .elementor-element.elementor-element-04d4686.elementor-view-default.elementor-vertical-align-top.elementor-widget.elementor-widget-icon-box[data-id="04d4686" data-element_type="widget" data-widget_type="icon-box.default"]
+                      .elementor-widget-container.pt-0
+                        .elementor-icon-box-wrapper style="height: 140px;"
+                          .elementor-icon-box-content
+                            h4.elementor-icon-box-title.font-weight-bolder.font-size-h3.text-muted
+                              a.text-center href="#" = webinar.title.truncate(90)
+                        .d-flex
+                          .elementor-icon-box-icon.mr-5
+                            span.elementor-icon.elementor-animation-
+                              i.far.fa-calendar-alt
+                          .elementor-icon-box-content
+                            a.font-size-h6.elementor-icon-box-title
+                              span
+                                | -
+                        .d-flex
+                          .elementor-icon-box-icon.mr-5
+                            span.elementor-icon.elementor-animation-
+                              i.far.fa-clock
+                          .elementor-icon-box-content
+                            a.font-size-h6.elementor-icon-box-title
+                              span
+                                | -
+                        .d-flex
+                          .elementor-icon-box-icon.mr-5
+                            span.elementor-icon.elementor-animation-
+                              i.fas.fa-border-all
+                          .elementor-icon-box-content
+                            a.font-size-h6.elementor-icon-box-title
+                              span
+                                | Webinar
+
+                  .separator.separator-solid.mx-4
+                  .card-footer.border-0.py-7.px-4 style="background-color:#242424 !important;"
+                    .elementor-element.elementor-element-7a5c3da.mt-4.elementor-position-left.elementor-vertical-align-top.elementor-widget.elementor-widget-image-box[data-id="7a5c3da" data-element_type="widget" data-widget_type="image-box.default"]
+                      .elementor-widget-container
+                        .elementor-image-box-wrapper.align-items-center
+                          - webinar.speaker_avatars.each do |avatar|
+                            .symbol-group.symbol-hover
+                              .symbol.symbol-30.symbol-circle[
+                                data-original-title=("#{avatar.filename}")
+                                data-toggle="tooltip"
+                                title=""
+                              ]
+                                = image_tag avatar
+
+        - @webinars.dones.each do |webinar|
+          li.splide__slide
+            .elementor-live-hover
+              .card-group.h-100
+                .card.border-3 style="background-color:#242424 !important;"
+                  .elementor-element.elementor-element-58fc3a9.elementor-align-left.elementor-widget.elementor-widget-button[data-id="58fc3a9" data-element_type="widget" data-widget_type="button.default"]
+                    .elementor-widget-container
+                      .elementor-button-wrapper.d-flex.justify-content-between[
+                        class="js-homes-webinar-join-button-#{webinar.id}"
+                      ]
+                        = render partial: "homes/partials/register_webinar_button",
+                          locals: {webinar: webinar}, cached: true
+                  .card-body.px-4 style="width: 300px;"
+                    .elementor-element.elementor-element-04d4686.elementor-view-default.elementor-vertical-align-top.elementor-widget.elementor-widget-icon-box[data-id="04d4686" data-element_type="widget" data-widget_type="icon-box.default"]
+                      .elementor-widget-container.pt-0
+                        .elementor-icon-box-wrapper style="height: 140px;"
+                          .elementor-icon-box-content
+                            h4.elementor-icon-box-title.font-weight-bolder.font-size-h3
+                              a href="#{webinar_path(slug: webinar.slug)}"
+                                = webinar.title.truncate(90)
+                        .d-flex
+                          .elementor-icon-box-icon.mr-5
+                            span.elementor-icon.elementor-animation-
+                              i.far.fa-calendar-alt
+                          .elementor-icon-box-content
+                            a.font-size-h6.elementor-icon-box-title href="#{webinar_path(slug: webinar.slug)}"
+                              span
+                                = readable_date_2(webinar.date.localtime)
+                        .d-flex
+                          .elementor-icon-box-icon.mr-5
+                            span.elementor-icon.elementor-animation-
+                              i.far.fa-clock
+                          .elementor-icon-box-content
+                            a.font-size-h6.elementor-icon-box-title href="#{webinar_path(slug: webinar.slug)}"
+                              span
+                                = webinar.date.localtime.strftime("%H:%M") + " WIB"
+                        .d-flex
+                          .elementor-icon-box-icon.mr-5
+                            span.elementor-icon.elementor-animation-
+                              i.fas.fa-border-all
+                          .elementor-icon-box-content
+                            a.font-size-h6.elementor-icon-box-title href="#{webinar_path(slug: webinar.slug)}"
+                              span
+                                | Webinar
+                  .separator.separator-solid.mx-4
+                  .card-footer.border-0.py-7.px-4 style="background-color:#242424 !important;"
+                    .elementor-element.elementor-element-7a5c3da.mt-4.elementor-position-left.elementor-vertical-align-top.elementor-widget.elementor-widget-image-box[data-id="7a5c3da" data-element_type="widget" data-widget_type="image-box.default"]
+                      .elementor-widget-container
+                        .elementor-image-box-wrapper.align-items-center
+                          - webinar.speaker_avatars.each do |avatar|
+                            .symbol-group.symbol-hover
+                              .symbol.symbol-30.symbol-circle[
+                                data-original-title=("#{avatar.filename}")
+                                data-toggle="tooltip"
+                                title=""
+                              ]
+                                = image_tag avatar
+
+        - if @webinars.count == 1
+          li.splide__slide
+            .elementor-live-hover
+              .card-group
+                .card.border-3 style="background-color:#242424 !important;"
+                  .elementor-element.elementor-element-58fc3a9.elementor-align-left.elementor-widget.elementor-widget-button[data-id="58fc3a9" data-element_type="widget" data-widget_type="button.default"]
+                    .elementor-widget-container
+                      .elementor-button-wrapper.d-flex.justify-content-between
+                        a.elementor-button-link.elementor-button.elementor-size-sm.ml-3[href="#" role="button" style="background-color: #F5C497;"]
+                          span.elementor-button-content-wrapper
+                            span.elementor-button-text
+                              | Akan Datang
+
+                  .card-body.px-4
+                    .elementor-element.elementor-element-04d4686.elementor-view-default.elementor-vertical-align-top.elementor-widget.elementor-widget-icon-box[data-id="04d4686" data-element_type="widget" data-widget_type="icon-box.default"]
+                      .elementor-widget-container.pt-0
+                        .elementor-icon-box-wrapper style="height: 170px;"
+                          .elementor-icon-box-content
+                            h4.elementor-icon-box-title.font-weight-bolder.font-size-h3.text-muted
+                              a.text-center href="#" Akan Datang
+                        .d-flex
+                          .elementor-icon-box-icon.mr-5
+                            span.elementor-icon.elementor-animation-
+                              i.far.fa-calendar-alt
+                          .elementor-icon-box-content
+                            a.font-size-h6.elementor-icon-box-title
+                              span
+                                | -
+                        .d-flex
+                          .elementor-icon-box-icon.mr-5
+                            span.elementor-icon.elementor-animation-
+                              i.far.fa-clock
+                          .elementor-icon-box-content
+                            a.font-size-h6.elementor-icon-box-title
+                              span
+                                | -
+                        .d-flex
+                          .elementor-icon-box-icon.mr-5
+                            span.elementor-icon.elementor-animation-
+                              i.fas.fa-border-all
+                          .elementor-icon-box-content
+                            a.font-size-h6.elementor-icon-box-title
+                              span
+                                | Webinar
+
+                  .separator.separator-solid.mx-4
+                  .card-footer.border-0.py-7.px-4 style="background-color:#242424 !important;"
+                    .elementor-element.elementor-element-7a5c3da.mt-4.elementor-position-left.elementor-vertical-align-top.elementor-widget.elementor-widget-image-box[data-id="7a5c3da" data-element_type="widget" data-widget_type="image-box.default"]
+                      .elementor-widget-container
+                        .elementor-image-box-wrapper.align-items-center                          
+                          .symbol-group.symbol-hover
+          

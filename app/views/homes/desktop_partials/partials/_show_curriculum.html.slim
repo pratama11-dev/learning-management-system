@@ -1,0 +1,92 @@
+- if lesson.free? && current_user.present?
+  .elementor-hover-curriculums data-controller="landing-pages--desktop-screen--hover"
+    .elementor-element.elementor-element-8bff9d2.elementor-column.elementor-col-12.elementor-top-column[
+      data-id="8bff9d2"
+      data-element_type="column"
+      data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
+      style="width: auto; height: 160px !important;"
+    ]
+
+      - banner_image = "https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/a9.png"
+      - banner_image = url_for(lesson.banner_image) if lesson.banner_image.present?
+      .elementor-column-wrap.elementor-element-populated[
+        style="background-image: url(#{banner_image}) !important;"
+      ]
+        - style_progress = (lesson.progress(current_user) == 100) ? "background: rgba(31, 136, 41, 0.7);" : ""
+        .elementor-background-overlay[
+          style="#{style_progress}"
+        ]
+        .elementor-widget-wrap
+          .elementor-element.elementor-element-f3940c0.elementor-widget.elementor-widget-image[
+            data-id="f3940c0"
+            data-element_type="widget"
+            data-widget_type="image.default"
+          ]
+            .elementor-widget-container
+              .elementor-image
+
+          .elementor-element.elementor-element-bb20e93.elementor-widget.elementor-widget-heading[
+            data-id="bb20e93"
+            data-element_type="widget"
+            data-widget_type="heading.default"
+          ]
+            - if lesson.progress(current_user) == 100
+              i.hide-hover.far.fa-check-circle.mx-auto.my-auto.text-white.icon-2x [style="position: fixed; z-index: 1; top:60px;"]
+            .elementor-widget-container.mt-1
+              / href="#{video_path(lesson.video)}"
+              a.hide-hover.elementor-heading-title.elementor-size-default.font-size-h5.text-hover-warning[
+                role="button"
+                type="button"
+                data-toggle="modal"
+                data-target="#lessons"
+                data-dynamic-data-id="#{lesson.id}"
+              ]
+                = lesson.name.truncate(25)
+              .video-hover style="cursor: pointer;" onclick="window.location.href='#{video_path(lesson.video)}'"
+                = render "homes/desktop_partials/partials/play_video", video: lesson.video, lesson: lesson                
+              .text.pt-5.text-left                
+                = render "shared/buttons/play_bookmark_like_landing_page", source: lesson, options: {}
+                .info.p-4.font-size-xs
+                  .d-flex.flex-wrap.align-items-start
+                    .col-lg-6.pl-0
+                      .d-flex.flex-column.flex-wrap
+                        span.text-break.mb-3 [style="line-height: normal !important;"] = lesson.description.truncate(50)
+                        span.text-white.m-0 [style="line-height: normal !important;"] = learning_name
+                    .col-lg-6.px-0
+                      span.mb-5.seasons.text-white
+                        p.text-white.m-0 [style="line-height: normal !important;"] #{lesson.progress(current_user)}% Complete
+                        .progress[style="height: 5px;"]
+                          .progress-bar[
+                            role="progressbar"
+                            style="width: #{lesson.progress(current_user)}%;"
+                            aria-valuenow="25"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                          ]
+- else
+  .elementor-element.elementor-element-6bc743e.elementor-column.elementor-col-12.elementor-top-column.h-100[
+    data-id="6bc743e"
+    data-element_type="column"
+    data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
+    style="width: auto; height: 160px !important;"
+  ]
+    .elementor-column-wrap.elementor-element-populated style="background-image: url(https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/a9.png) !important;"
+      .elementor-background-overlay
+      .elementor-widget-wrap.py-9
+        .elementor-element.elementor-element-3accdcb.elementor-view-default.elementor-widget.elementor-widget-icon[
+          data-id="3accdcb"
+          data-element_type="widget"
+          data-widget_type="icon.default"
+        ]
+          .elementor-widget-container
+            .elementor-icon-wrapper
+              .elementor-icon
+                i.fas.fa-lock[aria-hidden="true" style="color: #EE6123 !important;"]
+        .elementor-element.elementor-element-ec86b57.elementor-widget.elementor-widget-heading.pb-6[
+          data-id="ec86b57"
+          data-element_type="widget"
+          data-widget_type="heading.default"
+        ]
+          .elementor-widget-container
+            a.elementor-heading-title.elementor-size-default [href="#{video_path(lesson.video)}"]
+              = lesson.name.truncate(25)

@@ -1,0 +1,17 @@
+#clearance.password-reset
+
+.card.card-custom.bg-transparent.border-0
+  .card-header.p-0
+    .card-title
+      span.text-white Taxsam LMS
+  .card-body.px-0
+    h5.font-weight-bolder.text-capitalize.text-white= t(".title")
+    .font-weight-bolder.text-capitalize.text-muted
+      = t(".description")
+    .styled-form
+      = form_for :password_reset, url: authentications_password_path(id: params[:id], token: @user.confirmation_token),
+        html: { method: :put } do |form|
+        .form-group.mt-4
+          = form.password_field :password, type: 'password', placeholder: "New Password", required: true, class: "form-control"
+        .form-group.text-center
+          = form.submit "Save Password", class: "btn btn-secondary"

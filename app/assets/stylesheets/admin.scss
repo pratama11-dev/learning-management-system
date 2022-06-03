@@ -1,0 +1,41 @@
+.style-question table td{
+  border: 1px solid #000;
+}
+
+.active-button {
+  color: #ee6123 !important;
+}
+
+.hover_card:hover {
+  filter: contrast(0.8);
+  border-radius: 3px;
+}
+
+.disable-copy-paste {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.label {
+  background-color: unset !important;
+  color: unset !important;
+}
+
+#dot-circle {
+  width: 10px;
+  height: 10px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+  right: 10px;
+} 
+
+.custom-file-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

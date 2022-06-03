@@ -1,0 +1,14 @@
+- @notifications.each do |notification|
+  a.navi-item href="#{notification.url}"
+    .navi-link.d-flex.align-items-center.border-bottom.mb-5
+      .navi-icon.mr-2
+        a.btn.btn-icon.btn-white.btn-md.btn-circle href="#{notification.url}"
+          i.flaticon2-bell-4
+      .navi-text
+        a href="#{notification.url}"
+          p.m-0.text-white [style="line-height: normal !important;"]
+            strong = notification.title.truncate(60)
+            br
+            .text-muted = notification.content.truncate(40)
+        .text-muted.mb-2
+          = time_ago_in_words(notification.created_at)
