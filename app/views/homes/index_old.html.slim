@@ -1,0 +1,18 @@
+
+.elementor.elementor-17058[data-elementor-type="wp-post" data-elementor-id="17058" data-elementor-settings="[]" style="z-index: -4 !important"]
+  .elementor-inner style="z-index: -3 !important"
+    .elementor-section-wrap style="overflow: hidden; z-index: -2 !important"
+      = render 'homes/components/header'
+      = render 'homes/components/header_desktop'
+      .d-flex.flex-column.flex-root
+        .d-flex.flex-row.flex-column-fluid.page
+          = render 'nav_header'
+          
+      - if mobile_device?
+        = render 'phone_screen'
+      = render 'desktop_screen'
+
+      = render 'homes/components/footer_desktop'
+      = render 'homes/components/footer_phone'
+
+      = render 'all_modals'

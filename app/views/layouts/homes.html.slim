@@ -1,98 +1,65 @@
 doctype html
-html[lang="en"]
+html lang="en"
   head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type"
+    base href=""
+    meta charset="utf-8"
+    title Learning Management System
     = csrf_meta_tags
-    meta[charset="UTF-8"]
-    meta[name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"]
-    link[rel="profile" href="https://gmpg.org/xfn/11"]
-    title
-      | Learning Management System
-    meta[name="description" content="Video Perpustakaan Database NPWP dan Pengukuhan PKP Mempelajari mengenai Subjek Pajak, Pengertian Nomor Pokok, Kewajiban Pendaftaran Kewajiban Pelaporan, Penerbitan NPWP dan / atau Pengukuhan PKP secara Jabatan Penetapan Jangka Waktu Pendaftaran NPWP dan Pelaporan Pengukuhan PKP Tempat Pendaftaran dan Pelaporan, Penghapusan NPWP, Pencabutan Pengukuhan PKP. Play More Info Brevet AB Dipercaya oleh Perusahaan Besar Previous..."]
-    link[rel="canonical" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/2021/09/07/taxsam-v3/"]
-    meta[property="og:site_name" content="- Development"]
-    meta[property="og:type" content="article"]
-    meta[property="og:title" content="TAXSAM V3 -"]
-    meta[property="og:description" content="Video Perpustakaan Database NPWP dan Pengukuhan PKP Mempelajari mengenai Subjek Pajak, Pengertian Nomor Pokok, Kewajiban Pendaftaran Kewajiban Pelaporan, Penerbitan NPWP dan / atau Pengukuhan PKP secara Jabatan Penetapan Jangka Waktu Pendaftaran NPWP dan Pelaporan Pengukuhan PKP Tempat Pendaftaran dan Pelaporan, Penghapusan NPWP, Pencabutan Pengukuhan PKP. Play More Info Brevet AB Dipercaya oleh Perusahaan Besar Previous..."]
-    meta[property="og:url" content="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/2021/09/07/taxsam-v3/"]
-    meta[property="article:published_time" content="2021-09-07T03:42:39Z"]
-    meta[property="article:modified_time" content="2021-10-19T05:57:17Z"]
-    meta[property="twitter:card" content="summary"]
-    meta[property="twitter:domain" content="wp-dev.wellcode.io"]
-    meta[property="twitter:title" content="TAXSAM V3 -"]
-    meta[property="twitter:description" content="Video Perpustakaan Database NPWP dan Pengukuhan PKP Mempelajari mengenai Subjek Pajak, Pengertian Nomor Pokok, Kewajiban Pendaftaran Kewajiban Pelaporan, Penerbitan NPWP dan / atau Pengukuhan PKP secara Jabatan Penetapan Jangka Waktu Pendaftaran NPWP dan Pelaporan Pengukuhan PKP Tempat Pendaftaran dan Pelaporan, Penghapusan NPWP, Pencabutan Pengukuhan PKP. Play More Info Brevet AB Dipercaya oleh Perusahaan Besar Previous..."]
+    = csp_meta_tag
+    = analytics_init if GoogleAnalytics.valid_tracker?
 
-    link[rel="dns-prefetch" href="//fonts.googleapis.com"]
-    link[rel="dns-prefetch" href="//s.w.org"]
-    link[href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet"]
-    link[rel="alternate" type="application/rss+xml" title="  &raquo; Feed" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/feed/"]
-    link[rel="alternate" type="application/rss+xml" title="  &raquo; Comments Feed" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/comments/feed/"]
-    link[rel="alternate" type="application/rss+xml" title="  &raquo; TAXSAM V3 Comments Feed" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/2021/09/07/taxsam-v3/feed/"]
+    meta content=("TEMPLATE_PROJECT!") name="description"
+    meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"
+    link href="https://wellcode.io" rel="canonical"
+    link href="//fonts.googleapis.com" rel="dns-prefetch"
+    link href="https://d1nmrzy556ufv4.cloudfront.net" rel="dns-prefetch"
+    link href="https://cdn-dev.pinterusaha.ai" rel="dns-prefetch"
+    link href="https://cdn.pinterusaha.ai" rel="dns-prefetch"
+    link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet"
+
+    link href="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/css/pages/wizard/wizard-4.css" rel="stylesheet" type="text/css"
+    link href="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/css/pages/wizard/wizard-1.css" rel="stylesheet" type="text/css"
+    link href="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css"
+    link href="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/css/style.bundle.css" rel="stylesheet" type="text/css"
+    link href="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css"
+    link href="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css"
+    link href="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/css/themes/layout/brand/light.css" rel="stylesheet" type="text/css"
+    link href="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/css/themes/layout/aside/light.css" rel="stylesheet" type="text/css"
     link[rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@2.4.21/dist/css/splide.min.css"]
-    / script src="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/js/pages/crud/forms/validation/form-controls.js?v=7.2.9"
-    link href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/javascript/splide-3.1.9/dist/css/splide.min.css" rel="stylesheet" /
 
-    link[rel="preconnect" href="https://fonts.googleapis.com"]
-    link[rel="preconnect" href="https://fonts.gstatic.com" crossorigin]
-    link[href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet"]
+    / = stylesheet_link_tag 'application'
 
-    = render "layouts/partials/head_metronic"
-    = stylesheet_link_tag 'landing_page'
+    meta content="#081A4B" name="msapplication-TileColor"
+    meta content="#061A46" name="theme-color"
 
     javascript:
       var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1200 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#1BC5BD", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#6993FF", "warning": "#FFA800", "danger": "#F64E60", "light": "#F3F6F9", "dark": "#212121" }, "light": { "white": "#ffffff", "primary": "#1BC5BD", "secondary": "#ECF0F3", "success": "#C9F7F5", "info": "#E1E9FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#212121", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#ECF0F3", "gray-300": "#E5EAEE", "gray-400": "#D6D6E0", "gray-500": "#B5B5C3", "gray-600": "#80808F", "gray-700": "#464E5F", "gray-800": "#1B283F", "gray-900": "#212121" } }, "font-family": "Poppins" };
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: 'defer', 'data-turbolinks-eval': false
 
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: 'defer'
+
+    script src="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/plugins/global/plugins.bundle.js?v=7.1.1" data-turbolinks-track='reload'
+    script src="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/plugins/custom/prismjs/prismjs.bundle.js?v=7.1.1" data-turbolinks-track='reload'
+    script src="https://d1nmrzy556ufv4.cloudfront.net/js/pages/features/miscellaneous/sweetalert2.js" data-turbolinks-track="reload"
+    script src="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/js/scripts.bundle.js?v=7.1.1" data-turbolinks-track='reload'
+    script src="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/plugins/custom/fullcalendar/fullcalendar.bundle.js"  data-turbolinks-track='reload'
+    script src="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/js/pages/widgets.js"  data-turbolinks-track='reload'
+    script src="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/js/pages/crud/forms/widgets/bootstrap-datetimepicker.js" data-turbolinks-track='reload'
+    script src="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/plugins/custom/ckeditor/ckeditor-classic.bundle.js" data-turbolinks-track='reload'
+    script src="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/plugins/custom/datatables/datatables.bundle.js" data-turbolinks-track='reload'
     script[src="https://cdn.jsdelivr.net/npm/@splidejs/splide@2.4.21/dist/js/splide.min.js"]
-    / https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/javascript/splide-3.1.9/dist/js/splide.min.js
 
-    link#wp-block-library-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-includes/css/dist/block-library/style.min.css?ver=5.5.6" type="text/css" media="all"]
-    link#nk-awb-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/advanced-backgrounds/assets/awb/awb.min.css?ver=1.6.7" type="text/css" media="all"]
-    link#wc-block-vendors-style-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/vendors-style.css?ver=3.1.0" type="text/css" media="all"]
-    link#wc-block-style-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/style.css?ver=3.1.0" type="text/css" media="all"]
-    link#aep-preview-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/awesome-contact-form7-for-elementor/assets/css/style.css?ver=5.5.6" type="text/css" media="all"]
-    link#contact-form-7-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.2.1" type="text/css" media="all"]
-    link#woocommerce-layout-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=4.4.2" type="text/css" media="all"]
-    link#woocommerce-smallscreen-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=4.4.2" type="text/css" media="only screen and (max-width: 768px)"]
-    link#woocommerce-general-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=4.4.2" type="text/css" media="all"]
-    link#hfe-style-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/header-footer-elementor/assets/css/header-footer-elementor.css?ver=1.5.4" type="text/css" media="all"]
-    link#elementor-icons-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=5.6.2" type="text/css" media="all"]
-    link#elementor-animations-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/elementor/assets/lib/animations/animations.min.css?ver=2.9.9" type="text/css" media="all"]
-    link#elementor-frontend-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=2.9.9" type="text/css" media="all"]
-    link#elementor-pro-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/elementor-pro/assets/css/frontend.min.css?ver=2.9.1" type="text/css" media="all"]
-    link#metform-css-formpicker-control-editor-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/metform/controls/assets/css/form-picker-editor.css?ver=1.0.0" type="text/css" media="all"]
-    / link#font-awesome-5-all-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/all.min.css?ver=2.9.9" type="text/css" media="all"]
-    script#font-awesome-4-shim-js[type="text/javascript" src="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/elementor/assets/lib/font-awesome/js/v4-shims.min.js?ver=2.9.9"]
-    link#elementskit-css-widgetarea-control-editor-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/elementskit-lite/modules/controls/assets/css/widgetarea-editor.css?ver=2.0.11" type="text/css" media="all"]
-    link#hfe-widgets-style-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/header-footer-elementor/inc/widgets-css/frontend.css?ver=1.5.4" type="text/css" media="all"]
-    link#elementor-post-17058-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/elementor/css/post-17058.css?ver=1634633258" type="text/css" media="all"]
-    link#metform-ui-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/metform/public/assets/css/metform-ui.css?ver=1.3.16" type="text/css" media="all"]
-    link#metform-style-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/metform/public/assets/css/style.css?ver=1.3.16" type="text/css" media="all"]
-    link#ashade-style-parent-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/themes/ashade/style.css?ver=5.5.6" type="text/css" media="all"]
-    link#ashade-style-child-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/themes/ashade-child/style.css?ver=2.0" type="text/css" media="all"]
-    link#ashade-style-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/themes/ashade-child/style.css?ver=5.5.6" type="text/css" media="all"]
-    link#ashade-responsive-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/themes/ashade/assets/css/responsive.css?ver=5.5.6" type="text/css" media="all"]
-    link#photoswipe-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/woocommerce/assets/css/photoswipe/photoswipe.min.css?ver=4.4.2" type="text/css" media="all"]
-    link#photoswipe-skin-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/themes/ashade/assets/css/lib/default-skin/default-skin.css?ver=5.5.6" type="text/css" media="all"]
-    link#ashade-woocommerce-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/themes/ashade/assets/css/ashade-woo.css?ver=5.5.6" type="text/css" media="all"]
-    link#ashade-woocommerce-responsive-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/themes/ashade/assets/css/responsive-woo.css?ver=5.5.6" type="text/css" media="all"]
-    link#ashade-google-fonts-css[rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto%3A100%2C700%7CMontserrat%3A500%2C700%7CRoboto+Condensed%3A700" type="text/css" media="all"]
-    link#elementor-icons-ekiticons-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/elementskit-lite/modules/controls/assets/css/ekiticons.css?ver=5.9.0" type="text/css" media="all"]
-    link#ekit-widget-styles-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/elementskit-lite/widgets/init/assets/css/widget-styles.css?ver=2.0.11" type="text/css" media="all"]
-    link#ekit-responsive-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/elementskit-lite/widgets/init/assets/css/responsive.css?ver=2.0.11" type="text/css" media="all"]
-    link#google-fonts-1-css[rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7COpen+Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;ver=5.5.6" type="text/css" media="all"]
-    / link#elementor-icons-shared-0-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min.css?ver=5.12.0" type="text/css" media="all"]
-    / link#elementor-icons-fa-solid-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min.css?ver=5.12.0" type="text/css" media="all"]
-    / link#elementor-icons-fa-regular-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/regular.min.css?ver=5.12.0" type="text/css" media="all"]
-    / link#elementor-icons-fa-brands-css[rel="stylesheet" href="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.min.css?ver=5.12.0" type="text/css" media="all"]
+  body#kt_body.header-fixed.header-mobile-fixed.aside-enabled.aside-enabled.aside-fixed.aside-minimize.aside-minimize-hoverable.page-loading data-turbolinks='false'
+    - if flash.present?
+      = render 'shared/flash'
 
-    script#jquery-core-js[type="text/javascript" src="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp"]
-
-  body#kt_body.header-fixed.header-mobile-fixed.subheader-enabled.subheader-fixed.aside-minimize-hoverable.post-template.post-template-elementor_header_footer.single.single-post.postid-17058.single-format-standard.shadowcore-lazy--yes.ashade-loading--full.ashade-unloading--full.ashade-header--layout01.ashade-header-scrollable.ashade-sidebar--none.ashade-layout--horizontal.theme-ashade.woocommerce-no-js.ehf-template-ashade.ehf-stylesheet-ashade-child.elementor-default.elementor-template-full-width.elementor-kit-13878.elementor-page.elementor-page-17058.p-0.is-init.d-flex.flex-column.min-vh-100[style="background: #242424;"]
-    .elementor.elementor-17058[data-elementor-type="wp-post" data-elementor-id="17058" data-elementor-settings="[]"]
-      - if flash.present?
-        = render 'shared/flash'
-      = yield
-
-    = javascript_pack_tag 'landing_page'
-    / script#gsap-js[type="text/javascript" src="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/themes/ashade/assets/js/lib/gsap.min.js?ver=5.5.6"]
-    / script#ashade-core-js-js[type="text/javascript" src="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/themes/ashade/assets/js/core.js?ver=5.5.6"]
+    = render 'shared/header'
+    .d-flex.flex-column.flex-root
+      .d-flex.flex-row.flex-column-fluid.page
+        = render 'shared/sidebar'
+        #kt_wrapper.d-flex.flex-column.flex-row-fluid.wrapper
+          = render 'shared/header_desktop'
+          #kt_content.content.d-flex.flex-column.flex-column-fluid
+            = yield
+    = render 'shared/user_panel'
+    = render 'shared/scrolltop'
