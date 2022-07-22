@@ -12,6 +12,9 @@ export default class extends Controller {
       pagination: false,
       gap: 20,
       breakpoints: {
+        425: {
+          perPage: 1,
+        },
         768:{
           perPage: 2,
         },
@@ -20,9 +23,6 @@ export default class extends Controller {
         },
         1440:{
           perPage: 4,
-        },
-        2560: {
-          perPage: 6,
         },
       }
     } );

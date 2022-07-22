@@ -36,7 +36,7 @@
                           path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#000000" fill-rule="nonzero"
         - if current_user.present?
           .topbar-item[
-            data-toggle="dropdown" 
+            data-toggle="dropdown"
             data-offset="10px,0px"
             data-controller="homes--notifications-update"
             data-path="#{notifications_path}"
@@ -59,10 +59,10 @@
                   | Notifications
             .card-body.px-5.pb-5.pt-0 style="background-color: #242424 !important;"
               .ps--active-y[
-                data-height="300" 
-                data-mobile-height="200" 
-                data-target="notifications.itemsContainer" 
-                data-scroll="true" 
+                data-height="300"
+                data-mobile-height="200"
+                data-target="notifications.itemsContainer"
+                data-scroll="true"
                 style="height: 300px; overflow: auto;"
               ]
                 = render "shared/notifications"
@@ -88,7 +88,7 @@
                       i.flaticon-imac.icon-1x
                     span.navi-text.text-white
                       | Dashboard
-                      
+
                 - unless current_user.is_admin?
                   li.navi-item
                     a.navi-link href=profiles_path
