@@ -28,7 +28,9 @@
           h5.menu-text Menu
           i.menu-icon.ki.ki-bold-more-hor.icon-md
         li aria-haspopup="true" class=("menu-item #{'menu-item-active' if current_page?(dashboards_path())}")
-          a.menu-link href=dashboards_path
+          a.menu-link [
+            href="#{current_user.is_admin? ? admin_dashboard_path : dashboards_path}"
+          ]
             span.svg-icon.menu-icon
               svg[xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewbox="0 0 24 24" version="1.1"]
                 g[stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"]

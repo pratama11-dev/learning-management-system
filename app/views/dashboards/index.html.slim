@@ -1,140 +1,143 @@
 = stylesheet_link_tag 'dashboards'
 
-.elementor.elementor-19787[data-elementor-type="wp-post" data-elementor-id="19787" data-elementor-settings="[]"]
-  .elementor-inner
-    .elementor-section-wrap
-      = render 'homes/components/header'
-      = render 'homes/components/header_desktop'
-      .d-flex.flex-column.flex-root
-        .d-flex.flex-row.flex-column-fluid.page
-          = render 'homes/nav_header'
+.container-fluid
+  .d-flex.flex-column-fluid.mt-5
+    h3.text-capitalize.font-white.font-weight-bolder
+      | Selamat Datang Kembali, #{current_user.full_name}
 
-      .container-fluid
-        .d-flex.flex-column-fluid.mt-5
-          h3.text-capitalize.font-white.font-weight-bolder
-            | Selamat Datang Kembali, #{current_user.full_name}
-
-        .row.mt-5.d-flex
-          .col-lg-4.col-md-12
-            h6.text-capitalize.font-white.font-weight-normal.text-center
-              | Jadwal Live Online Classess
-            .card.card-custom.bg-transparent
-              .card-body.p-0.m-auto
-                #calendar-dashboard.calendar[
-                  data-controller="dashboards--calendar"
-                  data-user-webinars=@user_webinars.to_json
-                  data-active-webinars=@active_webinars.to_json
+  .row.mt-5.d-flex
+    .col-lg-3.col-md-12
+      h6.text-capitalize.font-white.font-weight-normal.text-left
+        | Jadwal Live Online Classess
+      .card.card-custom.bg-transparent.shadow-none
+        .card-body.p-0
+          #calendar-dashboard.calendar[
+            data-controller="dashboards--calendar"
+            data-user-webinars=@user_webinars.to_json
+            data-active-webinars=@active_webinars.to_json
+          ]
+    .col-lg-9.col-md-12 style="overflow: hidden;"
+      h4.text-capitalize.font-white.font-weight-bolder
+        | Trending Sekarang
+      .splide.js-dataId-desktop-screen-trending-tax [data-controller="landing-pages--desktop-screen--splide-dashboard" data-id="desktop-screen-trending-tax"]
+        .splide__track
+          ul.splide__list
+            - @lessons.each do |lesson|
+              li.splide__slide
+                .elementor-element.elementor-element-8bff9d2.elementor-column.elementor-top-column[
+                  data-id="8bff9d2"
+                  data-element_type="column"
+                  data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
+                  style="width: auto; height: 150px !important;"
                 ]
-          .col-lg-8.col-md-12 style="overflow: hidden;"
-            h4.text-capitalize.font-white.font-weight-bolder
-              | Trending Sekarang
-            .splide.js-dataId-desktop-screen-trending-tax [data-controller="landing-pages--desktop-screen--splide-dashboard" data-id="desktop-screen-trending-tax"]
-              .splide__track
-                ul.splide__list
-                  - @lessons.each do |lesson|
-                    li.splide__slide
-                      .elementor-element.elementor-element-8bff9d2.elementor-column.elementor-top-column[
-                        data-id="8bff9d2"
-                        data-element_type="column"
-                        data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
-                        style="width: auto; height: 150px !important;"
-                      ]
-                        .elementor-column-wrap.elementor-element-populated style="#{lesson.banner_image.present? ? ('background-image: url(' + url_for(lesson.banner_image) + ') !important;') : ''}"
-                          .elementor-background-overlay
-                          .elementor-widget-wrap
-                            .elementor-element.elementor-element-bb20e93.elementor-widget.elementor-widget-heading[data-id="bb20e93" data-element_type="widget" data-widget_type="heading.default"]
-                              .elementor-widget-container
-                                a.font-size-h6.text-left.text-hover-warning[
-                                  href="#{video_path(lesson.video)}"
-                                  role="button"
-                                ]
-                                  = lesson.name
-                                / a.font-size-h6.text-left.text-hover-warning[
-                                /   type="button"
-                                /   data-toggle="modal"
-                                /   data-target="#lessons"
-                                /   data-dynamic-data-id="#{lesson.id}"
-                                / ]
-                                /   = lesson.name
-
-            / .d-flex.align-items-center.ml-5.my-10
-              button.btn.btn-warning.border-0.mr-5.font-weight-bolder.text-capitalize[type="button" style="background-color: #EE6123 !important;"]
-                | Bisa Ditonton Kembali
-              button.btn.btn-secondary.mr-5.font-weight-bolder.text-capitalize[type="button"]
-                | Unduh Sertifikasi
-            hr
-            h4.text-capitalize.font-white.font-weight-bolder.mt-5.mb-5
-              | Bookmark
-            .splide.js-dataId-desktop-screen-downloaded-tax [data-controller="landing-pages--desktop-screen--splide-dashboard" data-id="desktop-screen-downloaded-tax"]
-              .splide__track
-                ul.splide__list
-                  - @bookmarks.each do |bookmark|
-                    - next if bookmark&.resource&.blank?
-                    li.splide__slide
-                      .elementor-element.elementor-element-8bff9d2.elementor-column.elementor-top-column[
-                        data-id="8bff9d2"
-                        data-element_type="column"
-                        data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
-                        style="width: auto; height: 150px !important;"
-                      ]
-                        .elementor-column-wrap.elementor-element-populated
-                          .elementor-background-overlay
-                          .elementor-widget-wrap
-                            .elementor-element.elementor-element-bb20e93.elementor-widget.elementor-widget-heading[data-id="bb20e93" data-element_type="widget" data-widget_type="heading.default"]
-                              .elementor-widget-container
-                                a.font-size-h6.text-left.text-hover-warning[
-                                  href="#{video_path(bookmark.resource.video)}"
-                                  role="button"
-                                ]
-                                  = bookmark.resource.name
-                                / a.font-size-h6.text-left.text-hover-warning[
-                                /   type="button"
-                                /   data-toggle="modal"
-                                /   data-target="##{bookmark.resource.class.to_s.downcase}s"
-                                /   data-dynamic-data-id="#{bookmark.resource.id}"
-                                / ]
-                                /   = bookmark.resource.name
-
-        div.mt-10
-          .d-flex.flex-wrap.align-items-center
-            h4.text-capitalize.font-white.font-weight-bolder.mb-0.mr-5
-              | Sertifikat Digital
-            .d-flex.align-items-center.ml-5.my-5
-              ul#certificateTab.nav.nav-pills[role="tablist"]
-                li.nav-item
-                  a#module-tab.nav-link.active[
-                    data-toggle="tab"
-                    href="#tab-module"
+                  - banner_image = "https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/a9.png"
+                  - banner_image = url_for(lesson.banner_image) if lesson.banner_image.present?
+                  .elementor-column-wrap.elementor-element-populated [
+                    style="
+                      background-image: url(#{banner_image}) !important;
+                      background-size: cover !important;
+                      background-position: center !important;
+                      background-repeat: no-repeat !important;
+                      height: 150px !important;
+                    "
                   ]
-                    span.nav-text.font-weight-bolder
-                      | Sertifikat Brevet dan Ujian
-                li.nav-item
-                  a#live-online-tab.nav-link[
-                    data-toggle="tab"
-                    href="#tab-live-online"
-                    aria-controls="live online class"
-                  ]
-                    span.nav-text.font-weight-bolder
-                      | Sertifikat Webinar
-                li.nav-item
-                  a#tab-online-class-tab.nav-link[
-                    data-toggle="tab"
-                    href="#tab-online-class"
-                    aria-controls="online class"
-                  ]
-                    span.nav-text.font-weight-bolder
-                      | Sertifikat Video
+                    .elementor-background-overlay
+                    .elementor-widget-wrap
+                      .elementor-element.elementor-element-bb20e93.elementor-widget.elementor-widget-heading[data-id="bb20e93" data-element_type="widget" data-widget_type="heading.default"]
+                        .elementor-widget-container
+                          a.font-size-h6.text-left.text-hover-warning.font-weight-bold[
+                            href="#{video_path(lesson.video)}"
+                            role="button"
+                            style="
+                              position: absolute;
+                              bottom: 0;
+                            "
+                          ]
+                            = lesson.name
+                          / a.font-size-h6.text-left.text-hover-warning[
+                          /   type="button"
+                          /   data-toggle="modal"
+                          /   data-target="#lessons"
+                          /   data-dynamic-data-id="#{lesson.id}"
+                          / ]
+                          /   = lesson.name
 
-        #certificateContent.tab-content.mt-5
-          #tab-module.tab-pane.fade.active.show[role="tabpanel" aria-labelledby="module-tab"]
-            = render "dashboards/certificates"
+      / .d-flex.align-items-center.ml-5.my-10
+        button.btn.btn-warning.border-0.mr-5.font-weight-bolder.text-capitalize[type="button" style="background-color: #EE6123 !important;"]
+          | Bisa Ditonton Kembali
+        button.btn.btn-secondary.mr-5.font-weight-bolder.text-capitalize[type="button"]
+          | Unduh Sertifikasi
+      hr
+      h4.text-capitalize.font-white.font-weight-bolder.mt-5.mb-5
+        | Bookmark
+      .splide.js-dataId-desktop-screen-downloaded-tax [data-controller="landing-pages--desktop-screen--splide-dashboard" data-id="desktop-screen-downloaded-tax"]
+        .splide__track
+          ul.splide__list
+            - @bookmarks.each do |bookmark|
+              - next if bookmark&.resource&.blank?
+              li.splide__slide
+                .elementor-element.elementor-element-8bff9d2.elementor-column.elementor-top-column[
+                  data-id="8bff9d2"
+                  data-element_type="column"
+                  data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
+                  style="width: auto; height: 150px !important;"
+                ]
+                  .elementor-column-wrap.elementor-element-populated
+                    .elementor-background-overlay
+                    .elementor-widget-wrap
+                      .elementor-element.elementor-element-bb20e93.elementor-widget.elementor-widget-heading[data-id="bb20e93" data-element_type="widget" data-widget_type="heading.default"]
+                        .elementor-widget-container
+                          a.font-size-h6.text-left.text-hover-warning[
+                            href="#{video_path(bookmark.resource.video)}"
+                            role="button"
+                          ]
+                            = bookmark.resource.name
+                          / a.font-size-h6.text-left.text-hover-warning[
+                          /   type="button"
+                          /   data-toggle="modal"
+                          /   data-target="##{bookmark.resource.class.to_s.downcase}s"
+                          /   data-dynamic-data-id="#{bookmark.resource.id}"
+                          / ]
+                          /   = bookmark.resource.name
 
-          #tab-live-online.tab-pane.fade[role="tabpanel" aria-labelledby="tab-online-class"]
-            = render "dashboards/live_online_class"
+  div.mt-10
+    .d-flex.flex-wrap.align-items-center
+      h4.text-capitalize.font-white.font-weight-bolder.mb-0.mr-5
+        | Sertifikat Digital
+      .d-flex.align-items-center.ml-5.my-5
+        ul#certificateTab.nav.nav-pills[role="tablist"]
+          li.nav-item
+            a#module-tab.nav-link.active[
+              data-toggle="tab"
+              href="#tab-module"
+            ]
+              span.nav-text.font-weight-bolder
+                | Sertifikat Brevet dan Ujian
+          / li.nav-item
+          /   a#live-online-tab.nav-link[
+          /     data-toggle="tab"
+          /     href="#tab-live-online"
+          /     aria-controls="live online class"
+          /   ]
+          /     span.nav-text.font-weight-bolder
+          /       | Sertifikat Webinar
+          li.nav-item
+            a#tab-online-class-tab.nav-link[
+              data-toggle="tab"
+              href="#tab-online-class"
+              aria-controls="online class"
+            ]
+              span.nav-text.font-weight-bolder
+                | Sertifikat Video
 
-          #tab-online-class.tab-pane.fade[role="tabpanel" aria-labelledby="tab-online-class"]
-            = render "dashboards/online_class"
+  #certificateContent.tab-content.mt-5
+    #tab-module.tab-pane.fade.active.show[role="tabpanel" aria-labelledby="module-tab"]
+      = render "dashboards/certificates"
 
-      = render 'homes/components/footer_desktop'
-      = render 'homes/components/footer_phone'
-      = render 'homes/all_modals'
+    / #tab-live-online.tab-pane.fade[role="tabpanel" aria-labelledby="tab-online-class"]
+    /   = render "dashboards/live_online_class"
+
+    #tab-online-class.tab-pane.fade[role="tabpanel" aria-labelledby="tab-online-class"]
+      = render "dashboards/online_class"
+
+= render 'homes/all_modals'
