@@ -7,12 +7,16 @@ h3.display-4 Video Materi Belajar
       h3 #{learning_name}
       - if current_user.present?
         a.btn.btn-primary.font-weight-bold.ml-2[
-          type="button"
-          data-toggle="modal"
-          data-target="#lessons"
-          data-dynamic-data-id="#{lessons.first.id}"
+          href=lesson_path(lessons.first.id)
         ]
           | Lihat Selengkapnya
+        / a.btn.btn-primary.font-weight-bold.ml-2[
+        /   type="button"
+        /   data-toggle="modal"
+        /   data-target="#lessons"
+        /   data-dynamic-data-id="#{lessons.first.id}"
+        / ]
+        /   | Lihat Selengkapnya
 
     .splide[
       data-controller="landing-pages--desktop-screen--splide-small"
