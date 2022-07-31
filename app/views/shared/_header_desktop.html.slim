@@ -22,8 +22,21 @@
           #kt_quick_user_toggle.btn.btn-icon.btn-icon-mobile.w-auto.btn-clean.d-flex.align-items-center.btn-lg.px-2
             span.text-muted.font-weight-bold.font-size-base.d-none.d-md-inline.mr-1 Hi,
             span.text-dark-50.font-weight-bolder.font-size-base.d-none.d-md-inline.mr-3 = current_user&.name
-            span.symbol.symbol-lg-35.symbol-25.symbol-light-success
-              span.symbol-label.font-size-h5.font-weight-bold = current_user&.avatar.attached? ? 'image' : ''
+            - if current_user.avatar.present?
+              .symbol.symbol-lg-35.symbol-25.mr-3
+                img[
+                  alt="Pic"
+                  src="#{url_for(current_user.avatar)}"
+                  style="
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    object-fit: cover;
+                  "
+                ]
+            - else
+              .symbol.symbol-lg-35.symbol-25.mr-3
+                img[alt="Pic" src="https://preview.keenthemes.com/metronic/theme/html/demo1/dist/assets/media/svg/avatars/001-boy.svg"]
         - else
           .btn.font-weight-bold.mr-2 title="Login" data-toggle="modal" data-target="#login_modal" Masuk
 

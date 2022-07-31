@@ -1,157 +1,148 @@
-.elementor.elementor-17240[data-elementor-type="wp-post" data-elementor-id="17240" data-elementor-settings="[]"]
-  .elementor-inner
-    .elementor-section-wrap
-      = render 'homes/components/header'
-      = render 'homes/components/header_desktop'
-      .d-flex.flex-column.flex-root
-        .d-flex.flex-row.flex-column-fluid.page
-          = render 'homes/nav_header'
+.container-fluid.container
+  .row.d-flex
+    .col-lg-12
+      .container-fluid
+        ul#libraryTab.nav.nav-pills[role="tablist"]
+          li.nav-item
+            a#module-tab.nav-link.active[data-toggle="tab" href="#tab-module"]
+              span.nav-icon
+                i.flaticon-menu-2
+              span.nav-text
+                | Modul
+          li.nav-item
+            a#materi-tab.nav-link[data-toggle="tab" href="#tab-materi" aria-controls="materi"]
+              span.nav-icon
+                i.flaticon-tabs
+              span.nav-text
+                | Materi
+          li.nav-item
+            a#journal-tab.nav-link[data-toggle="tab" href="#tab-journal" aria-controls="journal"]
+              span.nav-icon
+                i.flaticon2-layers-1
+              span.nav-text
+                | Jurnal
+          li.nav-item
+            a#book-tab.nav-link[data-toggle="tab" href="#tab-book" aria-controls="book"]
+              span.nav-icon
+                i.flaticon-doc
+              span.nav-text
+                | Buku
 
-      .container-fluid.container
-        .row.d-flex
-          .col-lg-12
-            .container-fluid
-              ul#libraryTab.nav.nav-pills[role="tablist"]
-                li.nav-item
-                  a#module-tab.nav-link.active[data-toggle="tab" href="#tab-module"]
-                    span.nav-icon
-                      i.flaticon-menu-2
-                    span.nav-text
-                      | Modul
-                li.nav-item
-                  a#materi-tab.nav-link[data-toggle="tab" href="#tab-materi" aria-controls="materi"]
-                    span.nav-icon
-                      i.flaticon-tabs
-                    span.nav-text
-                      | Materi
-                li.nav-item
-                  a#journal-tab.nav-link[data-toggle="tab" href="#tab-journal" aria-controls="journal"]
-                    span.nav-icon
-                      i.flaticon2-layers-1
-                    span.nav-text
-                      | Jurnal
-                li.nav-item
-                  a#book-tab.nav-link[data-toggle="tab" href="#tab-book" aria-controls="book"]
-                    span.nav-icon
-                      i.flaticon-doc
-                    span.nav-text
-                      | Buku
+      #libraryContent.tab-content.mt-5
+        #tab-module.tab-pane.fade.active.show[role="tabpanel" aria-labelledby="module-tab"]
+          .d-flex.flex-row
+            .flex-row-fluid.d-flex.flex-column.ml-lg-8
+              .d-flex.flex-column.flex-grow-1
+                .row.mt-5
+                  - @libraries.modules.each do |library|
+                    .col-xl-2.col-lg-2.col-md-4.col-sm-6
+                      .card.card-custom.card-stretch
+                        a.card-body.text-center [type="button" href="#{library_path(library)}" target="_blank"]
+                          .d-flex.flex-column.align-items-center
+                            - if library.cover.present?
+                              = image_tag library.cover, class: "max-h-150px"
+                            - else
+                              img.max-h-150px.mb-5 alt="" src="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/media/svg/files/pdf.svg"
+                        .card-footer
+                          a.font-size-lg.text-center[
+                            href="#{library_path(library)}"
+                            target="_blank"
+                            data-toggle="tooltip"
+                            title="#{library.name}"
+                            data-placement="bottom"
+                            data-original-title="#{library.name}"
+                          ]
+                            = library.name.truncate(25)
+                            br
+                  - if @libraries.modules.count == 0
+                    .mx-auto
+                      h3.font-size-h3.text-muted.text-capitalize No Entry Data
 
-            #libraryContent.tab-content.mt-5
-              #tab-module.tab-pane.fade.active.show[role="tabpanel" aria-labelledby="module-tab"]
-                .d-flex.flex-row
-                  .flex-row-fluid.d-flex.flex-column.ml-lg-8
-                    .d-flex.flex-column.flex-grow-1
-                      .row.mt-5
-                        - @libraries.modules.each do |library|
-                          .col-xl-2.col-lg-2.col-md-4.col-sm-6.m-5
-                            .card.card-custom.card-stretch.bg-transparent
-                              a.card-body.text-center.p-1 [type="button" href="#{library_path(library)}" target="_blank"]
-                                .d-flex.flex-column.align-items-center
-                                  - if library.cover.present? 
-                                    = image_tag library.cover, class: "max-h-150px"
-                                  - else
-                                    img.max-h-150px.mb-5 alt="" src="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/media/svg/files/pdf.svg"
-                                a.font-size-lg.text-center[
-                                  href="#{library_path(library)}"
-                                  target="_blank"
-                                  data-toggle="tooltip"
-                                  title="#{library.name}"
-                                  data-placement="bottom"
-                                  data-original-title="#{library.name}"
-                                ]
-                                  = library.name.truncate(25)
-                                  br
-                        - if @libraries.modules.count == 0
-                          .mx-auto
-                            h3.font-size-h3.text-muted.text-capitalize No Entry Data
+        #tab-materi.tab-pane.fade[role="tabpanel" aria-labelledby="materi-tab-1"]
+          .d-flex.flex-row
+            .flex-row-fluid.d-flex.flex-column.ml-lg-8
+              .d-flex.flex-column.flex-grow-1
+                .row.mt-5
+                  - @libraries.theory.each do |library|
+                    .col-xl-2.col-lg-2.col-md-4.col-sm-6
+                      .card.card-custom.card-stretch
+                        a.card-body.text-center [type="button" href="#{library_path(library)}" target="_blank"]
+                          .d-flex.flex-column.align-items-center
+                            - if library.cover.present?
+                              = image_tag library.cover, class: "max-h-150px"
+                            - else
+                              img.max-h-150px.mb-5 alt="" src="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/media/svg/files/pdf.svg"
+                        .card-footer
+                          a.font-size-lg.text-center[
+                            href="#{library_path(library)}"
+                            target="_blank"
+                            data-toggle="tooltip"
+                            title="#{library.name}"
+                            data-placement="bottom"
+                            data-original-title="#{library.name}"
+                          ]
+                            = library.name.truncate(25)
+                            br
+                  - if @libraries.theory.count == 0
+                    .mx-auto
+                      h3.font-size-h3.text-muted.text-capitalize No Entry Data
 
-              #tab-materi.tab-pane.fade[role="tabpanel" aria-labelledby="materi-tab-1"]
-                .d-flex.flex-row
-                  .flex-row-fluid.d-flex.flex-column.ml-lg-8
-                    .d-flex.flex-column.flex-grow-1
-                      .row.mt-5
-                        - @libraries.theory.each do |library|
-                          .col-xl-2.col-lg-2.col-md-4.col-sm-6.m-5
-                            .card.card-custom.card-stretch.bg-transparent
-                              a.card-body.text-center.p-1 [type="button" href="#{library_path(library)}" target="_blank"]
-                                .d-flex.flex-column.align-items-center
-                                  - if library.cover.present?
-                                    = image_tag library.cover, class: "max-h-150px"
-                                  - else
-                                    img.max-h-150px.mb-5 alt="" src="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/media/svg/files/pdf.svg"
-                                a.font-size-lg.text-center[
-                                  href="#{library_path(library)}"
-                                  target="_blank"
-                                  data-toggle="tooltip"
-                                  title="#{library.name}"
-                                  data-placement="bottom"
-                                  data-original-title="#{library.name}"
-                                ]
-                                  = library.name.truncate(25)
-                                  br
-                        - if @libraries.theory.count == 0
-                          .mx-auto
-                            h3.font-size-h3.text-muted.text-capitalize No Entry Data
+        #tab-journal.tab-pane.fade[role="tabpanel" aria-labelledby="journal-tab"]
+          .d-flex.flex-row
+            .flex-row-fluid.d-flex.flex-column.ml-lg-8
+              .d-flex.flex-column.flex-grow-1
+                .row.mt-5
+                  - @libraries.journal.each do |library|
+                    .col-xl-2.col-lg-2.col-md-4.col-sm-6
+                      .card.card-custom.card-stretch
+                        a.card-body.text-center [type="button" href="#{library_path(library)}" target="_blank"]
+                          .d-flex.flex-column.align-items-center
+                            - if library.cover.present?
+                              = image_tag library.cover, class: "max-h-150px"
+                            - else
+                              img.max-h-150px.mb-5 alt="" src="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/media/svg/files/pdf.svg"
+                        .card-footer
+                          a.font-size-lg.text-center[
+                            href="#{library_path(library)}"
+                            target="_blank"
+                            data-toggle="tooltip"
+                            title="#{library.name}"
+                            data-placement="bottom"
+                            data-original-title="#{library.name}"
+                          ]
+                            = library.name.truncate(25)
+                            br
+                  - if @libraries.journal.count == 0
+                    .mx-auto
+                      h3.font-size-h3.text-muted.text-capitalize No Entry Data
 
-              #tab-journal.tab-pane.fade[role="tabpanel" aria-labelledby="journal-tab"]
-                .d-flex.flex-row
-                  .flex-row-fluid.d-flex.flex-column.ml-lg-8
-                    .d-flex.flex-column.flex-grow-1
-                      .row.mt-5
-                        - @libraries.journal.each do |library|
-                          .col-xl-2.col-lg-2.col-md-4.col-sm-6.m-5
-                            .card.card-custom.card-stretch.bg-transparent
-                              a.card-body.text-center.p-1 [type="button" href="#{library_path(library)}" target="_blank"]
-                                .d-flex.flex-column.align-items-center
-                                  - if library.cover.present?
-                                    = image_tag library.cover, class: "max-h-150px"
-                                  - else
-                                    img.max-h-150px.mb-5 alt="" src="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/media/svg/files/pdf.svg"
-                                a.font-size-lg.text-center[
-                                  href="#{library_path(library)}"
-                                  target="_blank"
-                                  data-toggle="tooltip"
-                                  title="#{library.name}"
-                                  data-placement="bottom"
-                                  data-original-title="#{library.name}"
-                                ]
-                                  = library.name.truncate(25)
-                                  br
-                        - if @libraries.journal.count == 0
-                          .mx-auto
-                            h3.font-size-h3.text-muted.text-capitalize No Entry Data
+        #tab-book.tab-pane.fade[role="tabpanel" aria-labelledby="book-tab"]
+          .d-flex.flex-row
+            .flex-row-fluid.d-flex.flex-column.ml-lg-8
+              .d-flex.flex-column.flex-grow-1
+                .row.mt-5
+                  - @libraries.book.each do |library|
+                    .col-xl-2.col-lg-2.col-md-4.col-sm-6
+                      .card.card-custom.card-stretch
+                        a.card-body.text-center [type="button" href="#{library_path(library)}" target="_blank"]
+                          .d-flex.flex-column.align-items-center
+                            - if library.cover.present?
+                              = image_tag library.cover, class: "max-h-150px"
+                            - else
+                              img.max-h-150px.mb-5 alt="" src="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/media/svg/files/pdf.svg"
+                        .card-footer
+                          a.font-size-lg.text-center[
+                            href="#{library_path(library)}"
+                            target="_blank"
+                            data-toggle="tooltip"
+                            title="#{library.name}"
+                            data-placement="bottom"
+                            data-original-title="#{library.name}"
+                          ]
+                            = library.name.truncate(25)
+                            br
+                  - if @libraries.book.count == 0
+                    .mx-auto
+                      h3.font-size-h3.text-muted.text-capitalize No Entry Data
 
-              #tab-book.tab-pane.fade[role="tabpanel" aria-labelledby="book-tab"]
-                .d-flex.flex-row
-                  .flex-row-fluid.d-flex.flex-column.ml-lg-8
-                    .d-flex.flex-column.flex-grow-1
-                      .row.mt-5
-                        - @libraries.book.each do |library|
-                          .col-xl-2.col-lg-2.col-md-4.col-sm-6.m-5
-                            .card.card-custom.card-stretch.bg-transparent
-                              a.card-body.text-center.p-1 [type="button" href="#{library_path(library)}" target="_blank"]
-                                .d-flex.flex-column.align-items-center
-                                  - if library.cover.present?
-                                    = image_tag library.cover, class: "max-h-150px"
-                                  - else
-                                    img.max-h-150px.mb-5 alt="" src="https://metronic-assets.s3-ap-southeast-1.amazonaws.com/media/svg/files/pdf.svg"
-                                a.font-size-lg.text-center[
-                                  href="#{library_path(library)}"
-                                  target="_blank"
-                                  data-toggle="tooltip"
-                                  title="#{library.name}"
-                                  data-placement="bottom"
-                                  data-original-title="#{library.name}"
-                                ]
-                                  = library.name.truncate(25)
-                                  br
-                        - if @libraries.book.count == 0
-                          .mx-auto
-                            h3.font-size-h3.text-muted.text-capitalize No Entry Data
-           
-      footer
-        = render 'homes/components/footer_desktop'
-
-      = render 'homes/components/footer_phone'
-      = render 'homes/all_modals'
+= render 'homes/all_modals'

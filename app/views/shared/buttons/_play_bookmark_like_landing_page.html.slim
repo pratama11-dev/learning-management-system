@@ -57,19 +57,19 @@
       ]
         i.la.la-thumbs-down.text-muted class="#{'text-dark' if disliked}"
 
-      - if options[:curriculum].present?
-        a.btn.btn-icon.btn-outline-secondary.btn-circle.btn-xs.ml-auto [
-          type="button"
-          data-toggle="modal"
-          data-target="#curriculums"
-          data-dynamic-data-id="#{options[:curriculum].id}"
-        ]
-          i.ki.ki-arrow-down.icon-sm.text-white.text-hover-dark
-      - else
-        a.btn.btn-icon.btn-outline-secondary.btn-circle.btn-xs.ml-auto [
-          type="button"
-          data-toggle="modal"
-          data-target="#lessons"
-          data-dynamic-data-id="#{source.id}"
-        ]
-          i.ki.ki-arrow-down.icon-sm.text-white.text-hover-dark
+      / - if options[:curriculum].present?
+      /   a.btn.btn-icon.btn-outline-secondary.btn-circle.btn-xs.ml-auto [
+      /     type="button"
+      /     data-toggle="modal"
+      /     data-target="#curriculums"
+      /     data-dynamic-data-id="#{options[:curriculum].id}"
+      /   ]
+      /     i.ki.ki-arrow-down.icon-sm.text-white.text-hover-dark
+      / - else
+      /   a.btn.btn-icon.btn-outline-secondary.btn-circle.btn-xs.ml-auto [
+      /     type="button"
+      /     data-toggle="modal"
+      /     data-target="#lessons"
+      /     data-dynamic-data-id="#{source.id}"
+      /   ]
+      /     i.ki.ki-arrow-down.icon-sm.text-white.text-hover-dark

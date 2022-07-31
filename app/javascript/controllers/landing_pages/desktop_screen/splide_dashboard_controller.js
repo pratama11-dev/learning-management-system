@@ -10,6 +10,7 @@ export default class extends Controller {
       perPage: 3,
       rewind : true,
       pagination: false,
+      gap: 10,
       breakpoints: {
         425: {
           perPage: 1,

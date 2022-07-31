@@ -1,4 +1,4 @@
-#kt_aside.aside.aside-left.aside-fixed.d-flex.flex-column.flex-row-auto
+#kt_aside.aside.aside-left.aside-fixed.d-flex.flex-column.flex-row-auto style="overflow: auto"
   #kt_brand.brand.flex-column-auto
     a.brand-logo.d-block.mx-auto.text-center href="/"
       = image_tag 'transparant_logo.png', class: "mx-auto", style: "width: 150px", alt: "logo"
@@ -81,9 +81,9 @@
 
         li aria-haspopup="true" class=("menu-item #{'menu-item-active' if request.path.include?'admin/auto_courses' } menu-item-submenu") data-menu-toggle="hover"
           = link_to admin_auto_courses_path, class: "menu-link" do
-            span.svg-icon.menu-icon            
-              svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-                g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1" 
+            span.svg-icon.menu-icon
+              svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"
                   rect height="24" width="24" x="0" y="0" /
                   rect fill="#000000" height="2" opacity="0.3" rx="1" width="10" x="12" y="7" /
                   path d="M2,9 C1.44771525,9 1,8.55228475 1,8 C1,7.44771525 1.44771525,7 2,7 L7.35012691,7 C8.14050434,7 8.85674733,7.46546704 9.17775001,8.18772307 L12.6498731,16 L22,16 C22.5522847,16 23,16.4477153 23,17 C23,17.5522847 22.5522847,18 22,18 L12.6498731,18 C11.8594957,18 11.1432527,17.534533 10.82225,16.8122769 L7.35012691,9 L2,9 Z" fill="#000000" fill-rule="nonzero" /

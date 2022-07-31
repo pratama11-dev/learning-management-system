@@ -1,3 +1,14 @@
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 .style-question table td{
   border: 1px solid #000;
 }
@@ -32,7 +43,7 @@
   border-radius: 50%;
   position: absolute;
   right: 10px;
-} 
+}
 
 .custom-file-label {
   white-space: nowrap;
