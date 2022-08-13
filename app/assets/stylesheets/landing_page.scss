@@ -279,9 +279,17 @@ a.text-white:hover, a.text-white:focus{
   right: 0% !important;
 }
 
-.elementor-hover-brevet:hover .elementor-widget-wrap{
-  margin-top: 150px !important;
+.card-img-top{
+  width: 100% !important;
+  height: 10rem !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
 }
+
+// .elementor-hover-brevet:hover .elementor-widget-wrap{
+//   margin-top: 150px !important;
+// }
 
 .elementor-live-hover {
   height: 400.375px !important;
@@ -337,6 +345,10 @@ a.text-white:hover, a.text-white:focus{
 }
 
 .elementor-hover-curriculums:hover .hide-hover{
+  display: none !important;
+}
+
+.elementor-hover-brevet:hover .hide-hover{
   display: none !important;
 }
 

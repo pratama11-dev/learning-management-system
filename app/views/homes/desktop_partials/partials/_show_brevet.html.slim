@@ -13,12 +13,23 @@
       style="width: auto; height: 160px !important;"
     ]
       - if course.banner_image.present?
-        .elementor-column-wrap.elementor-element-populated style="background-image: url(#{url_for(course.banner_image)}) !important;"
+        .elementor-column-wrap.elementor-element-populated [
+          style="
+            background-image: url(#{url_for(course.banner_image)}) !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            height: 200px !important;
+          "
+        ]
           - if curriculum.progress(current_user) == 100
             .elementor-background-overlay [style="background: rgba(31, 136, 41, 0.7);"]
           .elementor-widget-wrap[
-            href="#{video_path(curriculum.video)}"
+            role="button"
             type="button"
+            data-toggle="modal"
+            data-target="#curriculums"
+            data-dynamic-data-id="#{curriculum.id}"
           ]
             - if curriculum.progress(current_user) == 100
               i.far.fa-check-circle.mx-auto.text-white.icon-2x [style="z-index: 1;"]
@@ -29,20 +40,30 @@
             ]
               .elementor-widget-container.p-0
                 / href="#{video_path(curriculum.video)}"
-                a.elementor-heading-title.font-weight-bolder.elementor-size-default.font-size-h5.text-hover-warning[
+                a.hide-hover.elementor-heading-title.font-weight-bolder.elementor-size-default.font-size-h5.text-hover-warning.pl-3.pb-2[
                   role="button"
                   type="button"
                   data-toggle="modal"
                   data-target="#curriculums"
                   data-dynamic-data-id="#{curriculum.id}"
+                  style="
+                    position: absolute;
+                    bottom: 0;
+                  "
                 ]
                   = curriculum.name.truncate(25)
-                .text.pt-5.text-left
+                .text.pt-5.mt-15.text-left[
+                  style="
+                    position: absolute;
+                    bottom: -55px;
+                  "
+                ]
                   = render "shared/buttons/play_bookmark_like_landing_page", source: curriculum.video.source, options: {curriculum: curriculum}
                   .info.pt-3.pb-4.px-4.font-size-xs
                     .d-flex.flex-wrap.align-items-start
                       .col-lg-6.px-0
                         .d-flex.flex-column.flex-wrap
+                          span.text-white.text-break [style="line-height: normal !important;"] = curriculum.name.truncate(25)
                           span.text-break.mb-3 [style="line-height: normal !important;"] = curriculum.description.truncate(50)
                           span.text-white.m-0 [style="line-height: normal !important;"] = course.name
                       .col-lg-6.px-0
@@ -67,7 +88,7 @@
             ]
               .elementor-widget-container.p-0
                 / href="#{video_path(curriculum.video)}"
-                a.elementor-heading-title.font-weight-bolder.elementor-size-default.font-size-h5.text-hover-warning[
+                a.elementor-heading-title.font-weight-bolder.elementor-size-default.font-size-h5.text-hover-warning.pl-3.pb-2[
                   role="button"
                   type="button"
                   data-toggle="modal"
@@ -75,11 +96,17 @@
                   data-dynamic-data-id="#{curriculum.id}"
                 ]
                   = curriculum.name.truncate(25)
-                .text.pt-5.text-left
+                .text.pt-5.mt-15.text-left[
+                  style="
+                    position: absolute;
+                    bottom: -55px;
+                  "
+                ]
                   = render "shared/buttons/play_bookmark_like_landing_page", source: curriculum.video.source, options: {curriculum: curriculum}
                   .info.pt-3.pb-4.px-4.font-size-xs
                     .col-lg-6.pl-0
                       .d-flex.flex-column.flex-wrap
+                        span.text-white.text-break [style="line-height: normal !important;"] = curriculum.name.truncate(25)
                         span.text-break.mb-3 [style="line-height: normal !important;"] = curriculum.description.truncate(50)
                         span.text-white.m-0 [style="line-height: normal !important;"] = course.name
                     .col-lg-6.px-0

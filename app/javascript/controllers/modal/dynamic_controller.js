@@ -1,6 +1,6 @@
 import { Controller } from "stimulus"
 
-export default class extends Controller {  
+export default class extends Controller {
   connect() {}
   initialize() {
     this.url = this.element.dataset.url
@@ -11,7 +11,7 @@ export default class extends Controller {
     $(this.modalDynamic).on('shown.bs.modal', this.performRequest.bind(this))
 
     $(this.modalDynamic).on('hidden.bs.modal', this.refreshPage.bind(this));
-    
+
     if (this.element.dataset.show == "true"){
       $(this.modalDynamic).modal('show')
     }
@@ -27,17 +27,17 @@ export default class extends Controller {
     }
 
     setTimeout(function(){
-      Turbolinks.scroll = {};          
+      Turbolinks.scroll = {};
       Turbolinks.scroll['top'] = document.scrollingElement.scrollTop;
       Turbolinks.visit(location.pathname);
     }, 500);
   }
 
-  performRequest(e){  
+  performRequest(e){
     let url = this.url
 
     if (e.relatedTarget && e.relatedTarget.dataset.dynamicDataId){
-      url = url.replace('default', e.relatedTarget.dataset.dynamicDataId)      
+      url = url.replace('default', e.relatedTarget.dataset.dynamicDataId)
     }
     if(!url.includes("default")){
       window.KTApp.block(this.replacer, {});
@@ -49,15 +49,15 @@ export default class extends Controller {
     let url = this.url
 
     if (e.srcElement && e.srcElement.dataset.dynamicDataId){
-      url = url.replace('default', e.srcElement.dataset.dynamicDataId)      
-    } 
+      url = url.replace('default', e.srcElement.dataset.dynamicDataId)
+    }
     if(!url.includes("default")){
       window.KTApp.block(this.replacer, {});
-      window.Ajax.get(url, this.ajaxOptions());   
+      window.Ajax.get(url, this.ajaxOptions());
     }
   }
 
-  handleSuccess(response){    
+  handleSuccess(response){
     let tmp = document.createElement("div");
     tmp.innerHTML = response
     this.replacer.replaceChild(tmp, this.replacer.firstElementChild);

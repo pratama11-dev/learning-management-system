@@ -1,43 +1,18 @@
-section.elementor-element.elementor-element-d6c9587.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section.mb-10[data-id="d6c9587" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}" style="z-index: -1 !important"]
-  .elementor-row
-    .elementor-element.elementor-element-d0ac3b5.elementor-column.elementor-col-100.elementor-top-column[data-id="d0ac3b5" data-element_type="column"]
-      .elementor-column-wrap.elementor-element-populated
-        .elementor-widget-wrap
-          .elementor-element
-            h3.text-capitalize.text-white.mb-5
-              | Program Sertifikasi
-          .elementor-element.elementor-element-acc20f3.elementor-widget.elementor-widget-heading[data-id="acc20f3" data-element_type="widget" data-widget_type="heading.default"]
-            .elementor-widget-container
-              h2.elementor-heading-title.elementor-size-default.text-white.font-weight-normal
-                | Membimbing peserta didik melalui pembelajaran sesuai dengan
-                br
-                |  silabus Brevet untuk mendapatkan sertifikat kemampuan
+h3.display-4.mt-5 Quiz
+.separator.separator-solid.separator-border-2
 
-- @courses.each do |course|
-  - next if course.curriculums.blank? || course.curriculums.map {|c| c.lessons.blank?}.uniq == [true]
-  .d-flex.align-items-start
-    section.elementor-element.elementor-element-db2d9ff.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section.pt-0.mt-4.mb-12[data-id="db2d9ff" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}" style="z-index: -1 !important"]
-      .elementor-row
-        .elementor-element.elementor-element-592d36f.elementor-column.elementor-col-100.elementor-top-column[data-id="592d36f" data-element_type="column"]
-          .elementor-column-wrap.elementor-element-populated
-            .elementor-widget-wrap
-              .elementor-element.elementor-element-5d79ebb.elementor-widget.elementor-widget-heading[data-id="5d79ebb" data-element_type="widget" data-widget_type="heading.default"]
-                .elementor-widget-container
-                  h2.elementor-heading-title.elementor-size-default.text-white
-                    = course.name
-    a.d-none.elementor-hidden-phone.btn__hover__more.btn.btn-icon.btn-circle.btn-sm.ml-2.mt-2[
-      href="#"
-      role="button"
-      style="z-index: 1 !important;"
-    ]
-      i.flaticon2-information.text-warning
-
-  section.elementor-element.elementor-element-0adb45d.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section.pt-0[
-    data-id="0adb45d"
-    data-element_type="section"
-    data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"
-    style="overflow: visible;"
-  ]
+.py-5
+  - @courses.each do |course|
+    - next if course.curriculums.blank? || course.curriculums.map {|c| c.lessons.blank?}.uniq == [true]
+    .d-flex.align-items-start
+      h2.elementor-heading-title.elementor-size-default
+        = course.name
+      a.d-none.elementor-hidden-phone.btn__hover__more.btn.btn-icon.btn-circle.btn-sm.ml-2.mt-2[
+        href="#"
+        role="button"
+        style="z-index: 1 !important;"
+      ]
+        i.flaticon2-information.text-warning
     .splide [
       data-controller="landing-pages--desktop-screen--splide-small"
       data-id="#{course.id}"
@@ -54,21 +29,86 @@ section.elementor-element.elementor-element-d6c9587.elementor-hidden-phone.eleme
 
           - if (course.curriculums.count > 0) && (course.curriculums.count < 4)
             li.splide__slide
-              .elementor-element.elementor-element-6bc743e.elementor-column.elementor-col-12.elementor-top-column [
-                data-id="6bc743e"
-                data-element_type="column"
-                data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
-                style="width: auto; height: 160px !important;"
-              ]
-                .elementor-column-wrap.elementor-element-populated style="background-image: url(https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/a9.png) !important;"
-                  .elementor-background-overlay
-                  .elementor-widget-wrap.py-8
-                    .elementor-element.elementor-element-3accdcb.elementor-view-default.elementor-widget.elementor-widget-icon[data-id="3accdcb" data-element_type="widget" data-widget_type="icon.default"]
-                      .elementor-widget-container
-                        .elementor-icon-wrapper
-                          .elementor-icon
-                            i.fas.fa-lock[aria-hidden="true" style="color: #EE6123 !important;"]
-                    .elementor-element.elementor-element-ec86b57.elementor-widget.elementor-widget-heading[data-id="ec86b57" data-element_type="widget" data-widget_type="heading.default"]
-                      .elementor-widget-container
-                        h2.elementor-heading-title.elementor-size-default
-                          | Comming Soon
+              .card
+                img.card-img-top alt=("Card image cap") src="https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/a9.png" /
+                .card-body.text-center.py-2
+                  h5.card-title.mb-1 Coming Soon
+                  a.btn.btn-icon.btn-danger
+                    i.fas.fa-lock
+
+
+
+/ section.elementor-element.elementor-element-d6c9587.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section.mb-10[data-id="d6c9587" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}" style="z-index: -1 !important"]
+/   .elementor-row
+/     .elementor-element.elementor-element-d0ac3b5.elementor-column.elementor-col-100.elementor-top-column[data-id="d0ac3b5" data-element_type="column"]
+/       .elementor-column-wrap.elementor-element-populated
+/         .elementor-widget-wrap
+/           .elementor-element
+/             h3.text-capitalize.text-white.mb-5
+/               | Program Sertifikasi
+/           .elementor-element.elementor-element-acc20f3.elementor-widget.elementor-widget-heading[data-id="acc20f3" data-element_type="widget" data-widget_type="heading.default"]
+/             .elementor-widget-container
+/               h2.elementor-heading-title.elementor-size-default.text-white.font-weight-normal
+/                 | Membimbing peserta didik melalui pembelajaran sesuai dengan
+/                 br
+/                 |  silabus Brevet untuk mendapatkan sertifikat kemampuan
+
+/ - @courses.each do |course|
+/   - next if course.curriculums.blank? || course.curriculums.map {|c| c.lessons.blank?}.uniq == [true]
+/   .d-flex.align-items-start
+/     section.elementor-element.elementor-element-db2d9ff.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section.pt-0.mt-4.mb-12[data-id="db2d9ff" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}" style="z-index: -1 !important"]
+/       .elementor-row
+/         .elementor-element.elementor-element-592d36f.elementor-column.elementor-col-100.elementor-top-column[data-id="592d36f" data-element_type="column"]
+/           .elementor-column-wrap.elementor-element-populated
+/             .elementor-widget-wrap
+/               .elementor-element.elementor-element-5d79ebb.elementor-widget.elementor-widget-heading[data-id="5d79ebb" data-element_type="widget" data-widget_type="heading.default"]
+/                 .elementor-widget-container
+/                   h2.elementor-heading-title.elementor-size-default.text-white
+/                     = course.name
+/     a.d-none.elementor-hidden-phone.btn__hover__more.btn.btn-icon.btn-circle.btn-sm.ml-2.mt-2[
+/       href="#"
+/       role="button"
+/       style="z-index: 1 !important;"
+/     ]
+/       i.flaticon2-information.text-warning
+
+/   section.elementor-element.elementor-element-0adb45d.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section.pt-0[
+/     data-id="0adb45d"
+/     data-element_type="section"
+/     data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"
+/     style="overflow: visible;"
+/   ]
+/     .splide [
+/       data-controller="landing-pages--desktop-screen--splide-small"
+/       data-id="#{course.id}"
+/       class="js-dataId-#{course.id}-small"
+/     ]
+/       .splide__track
+/         ul.splide__list
+/           - course.curriculums.each do |curriculum|
+/             - next if curriculum.lessons.blank?
+/             li.splide__slide[
+/               data-controller="home-partial-render"
+/               data-url="#{show_brevet_partial_path(curriculum_id: curriculum.id)}"
+/             ]
+
+/           - if (course.curriculums.count > 0) && (course.curriculums.count < 4)
+/             li.splide__slide
+/               .elementor-element.elementor-element-6bc743e.elementor-column.elementor-col-12.elementor-top-column [
+/                 data-id="6bc743e"
+/                 data-element_type="column"
+/                 data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
+/                 style="width: auto; height: 160px !important;"
+/               ]
+/                 .elementor-column-wrap.elementor-element-populated style="background-image: url(https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/a9.png) !important;"
+/                   .elementor-background-overlay
+/                   .elementor-widget-wrap.py-8
+/                     .elementor-element.elementor-element-3accdcb.elementor-view-default.elementor-widget.elementor-widget-icon[data-id="3accdcb" data-element_type="widget" data-widget_type="icon.default"]
+/                       .elementor-widget-container
+/                         .elementor-icon-wrapper
+/                           .elementor-icon
+/                             i.fas.fa-lock[aria-hidden="true" style="color: #EE6123 !important;"]
+/                     .elementor-element.elementor-element-ec86b57.elementor-widget.elementor-widget-heading[data-id="ec86b57" data-element_type="widget" data-widget_type="heading.default"]
+/                       .elementor-widget-container
+/                         h2.elementor-heading-title.elementor-size-default
+/                           | Comming Soon

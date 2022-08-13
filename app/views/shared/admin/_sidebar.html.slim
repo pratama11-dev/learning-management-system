@@ -1,7 +1,7 @@
 #kt_aside.aside.aside-left.aside-fixed.d-flex.flex-column.flex-row-auto style="overflow: auto"
   #kt_brand.brand.flex-column-auto
     a.brand-logo.d-block.mx-auto.text-center href="/"
-      = image_tag 'transparant_logo.png', class: "mx-auto", style: "width: 150px", alt: "logo"
+      = image_tag 'logo_putih.png', class: "mx-auto", style: "height: 30px", alt: "logo"
     button#kt_aside_toggle.brand-toggle.btn.btn-sm.px-0
       span.svg-icon.svg-icon.svg-icon-xl
         svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -58,7 +58,7 @@
                   rect fill="#000000" height="1" opacity="0.3" rx="0.5" width="22" x="1" y="18" /
             span.menu-text Materi
 
-        li aria-haspopup="true" class=("menu-item #{'menu-item-active' if request.path.include?'admin/talks' } menu-item-submenu") data-menu-toggle="hover"
+        / li aria-haspopup="true" class=("menu-item #{'menu-item-active' if request.path.include?'admin/talks' } menu-item-submenu") data-menu-toggle="hover"
           = link_to admin_talks_path, class: "menu-link" do
             span.svg-icon.menu-icon
               svg[xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewbox="0 0 24 24" version="1.1"]
@@ -69,7 +69,7 @@
             span.menu-text Taxsamtalks
 
 
-        li aria-haspopup="true" class=("menu-item #{'menu-item-active' if request.path.include?'admin/webinars' } menu-item-submenu") data-menu-toggle="hover"
+        / li aria-haspopup="true" class=("menu-item #{'menu-item-active' if request.path.include?'admin/webinars' } menu-item-submenu") data-menu-toggle="hover"
           = link_to admin_webinars_path, class: "menu-link" do
             span.svg-icon.menu-icon
               svg[xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewbox="0 0 24 24" version="1.1"]
@@ -113,7 +113,7 @@
                   path d="M17.6011961,15.0006174 C21.0077043,15.0378534 23.7891749,16.7601418 23.9984937,20.4 C24.0069246,20.5466056 23.9984937,21 23.4559499,21 L19.6,21 C19.6,18.7490654 18.8562935,16.6718327 17.6011961,15.0006174 Z M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero" /
             span.menu-text User
 
-        li aria-haspopup="true" class=("menu-item #{'menu-item-active' if request.path.include?'admin/payment_reports' } menu-item-submenu") data-menu-toggle="hover"
+        / li aria-haspopup="true" class=("menu-item #{'menu-item-active' if request.path.include?'admin/payment_reports' } menu-item-submenu") data-menu-toggle="hover"
           = link_to admin_payment_reports_path, class: "menu-link" do
             span.svg-icon.menu-icon
               svg[xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewbox="0 0 24 24" version="1.1"]
