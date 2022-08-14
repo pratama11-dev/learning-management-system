@@ -6,57 +6,31 @@
     .modal-body.p-0
       - if @curriculum.banner_image.present?
         section.elementor-element.elementor-element-8490d18.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section [
-          style="background-size: cover !important; height: 480px; background-image: url(#{url_for(@curriculum.banner_image)}) !important;"
+          style="
+            background-size: cover !important;
+            height: 480px;
+            background-image: url(#{url_for(@curriculum.banner_image)}) !important;
+            box-shadow: inset 0px -50px 100px -10px #000000;
+          "
           data-id="8490d18"
           data-element_type="section"
           data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"
         ]
-          / button.btn.btn-icon.btn-sm.float-right.btn-circle.btn-secondary[
-          /   type="button"
-          /   data-dismiss="modal"
-          /   aria-label="Close"
-          /   style="position: absolute;top: 10px;right: 10px;z-index: 999999;"
-          / ]
-          /   i.ki.ki-close.icon-sm[aria-hidden="true"]
-          .elementor-background-overlay
-          .elementor-container.elementor-column-gap-default
-            .elementor-row
-              .elementor-element.elementor-element-3860f11.elementor-column.elementor-col-100.elementor-top-column[data-id="3860f11" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"]
-                .elementor-column-wrap.elementor-element-populated
-                  .elementor-background-overlay
-                  .elementor-widget-wrap
-                    .elementor-element.elementor-element-0987816.elementor-widget.elementor-widget-heading[data-id="0987816" data-element_type="widget" data-widget_type="heading.default"]
-                      .elementor-widget-container
-                        h2.elementor-heading-title.elementor-size-default
-                          = @curriculum.name
-                    .elementor-element.elementor-element-73866d9.elementor-widget.elementor-widget-text-editor[data-id="73866d9" data-element_type="widget" data-widget_type="text-editor.default"]
-                      .col-lg-8.elementor-widget-container
-                        .elementor-text-editor.elementor-clearfix.text-break
-                          = @curriculum.description
+          h2 #{@curriculum.name}
+          = @curriculum.description
+          = render "shared/buttons/play_bookmark_and_feedback", source: @curriculum
 
-                    section.elementor-element.elementor-element-fd26d10.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-inner-section[data-id="fd26d10" data-element_type="section" data-settings="{&quot;animation&quot;:&quot;fadeIn&quot;,&quot;animation_delay&quot;:400,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"]
-                      .elementor-container.elementor-column-gap-narrow
-                        .elementor-row
-                          .elementor-element.elementor-element-1347bf3.elementor-column.elementor-col-50.elementor-inner-column[data-id="1347bf3" data-element_type="column"]
-                            .elementor-column-wrap.elementor-element-populated
-                              .elementor-widget-wrap
-                                .elementor-button-wrapper.d-flex.flex-row.align-items-center style="margin-left: 40px;"
-                                  .d-flex.flex-row.align-items-center.js-bookmark-and-feedback
-                                    = render "shared/buttons/play_bookmark_and_feedback", source: @curriculum
-
-                        .elementor-widget-wrap
-                          .elementor-element.elementor-element-efd06e9.elementor-column.elementor-col-50.elementor-inner-column[data-id="efd06e9" data-element_type="column"]
-                            .elementor-column-wrap.elementor-element-populated
-                              .elementor-widget-wrap
-                                .elementor-element.elementor-element-4b394fb.elementor-align-right.elementor-absolute.elementor-widget.elementor-widget-button[data-id="4b394fb" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="button.default"]
-                                  .elementor-widget-container
-                                    .elementor-button-wrapper
-                                      a.elementor-button-link.elementor-button.elementor-size-md.p-5[href="#" role="button"]
-                                        span.elementor-button-content-wrapper
-                                          span.elementor-button-text
-                                            | Video Belajar Pajak
       - else
-        section.elementor-element.elementor-element-8490d18.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section[data-id="8490d18" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"]
+        section.elementor-element.elementor-element-8490d18.elementor-hidden-phone.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-top-section[
+          style="
+            background-size: cover !important;
+            height: 480px;
+            box-shadow: inset 0px -50px 100px -10px #000000;
+          "
+          data-id="8490d18"
+          data-element_type="section"
+          data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"
+        ]
           button.btn.btn-icon.btn-sm.float-right.btn-circle.btn-secondary[
             type="button"
             data-dismiss="modal"
@@ -64,31 +38,18 @@
             style="position: absolute;top: 10px;right: 10px;z-index: 999999;"
           ]
             i.ki.ki-close.icon-sm[aria-hidden="true"]
-          .elementor-background-overlay
-          .elementor-container.elementor-column-gap-default
-            .elementor-row
-              .elementor-element.elementor-element-3860f11.elementor-column.elementor-col-100.elementor-top-column[data-id="3860f11" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"]
-                .elementor-column-wrap.elementor-element-populated
-                  .elementor-background-overlay
-                  .elementor-widget-wrap
-                    .elementor-element.elementor-element-0987816.elementor-widget.elementor-widget-heading[data-id="0987816" data-element_type="widget" data-widget_type="heading.default"]
-                      .elementor-widget-container
-                        h2.elementor-heading-title.elementor-size-default
-                          = @curriculum.name
-                    .elementor-element.elementor-element-73866d9.elementor-widget.elementor-widget-text-editor[data-id="73866d9" data-element_type="widget" data-widget_type="text-editor.default"]
-                      .elementor-widget-container
-                        .elementor-text-editor.elementor-clearfix
-                          = truncate(@curriculum.description, :length => 50, :separator => " ")
-
-                    section.elementor-element.elementor-element-fd26d10.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default.elementor-section.elementor-inner-section[data-id="fd26d10" data-element_type="section" data-settings="{&quot;animation&quot;:&quot;fadeIn&quot;,&quot;animation_delay&quot;:400,&quot;ekit_has_onepagescroll_dot&quot;:&quot;yes&quot;}"]
-                      .elementor-container.elementor-column-gap-narrow
-                        .elementor-row
-                          .elementor-element.elementor-element-1347bf3.elementor-column.elementor-col-50.elementor-inner-column[data-id="1347bf3" data-element_type="column"]
-                            .elementor-column-wrap.elementor-element-populated
-                              .elementor-widget-wrap
-                                .elementor-button-wrapper.d-flex.flex-row.align-items-center style="margin-left: 40px;"
-                                  .d-flex.flex-row.align-items-center.js-bookmark-and-feedback
-                                    = render "shared/buttons/play_bookmark_and_feedback", source: @curriculum
+          div[
+            style="
+              position: absolute;
+              top: 35%;
+              left: 3%;
+            "
+          ]
+            h2.elementor-heading-title.elementor-size-default
+              = @curriculum.name
+            = truncate(@curriculum.description, :length => 50, :separator => " ")
+            .d-flex
+              = render "shared/buttons/play_bookmark_and_feedback", source: @curriculum
 
         p.font-size-h3.text-white.font-weight-bold Deskripsi
         .row
@@ -100,7 +61,7 @@
               .flex-column.text-center
                 p.font-size-h3.text-white.font-weight-bold.text-right Kategori
                 .btn.btn-light
-                  |  Video Belajar Pajak
+                  |  Quiz
 
         .row.d-flex.mt-5
           .col-lg-8.flex-column
@@ -206,7 +167,13 @@
                           ]
                             - if lesson.banner_image.present?
                               .elementor-column-wrap.elementor-element-populated [
-                                style="height: 130px; background-image: url(#{url_for(lesson.banner_image)}) !important;"
+                                style="
+                                  height: 130px;
+                                  background-image: url(#{url_for(lesson.banner_image)}) !important;
+                                  background-size: cover !important;
+                                  background-position: center !important;
+                                  background-repeat: no-repeat !important;
+                                "
                               ]
                                 - if lesson.progress(current_user) == 100
                                   .elementor-background-overlay [style="background: rgba(31, 136, 41, 0.7);"]
@@ -217,7 +184,7 @@
                                     data-widget_type="button.default"
                                   ]
                                     .elementor-widget-container style="padding: 30px 70px 30px 70px !important;"
-                                      .elementor-button-wrapper.mx-10
+                                      .elementor-button-wrapper.mx-10.mt-8
                                         a.btn.btn-icon.btn-secondary.btn-circle.btn-sm.mr-2[
                                           href="#{video_path(lesson.video)}"
                                           role="button"
@@ -225,7 +192,12 @@
                                           i.la.la-play
                             -else
                               .elementor-column-wrap.elementor-element-populated [
-                                style="height: 130px;"
+                                style="
+                                  height: 130px;
+                                  background-size: cover !important;
+                                  background-position: center !important;
+                                  background-repeat: no-repeat !important;
+                                "
                               ]
                                 - if lesson.progress(current_user) == 100
                                   .elementor-background-overlay [style="background: rgba(31, 136, 41, 0.7);"]
@@ -236,7 +208,7 @@
                                     data-widget_type="button.default"
                                   ]
                                     .elementor-widget-container style="padding: 30px 70px 30px 70px !important;"
-                                      .elementor-button-wrapper.mx-10
+                                      .elementor-button-wrapper.mx-10.mt-8
                                         a.btn.btn-icon.btn-secondary.btn-circle.btn-sm.mr-2[
                                           href="#{video_path(lesson.video)}"
                                           role="button"
@@ -255,7 +227,7 @@
                           p.text-white.text-break
                             = lesson.description
                       .d-flex.align-items-center.justify-content-end.flex-wrap[data-toggle="view"]
-                        .font-weight-bolder.text-mute.font-size-h6.mr-5[data-toggle="view"]
+                        .font-weight-bolder.text-white.font-size-h6.mr-5[data-toggle="view"]
                           span.mb-5.seasons
                             | #{lesson.progress(current_user)}% Complete
                             .progress[style="height: 5px;"]

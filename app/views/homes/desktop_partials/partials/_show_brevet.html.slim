@@ -5,6 +5,11 @@
         .ribbon-target[style="top: 12px;"]
           span.ribbon-inner.bg-warning
           | Belum Ujian
+    - if (curriculum.progress(current_user) == 100) && @exam_complete.present?
+      .ribbon.ribbon-clip.ribbon-right
+        .ribbon-target[style="top: 12px;"]
+          span.ribbon-inner.bg-success
+          | Sudah Ujian
 
     .elementor-element.elementor-element-d4b73ac.elementor-column.elementor-col-12.elementor-top-column.h-100[
       data-id="d4b73ac"
@@ -31,8 +36,6 @@
             data-target="#curriculums"
             data-dynamic-data-id="#{curriculum.id}"
           ]
-            - if curriculum.progress(current_user) == 100
-              i.far.fa-check-circle.mx-auto.text-white.icon-2x [style="z-index: 1;"]
             .elementor-element.elementor-element-5beb9a7.elementor-widget.elementor-widget-heading[
               data-id="5beb9a7"
               data-element_type="widget"

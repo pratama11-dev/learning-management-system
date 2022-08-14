@@ -8,10 +8,10 @@
     id="#{dynamic_modal_id}"
     style="background-color: #000000a1;"
   ]
-  .modal-dialog.modal-dialog-centered.modal-xl[
+  .modal-dialog.modal-xl[
     role="document"
-    data-controller="modal--dynamic" 
-    data-url="#{dynamic_url}" 
+    data-controller="modal--dynamic"
+    data-url="#{dynamic_url}"
     data-show="#{modal_show}"
     data-modal-id="#{dynamic_modal_id}"
   ]
@@ -19,6 +19,6 @@
       .modal-header.d-none
         button.close.ml-auto aria-label="Close" data-dismiss="modal" type="button"
           i.ki.ki-close.text-warning aria-hidden="true"
-      .modal-body.p-0.js-dynamic-replacer
+      .modal-body.js-dynamic-replacer
         div
           = render "shared/preloader"

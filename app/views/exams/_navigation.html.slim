@@ -1,16 +1,16 @@
-#kt_profile_aside.flex-row-auto.offcanvas-mobile.w-350px.w-xl-450px.col-12.border.rounded.p-5 style="background-color:#242424 !important;"
+#kt_profile_aside.flex-row-auto.offcanvas-mobile.w-350px.w-xl-450px.col-12.border.rounded.p-5
   h4.card-title.d-flex
     .fas.fa-map-pin.mr-5.icon-lg
-    span.card-label.font-weight-bolder.text-white.text-capitalize.font-size-h4
+    span.card-label.font-weight-bolder.text-capitalize.font-size-h4
       | Exam Navigation
   h5.card-title.d-flex.align-items-center
     .fas.fa-user-circle.mr-5.icon-lg
-    span.card-label.font-weight-bolder.text-white.text-capitalize.font-size-h5
+    span.card-label.font-weight-bolder.text-capitalize.font-size-h5
       = current_user.full_name || current_user.name
 
   h5.card-title.d-flex.align-items-center
     .fas.fa-clock.mr-5.icon-lg
-    span.card-label.font-weight-bolder.text-white.text-capitalize.font-size-h4
+    span.card-label.font-weight-bolder.text-capitalize.font-size-h4
       .js-times.font-size-h4 data-controller="exam--countdown" data-start-date="#{@exam_duration}"
 
   .mx-auto
@@ -24,5 +24,5 @@
             a.btn.btn-secondary.px-0.pb-0 style="#{params[:no].to_i == index ? 'background-color: #ee6123;' : ''}"
               span.p-8 #{index+1}
               - if @exam_service.exam_answers(question['question']['id'], nil).present?
-                .fa.fa-check.text-white.text-success
+                .fa.fa-check.text-success
               .p-5

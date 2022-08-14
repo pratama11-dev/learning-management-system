@@ -5,7 +5,7 @@ class QuizesController < ApplicationController
   before_action :require_login, :set_video, :set_lesson, :set_package, :set_quizes_service
   before_action :set_user_timestamp, :set_user_rating, only: [:ajax_submit_quiz]
 
-  def show    
+  def show
   end
 
   def ajax_show_quiz
@@ -71,7 +71,7 @@ class QuizesController < ApplicationController
 
   def set_quizes_service
     @quizes_service = Quizes::QuizesService.new(
-      @video, @lesson, 
+      @video, @lesson,
       @package, current_user
     )
 

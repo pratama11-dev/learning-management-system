@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CoursesController < ApplicationController
-  layout 'homes'
+  layout false
   before_action :require_login, only: [:show]
 
   def index

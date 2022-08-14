@@ -82,7 +82,16 @@
                   data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
                   style="width: auto; height: 150px !important;"
                 ]
-                  .elementor-column-wrap.elementor-element-populated
+                  - banner_image = "https://taxsam-learning-center.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/09/a9.png"
+                  .elementor-column-wrap.elementor-element-populated[
+                    style="
+                      background-image: url(#{banner_image}) !important;
+                      background-size: cover !important;
+                      background-position: center !important;
+                      background-repeat: no-repeat !important;
+                      height: 150px !important;
+                    "
+                  ]
                     .elementor-background-overlay
                     .elementor-widget-wrap
                       .elementor-element.elementor-element-bb20e93.elementor-widget.elementor-widget-heading[data-id="bb20e93" data-element_type="widget" data-widget_type="heading.default"]
@@ -90,6 +99,10 @@
                           a.font-size-h6.text-left.text-hover-warning[
                             href="#{video_path(bookmark.resource.video)}"
                             role="button"
+                            style="
+                              position: absolute;
+                              bottom: 0;
+                            "
                           ]
                             = bookmark.resource.name
                           / a.font-size-h6.text-left.text-hover-warning[
