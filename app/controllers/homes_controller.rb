@@ -5,6 +5,10 @@ class HomesController < ApplicationController
   def index
     @banners = Banner.all.limit(10)
     @learning_taxes = Lesson.all.order(created_at: :asc).group_by {|l| l.learning_name.squish}
+
+    # login to access this page
+    return redirect_to new_authentications_session_path, notice: 'Silakan login terlebih dahulu.' unless signed_in?
+
   end
 
   def ajax_index_phone_partial
