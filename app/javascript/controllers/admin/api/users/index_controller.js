@@ -53,11 +53,11 @@ export default class extends DatatablesController {
         overflow: 'visible',
         autoHide: false,
         template: function(data) {
-          return `                      
+          return `
             <a href="${data.show_path}" class="btn btn-sm btn-clean btn-icon" title="Show">
               <i class="la la-eye text-primary"></i>
             </a>
-            
+
           `;
         },
       }

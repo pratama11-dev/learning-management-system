@@ -3,7 +3,7 @@
     = form_with model: @new_course, url: admin_courses_path, html: { class: "form-group w-100" } do |f|
       .modal-content
         .modal-header
-          h5#exampleModalLabel.modal-title Tambah Brevet
+          h5#exampleModalLabel.modal-title Tambah Quiz
           button.close aria-label="Close" data-dismiss="modal" type="button"
             i.ki.ki-close aria-hidden="true"
         .modal-body.d-flex
@@ -18,7 +18,7 @@
             .form-group
               label
                 | Banner Image
-              div              
+              div
               - banner_image = "https://preview.keenthemes.com/metronic/theme/html/demo3/dist/assets/media/users/blank.png"
               #kt_image_5.image-input.image-input-empty.image-input-outline.border-1[style="background-image: url(#{banner_image})"]
                 .image-input-wrapper
@@ -32,7 +32,7 @@
                   i.ki.ki-bold-close.icon-xs.text-muted
 
           .col-lg-6
-            h5 Modul Pajak
+            h5 Modul
             .form-group
               div[
                 data-controller='dynamic-input'

@@ -1,9 +1,9 @@
 #clearance.sign-up
-  h2.font-weight-bolder.text-capitalize Daftar
+  h2.font-weight-bolder.text-capitalize.text-white Daftar
   .pb-5.pb-lg-15
     .text-muted.font-size-h4
-      | Masuk untuk selangkah maju #PahamPajak
-  .pb-5.pb-lg-15.d-flex.justify-content-center
+      | Masuk untuk selangkah maju #BelajarOnline
+  / .pb-5.pb-lg-15.d-flex.justify-content-center
     button.btn.btn-outline-white.btn-pill.btn-block[type="button"]
       i.fab.fa-google
       |  Masuk dengan Google
@@ -12,6 +12,6 @@
 
     .pb-5.pb-lg-15.d-flex.justify-content-center
       .text-muted.font-weight-bold.font-size-h6
-        | Sudah Punya Akun? 
+        | Sudah Punya Akun?
         a.text-primary.font-weight-bolder style="background-color: #EE6123 !important;"
         = link_to t(".sign_in"), root_path(login: true)
