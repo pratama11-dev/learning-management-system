@@ -41,8 +41,11 @@
           div[
             style="
               position: absolute;
-              top: 35%;
+              top: 30%;
               left: 3%;
+              background: #ffffff;
+              padding: 10px;
+              border-radius: 10px
             "
           ]
             h2.elementor-heading-title.elementor-size-default
@@ -61,7 +64,7 @@
               .flex-column.text-center
                 p.font-size-h3.text-white.font-weight-bold.text-right Kategori
                 .btn.btn-light
-                  |  Quiz
+                  |  Ujian
 
         .row.d-flex.mt-5
           .col-lg-8.flex-column
@@ -98,13 +101,13 @@
                     style="background-color: #EE6123 !important;"
                     data-controller="exam--rule-score-exam"
                     href="#{exams_path(id: @curriculum.id)}"
-                  ] Mulai Ujian Sertifikasi
+                  ] Mulai Ujian
               - else
                 a.btn.btn-warning.border-0.mr-5.font-weight-bolder.text-capitalize[
                   type="button"
                   style="background-color: #EE6123 !important;cursor: not-allowed !important;"
                   disabled=true
-                ] Mulai Ujian Sertifikasi
+                ] Mulai Ujian
 
               - if @exam_user_package_variant_result&.complete?
                 a.btn.btn-secondary.border-0.mr-5.font-weight-bolder.text-capitalize[
