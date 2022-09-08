@@ -52,7 +52,7 @@
                 "
               ]
                 = lesson.name.truncate(25)
-              / .video-hover style="cursor: pointer;" onclick="window.location.href='#{video_path(lesson.video)}'"
+              .video-hover style="cursor: pointer;" onclick="window.location.href='#{video_path(lesson.video)}'"
                 = render "homes/desktop_partials/partials/play_video", video: lesson.video, lesson: lesson
               .text.text-left
                 .pt-5
